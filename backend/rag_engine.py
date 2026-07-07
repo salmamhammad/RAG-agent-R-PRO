@@ -4,7 +4,7 @@ from llama_index.core import VectorStoreIndex, Settings
 from llama_index.core.retrievers import VectorIndexRetriever
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from backend.chroma_client import get_vector_store
-from backend.llm_provider import LLMProvider
+from backend.llm_provider import LLMProvider,  get_llm_provider 
 from backend.groq_provider import GroqProvider
 from backend.utils import format_sources, setup_logging, get_logger
 
@@ -29,12 +29,19 @@ class RAGEngine:
         
         # Если llm не передан, создаём GroqProvider с переданными параметрами
         if llm is None:
-            self.llm = GroqProvider(**llm_kwargs)
+            self.llm = get_llm_provider(**llm_kwargs)
         else:
             self.llm = llm
+            
+    def count_chunks(self):
+        return self.vector_store._collection.count()
 
     def retrieve(self, query: str):
+        print(f" Запрос: {query[:100]}...")
         nodes = self.retriever.retrieve(query)
+        print(f" Найдено чанков: {len(nodes)}")
+        if nodes:
+            print(f" Первый чанк: {nodes[0].get_content()[:100]}...")
         return nodes
 
     def answer(self, query: str, history: list = None) -> dict:

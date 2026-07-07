@@ -21,16 +21,23 @@ def main():
     
     # Проверяем, есть ли данные для индексации
     data_dir = ROOT_DIR / "data" / "docs"
-    if not data_dir.exists():
-        print(f"  Папка с данными не найдена: {data_dir}")
+    data_dir_chm = ROOT_DIR / "data" / "chm"
+    if not data_dir.exists() or not data_dir_chm.exists():
+        print(f"  Папка с данными не найдена: {data_dir} или {data_dir_chm}")
         print("   Создайте папку data/docs/ и поместите туда PDF или текстовые файлы.")
         sys.exit(1)
     
     files = list(data_dir.glob("*"))
     if not files:
         print(f"  Папка {data_dir} пуста. Добавьте документы.")
-        sys.exit(1)
-    
+        # sys.exit(1)
+        
+    fileschm = list(data_dir_chm.glob("*"))
+    if not fileschm:
+        print(f"  Папка {data_dir_chm} пуста. Добавьте документы.")
+        # sys.exit(1)
+    if not files and not fileschm:
+        sys.exit(1) 
     try:
         build_index()
         print(" Индексация успешно завершена.")

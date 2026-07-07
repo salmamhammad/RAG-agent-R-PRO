@@ -1600,3 +1600,92 @@ Trying to resume download...
 2026-07-07 10:32:02,149 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-07 10:32:19,727 - backend.rag_engine - INFO - failure: true...
 2026-07-07 10:32:21,989 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-07 13:15:25,585 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 13:17:09,804 - backend.rag_engine - INFO - failure: true...
+2026-07-07 13:17:10,510 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-07-07 13:17:52,870 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 13:17:59,134 - backend.rag_engine - INFO - failure: true...
+2026-07-07 13:17:59,660 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-07-07 13:18:38,698 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 13:18:51,498 - backend.rag_engine - INFO - failure: true...
+2026-07-07 13:18:52,325 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-07-07 13:27:09,116 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 13:27:20,806 - backend.rag_engine - INFO - failure: true...
+2026-07-07 13:27:21,397 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-07-07 13:27:44,471 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 13:27:52,407 - backend.rag_engine - INFO - failure: true...
+2026-07-07 13:27:52,816 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-07-07 13:28:26,288 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 13:28:31,635 - backend.rag_engine - INFO - failure: true...
+2026-07-07 13:28:31,878 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-07-07 13:28:59,518 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 13:29:07,339 - backend.rag_engine - INFO - failure: true...
+2026-07-07 13:29:08,416 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-07 13:29:43,786 - backend.rag_engine - INFO - failure: true...
+2026-07-07 13:29:45,566 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-07 13:30:28,991 - backend.rag_engine - INFO - failure: true...
+2026-07-07 13:30:31,527 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-07 13:31:00,916 - backend.rag_engine - INFO - failure: true...
+2026-07-07 13:31:02,731 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-07 13:31:53,724 - backend.rag_engine - INFO - failure: true...
+2026-07-07 13:31:55,588 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-07 13:33:45,069 - backend.rag_engine - INFO - failure: true...
+2026-07-07 13:33:47,925 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-07 13:34:06,419 - backend.rag_engine - INFO - failure: true...
+2026-07-07 13:34:08,108 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-07 14:47:54,364 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 14:49:01,687 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 15:25:54,358 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 15:26:09,609 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-07 15:27:34,991 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-07 15:29:50,694 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-07-07 15:30:19,560 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 15:30:40,604 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-07-07 15:31:18,385 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 15:31:39,415 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-07-07 15:32:03,792 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 15:32:24,084 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-07-07 15:33:43,259 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 15:34:02,304 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-07-07 15:34:42,251 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 15:34:58,570 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-07-07 15:37:39,803 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 15:37:57,116 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-07-07 15:39:50,029 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 15:40:01,026 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-07-07 15:43:10,318 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 15:43:33,623 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-07-07 15:44:11,744 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 15:44:25,971 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-07-07 15:46:10,900 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 15:46:24,758 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-07-07 15:49:57,922 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 15:50:25,318 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-07-07 15:51:10,679 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 15:51:22,697 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-07-07 15:52:14,231 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 15:52:23,966 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-07-07 16:09:22,089 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 16:09:42,912 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-07-07 16:28:47,772 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 16:29:11,144 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-07-07 16:32:19,424 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 16:32:24,373 - accelerate.utils.modeling - INFO - Based on the current allocation process, no modules could be assigned to the following devices due to insufficient memory:
+  - cpu: 2489319424 bytes required
+These minimum requirements are specific to this allocation attempt and may vary. Consider increasing the available memory for these devices to at least the specified minimum, or adjusting the model config.
+2026-07-07 16:35:09,663 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 16:35:26,823 - accelerate.big_modeling - WARNING - Some parameters are on the meta device because they were offloaded to the disk and cpu.
+2026-07-07 16:37:52,075 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 16:38:11,203 - accelerate.big_modeling - WARNING - Some parameters are on the meta device because they were offloaded to the cpu and disk.
+2026-07-07 16:41:04,191 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 16:41:21,270 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-07-07 16:49:03,795 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 16:49:33,766 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-07-07 16:49:58,006 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 16:50:17,240 - accelerate.big_modeling - WARNING - Some parameters are on the meta device because they were offloaded to the disk and cpu.
+2026-07-07 16:55:25,361 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 16:55:42,025 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-07 16:56:14,014 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-07 16:58:23,233 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-07 17:01:29,702 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-07 17:02:19,644 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"

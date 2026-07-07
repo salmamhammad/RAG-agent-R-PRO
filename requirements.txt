@@ -14,3 +14,9 @@ pydantic
 python-multipart
 Groq
 sentence-transformers
+pychm
+beautifulsoup4 
+lxml
+html2text
+chm
+accelerate
