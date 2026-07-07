@@ -53,19 +53,18 @@ pacman -S mingw-w64-ucrt-x86_64-chmlib
 # .env
 ```
 bash
-# Выбор провайдера: true = Groq API, false = локальная модель (Transformers)
-USE_API=true
+GROQ_API_KEY= "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"
+# GROQ_MODEL= "openai/gpt-oss-120b"
+GROQ_MODEL= "qwen/qwen3-32b"
 
-# Groq (если USE_API=true)
-GROQ_API_KEY=ваш_ключ_здесь
-GROQ_MODEL=llama-3.1-8b-instant
 
-# Локальная модель (если USE_API=false)
-LOCAL_MODEL_PATH=models/Qwen3-8B
+TOP_K=5                      # количество чанков, возвращаемых поиском
+LLM_PROVIDER=groq            # пока только groq 
+EMBEDDING_MODEL=d0rj/e5-small-en-ru   # модель эмбеддингов
 
-# Параметры RAG
-TOP_K=5
-EMBEDDING_MODEL=d0rj/e5-small-en-ru
+LOCAL_MODEL_PATH=F:\rag-support-agent\models\Qwen3-8B
+USE_API=true   
+
 ```
 
 # Подготовка данных
