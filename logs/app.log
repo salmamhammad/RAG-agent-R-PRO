@@ -1,0 +1,1602 @@
+2026-07-04 13:25:26,233 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from intfloat/multilingual-e5-small.
+2026-07-04 13:28:17,695 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from intfloat/multilingual-e5-small.
+2026-07-04 13:28:31,569 - watchfiles.main - INFO - 1 change detected
+2026-07-04 13:28:33,277 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from intfloat/multilingual-e5-small.
+2026-07-04 13:28:44,949 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 13:29:37,706 - watchfiles.main - INFO - 1 change detected
+2026-07-04 13:29:38,872 - watchfiles.main - INFO - 1 change detected
+2026-07-04 13:29:39,227 - watchfiles.main - INFO - 2 changes detected
+2026-07-04 13:29:44,316 - watchfiles.main - INFO - 1 change detected
+2026-07-04 13:33:25,699 - watchfiles.main - INFO - 1 change detected
+2026-07-04 13:33:26,052 - watchfiles.main - INFO - 1 change detected
+2026-07-04 13:34:05,711 - watchfiles.main - INFO - 1 change detected
+2026-07-04 13:34:06,069 - watchfiles.main - INFO - 1 change detected
+2026-07-04 13:53:18,892 - watchfiles.main - INFO - 1 change detected
+2026-07-04 13:53:19,253 - watchfiles.main - INFO - 1 change detected
+2026-07-04 14:25:58,088 - watchfiles.main - INFO - 1 change detected
+2026-07-04 14:39:25,371 - watchfiles.main - INFO - 1 change detected
+2026-07-04 14:42:16,665 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from intfloat/multilingual-e5-small.
+2026-07-04 14:42:41,354 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from intfloat/multilingual-e5-small.
+2026-07-04 14:42:55,005 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 14:46:48,569 - watchfiles.main - INFO - 1 change detected
+2026-07-04 14:47:34,055 - watchfiles.main - INFO - 1 change detected
+2026-07-04 14:48:03,126 - watchfiles.main - INFO - 1 change detected
+2026-07-04 14:48:34,698 - watchfiles.main - INFO - 1 change detected
+2026-07-04 14:48:58,826 - watchfiles.main - INFO - 1 change detected
+2026-07-04 14:50:22,148 - watchfiles.main - INFO - 1 change detected
+2026-07-04 14:57:54,322 - watchfiles.main - INFO - 1 change detected
+2026-07-04 14:58:32,030 - watchfiles.main - INFO - 1 change detected
+2026-07-04 14:58:32,383 - watchfiles.main - INFO - 1 change detected
+2026-07-04 14:59:43,141 - watchfiles.main - INFO - 1 change detected
+2026-07-04 14:59:45,510 - watchfiles.main - INFO - 1 change detected
+2026-07-04 14:59:55,535 - watchfiles.main - INFO - 5 changes detected
+2026-07-04 14:59:57,574 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from intfloat/multilingual-e5-small.
+2026-07-04 14:59:58,767 - watchfiles.main - INFO - 1 change detected
+2026-07-04 15:00:12,612 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 15:00:20,778 - watchfiles.main - INFO - 5 changes detected
+2026-07-04 15:00:22,751 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from intfloat/multilingual-e5-small.
+2026-07-04 15:00:35,839 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 15:00:49,450 - watchfiles.main - INFO - 1 change detected
+2026-07-04 15:00:49,803 - watchfiles.main - INFO - 1 change detected
+2026-07-04 15:01:42,321 - watchfiles.main - INFO - 1 change detected
+2026-07-04 15:02:11,265 - watchfiles.main - INFO - 1 change detected
+2026-07-04 15:02:26,608 - backend.main - INFO - Новый запрос: Как сбросить пароль?...
+2026-07-04 15:02:26,809 - backend.main - INFO - Ответ отправлен, длина: 90
+2026-07-04 15:02:26,809 - backend.main - INFO - Обработано за 2026-07-04T15:02:26.809840 - 2026-07-04T15:02:26.608452
+2026-07-04 15:03:06,012 - backend.main - INFO - Новый запрос: что токой CATE...
+2026-07-04 15:03:06,031 - backend.main - INFO - Ответ отправлен, длина: 90
+2026-07-04 15:03:06,031 - backend.main - INFO - Обработано за 2026-07-04T15:03:06.031879 - 2026-07-04T15:03:06.013699
+2026-07-04 15:07:01,289 - watchfiles.main - INFO - 1 change detected
+2026-07-04 15:07:02,869 - watchfiles.main - INFO - 1 change detected
+2026-07-04 15:07:05,091 - watchfiles.main - INFO - 5 changes detected
+2026-07-04 15:07:14,830 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 15:07:22,395 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2026-07-04 15:09:27,256 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2026-07-04 15:10:23,756 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 15:10:39,196 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 15:10:48,812 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 15:10:57,085 - backend.main - INFO - Новый запрос: что токой CATE...
+2026-07-04 15:10:57,163 - backend.main - INFO - Ответ отправлен, длина: 90
+2026-07-04 15:10:57,164 - backend.main - INFO - Обработано за 2026-07-04T15:10:57.163856 - 2026-07-04T15:10:57.086083
+2026-07-04 15:11:10,381 - backend.main - INFO - Новый запрос: Как сбросить пароль?...
+2026-07-04 15:11:10,410 - backend.main - INFO - Ответ отправлен, длина: 90
+2026-07-04 15:11:10,410 - backend.main - INFO - Обработано за 2026-07-04T15:11:10.410398 - 2026-07-04T15:11:10.381659
+2026-07-04 15:49:01,029 - watchfiles.main - INFO - 1 change detected
+2026-07-04 15:49:11,508 - watchfiles.main - INFO - 1 change detected
+2026-07-04 15:49:14,040 - watchfiles.main - INFO - 1 change detected
+2026-07-04 15:49:27,522 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 15:51:26,312 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 15:51:38,830 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 15:51:42,136 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 15:51:59,217 - watchfiles.main - INFO - 1 change detected
+2026-07-04 15:52:00,620 - watchfiles.main - INFO - 1 change detected
+2026-07-04 15:52:08,550 - watchfiles.main - INFO - 5 changes detected
+2026-07-04 15:52:09,390 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 15:52:12,737 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 15:52:49,168 - backend.main - INFO - Новый запрос: Где скачать последнюю версию ПО?...
+2026-07-04 15:52:49,393 - backend.main - INFO - Ответ отправлен, длина: 90
+2026-07-04 15:52:49,393 - backend.main - INFO - Обработано за 2026-07-04T15:52:49.393668 - 2026-07-04T15:52:49.169938
+2026-07-04 15:53:08,905 - backend.main - INFO - Новый запрос: CATE...
+2026-07-04 15:53:08,932 - backend.main - INFO - Ответ отправлен, длина: 90
+2026-07-04 15:53:08,932 - backend.main - INFO - Обработано за 2026-07-04T15:53:08.932437 - 2026-07-04T15:53:08.905265
+2026-07-04 15:54:06,730 - backend.main - INFO - Новый запрос: hi...
+2026-07-04 15:54:06,773 - backend.main - INFO - Ответ отправлен, длина: 90
+2026-07-04 15:54:06,774 - backend.main - INFO - Обработано за 2026-07-04T15:54:06.773968 - 2026-07-04T15:54:06.730838
+2026-07-04 16:02:56,809 - watchfiles.main - INFO - 1 change detected
+2026-07-04 16:02:58,847 - watchfiles.main - INFO - 2 changes detected
+2026-07-04 16:03:01,218 - watchfiles.main - INFO - 1 change detected
+2026-07-04 16:03:10,136 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 16:03:15,281 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 16:03:25,421 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 16:03:34,950 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 16:06:13,253 - watchfiles.main - INFO - 1 change detected
+2026-07-04 16:06:14,701 - watchfiles.main - INFO - 1 change detected
+2026-07-04 16:06:25,824 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 16:06:35,470 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 16:07:28,142 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 16:08:02,105 - watchfiles.main - INFO - 1 change detected
+2026-07-04 16:08:46,411 - watchfiles.main - INFO - 1 change detected
+2026-07-04 16:09:11,533 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 16:44:12,445 - watchfiles.main - INFO - 1 change detected
+2026-07-04 16:44:14,107 - watchfiles.main - INFO - 1 change detected
+2026-07-04 16:44:24,673 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 16:44:28,153 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 16:44:34,303 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 16:45:49,998 - watchfiles.main - INFO - 2 changes detected
+2026-07-04 16:46:08,194 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 16:49:29,712 - watchfiles.main - INFO - 1 change detected
+2026-07-04 16:49:31,327 - watchfiles.main - INFO - 1 change detected
+2026-07-04 16:49:41,670 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 16:49:44,984 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 16:49:50,783 - watchfiles.main - INFO - 1 change detected
+2026-07-04 16:49:52,482 - watchfiles.main - INFO - 1 change detected
+2026-07-04 16:50:02,525 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 16:50:07,676 - watchfiles.main - INFO - 5 changes detected
+2026-07-04 16:50:09,496 - watchfiles.main - INFO - 5 changes detected
+2026-07-04 16:50:12,072 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 16:50:33,636 - watchfiles.main - INFO - 1 change detected
+2026-07-04 16:50:35,094 - watchfiles.main - INFO - 2 changes detected
+2026-07-04 16:50:45,090 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 16:50:56,138 - watchfiles.main - INFO - 10 changes detected
+2026-07-04 16:50:59,715 - watchfiles.main - INFO - 5 changes detected
+2026-07-04 16:51:07,024 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 16:51:16,468 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 16:51:34,303 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 16:54:22,639 - watchfiles.main - INFO - 3 changes detected
+2026-07-04 16:54:23,706 - watchfiles.main - INFO - 1 change detected
+2026-07-04 16:54:47,798 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 16:54:52,578 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 16:54:52,938 - watchfiles.main - INFO - 2 changes detected
+2026-07-04 16:55:19,854 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 16:55:34,303 - watchfiles.main - INFO - 1 change detected
+2026-07-04 16:55:36,038 - watchfiles.main - INFO - 1 change detected
+2026-07-04 16:55:45,542 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 16:55:48,755 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 16:55:59,684 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 21:39:51,077 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 21:39:55,876 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 21:39:56,240 - watchfiles.main - INFO - 2 changes detected
+2026-07-04 21:40:23,662 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 21:58:00,021 - watchfiles.main - INFO - 1 change detected
+2026-07-04 21:58:04,501 - watchfiles.main - INFO - 1 change detected
+2026-07-04 21:58:30,946 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 21:58:41,216 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 21:59:47,368 - watchfiles.main - INFO - 1 change detected
+2026-07-04 21:59:49,017 - watchfiles.main - INFO - 1 change detected
+2026-07-04 21:59:58,934 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 22:00:02,328 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 22:00:09,727 - watchfiles.main - INFO - 1 change detected
+2026-07-04 22:00:11,372 - watchfiles.main - INFO - 1 change detected
+2026-07-04 22:00:20,797 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 22:00:24,075 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 22:00:37,370 - watchfiles.main - INFO - 1 change detected
+2026-07-04 22:00:38,934 - watchfiles.main - INFO - 1 change detected
+2026-07-04 22:00:48,050 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 22:00:51,357 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 22:01:42,452 - watchfiles.main - INFO - 1 change detected
+2026-07-04 22:03:01,178 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 22:03:14,513 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 22:03:17,832 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 22:03:55,951 - backend.main - INFO - Новый запрос: hi...
+2026-07-04 22:03:56,093 - backend.main - INFO - Ответ отправлен, длина: 90
+2026-07-04 22:03:56,093 - backend.main - INFO - Обработано за 2026-07-04T22:03:56.093677 - 2026-07-04T22:03:55.951568
+2026-07-04 22:11:34,908 - watchfiles.main - INFO - 1 change detected
+2026-07-04 22:11:36,503 - watchfiles.main - INFO - 1 change detected
+2026-07-04 22:11:46,307 - watchfiles.main - INFO - 5 changes detected
+2026-07-04 22:11:47,233 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 22:11:50,556 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 22:12:14,893 - watchfiles.main - INFO - 1 change detected
+2026-07-04 22:12:16,269 - watchfiles.main - INFO - 1 change detected
+2026-07-04 22:12:18,695 - watchfiles.main - INFO - 5 changes detected
+2026-07-04 22:12:27,222 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 22:12:36,829 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 22:13:36,217 - watchfiles.main - INFO - 1 change detected
+2026-07-04 22:13:37,635 - watchfiles.main - INFO - 1 change detected
+2026-07-04 22:13:40,004 - watchfiles.main - INFO - 5 changes detected
+2026-07-04 22:13:49,269 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 22:13:58,709 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 22:14:25,689 - watchfiles.main - INFO - 1 change detected
+2026-07-04 22:14:27,183 - watchfiles.main - INFO - 1 change detected
+2026-07-04 22:14:29,653 - watchfiles.main - INFO - 5 changes detected
+2026-07-04 22:14:37,365 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 22:14:40,735 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 22:15:02,263 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 22:15:06,192 - watchfiles.main - INFO - 5 changes detected
+2026-07-04 22:15:24,001 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 22:16:17,209 - backend.main - INFO - Новый запрос: привет...
+2026-07-04 22:16:17,686 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-07-04 22:16:17,687 - backend.main - ERROR - Ошибка: Error code: 404 - {'error': {'message': 'The model `qwen-2.5-72b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+Traceback (most recent call last):
+  File "F:\rag-support-agent\backend\main.py", line 49, in chat
+    result = rag.answer(request.question, history=request.history)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\rag_engine.py", line 37, in answer
+    answer = self.llm.generate(messages)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\groq_provider.py", line 12, in generate
+    response = self.client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\resources\chat\completions.py", line 462, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1284, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1071, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.NotFoundError: Error code: 404 - {'error': {'message': 'The model `qwen-2.5-72b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-07-04 22:17:24,501 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 22:17:40,114 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 22:17:43,482 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 22:17:55,044 - backend.main - INFO - Новый запрос: привет...
+2026-07-04 22:17:55,422 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-07-04 22:17:55,424 - backend.main - ERROR - Ошибка: Error code: 404 - {'error': {'message': 'The model `qwen-2.5-72b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+Traceback (most recent call last):
+  File "F:\rag-support-agent\backend\main.py", line 49, in chat
+    result = rag.answer(request.question, history=request.history)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\rag_engine.py", line 37, in answer
+    answer = self.llm.generate(messages)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\groq_provider.py", line 12, in generate
+    response = self.client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\resources\chat\completions.py", line 462, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1284, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1071, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.NotFoundError: Error code: 404 - {'error': {'message': 'The model `qwen-2.5-72b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-07-04 22:23:33,827 - watchfiles.main - INFO - 1 change detected
+2026-07-04 22:26:23,113 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 22:26:43,079 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 22:26:46,532 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 22:26:52,130 - backend.main - INFO - Новый запрос: привет...
+2026-07-04 22:26:52,617 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-07-04 22:26:52,618 - backend.main - ERROR - Ошибка: Error code: 400 - {'error': {'message': 'The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+Traceback (most recent call last):
+  File "F:\rag-support-agent\backend\main.py", line 49, in chat
+    result = rag.answer(request.question, history=request.history)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\rag_engine.py", line 37, in answer
+    answer = self.llm.generate(messages)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\groq_provider.py", line 12, in generate
+    response = self.client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\resources\chat\completions.py", line 462, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1284, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1071, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.BadRequestError: Error code: 400 - {'error': {'message': 'The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-07-04 22:27:47,492 - watchfiles.main - INFO - 1 change detected
+2026-07-04 22:28:24,705 - backend.main - INFO - Новый запрос: привет...
+2026-07-04 22:28:24,971 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-07-04 22:28:24,972 - backend.main - ERROR - Ошибка: Error code: 400 - {'error': {'message': 'The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+Traceback (most recent call last):
+  File "F:\rag-support-agent\backend\main.py", line 49, in chat
+    result = rag.answer(request.question, history=request.history)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\rag_engine.py", line 37, in answer
+    answer = self.llm.generate(messages)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\groq_provider.py", line 12, in generate
+    response = self.client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\resources\chat\completions.py", line 462, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1284, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1071, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.BadRequestError: Error code: 400 - {'error': {'message': 'The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-07-04 22:28:49,745 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 22:29:05,031 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 22:29:08,404 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 22:29:17,731 - backend.main - INFO - Новый запрос: привет...
+2026-07-04 22:29:18,190 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-07-04 22:29:18,191 - backend.main - ERROR - Ошибка: Error code: 404 - {'error': {'message': 'The model `gpt-oss-120b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+Traceback (most recent call last):
+  File "F:\rag-support-agent\backend\main.py", line 49, in chat
+    result = rag.answer(request.question, history=request.history)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\rag_engine.py", line 37, in answer
+    answer = self.llm.generate(messages)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\groq_provider.py", line 12, in generate
+    response = self.client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\resources\chat\completions.py", line 462, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1284, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1071, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.NotFoundError: Error code: 404 - {'error': {'message': 'The model `gpt-oss-120b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-07-04 22:31:30,418 - watchfiles.main - INFO - 1 change detected
+2026-07-04 22:31:32,299 - watchfiles.main - INFO - 1 change detected
+2026-07-04 22:31:34,665 - watchfiles.main - INFO - 5 changes detected
+2026-07-04 22:31:42,090 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 22:32:02,021 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 22:32:39,822 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 22:32:44,057 - httpx - INFO - HTTP Request: GET https://api.groq.com/openai/v1/models "HTTP/1.1 200 OK"
+2026-07-04 22:32:53,609 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 22:32:56,941 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 22:32:57,807 - httpx - INFO - HTTP Request: GET https://api.groq.com/openai/v1/models "HTTP/1.1 200 OK"
+2026-07-04 22:33:13,820 - backend.main - INFO - Новый запрос: привет...
+2026-07-04 22:33:14,210 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-07-04 22:33:14,210 - backend.main - ERROR - Ошибка: Error code: 400 - {'error': {'message': "'model' : doesn't match any schema from 'anyOf'", 'type': 'invalid_request_error'}}
+Traceback (most recent call last):
+  File "F:\rag-support-agent\backend\main.py", line 49, in chat
+    result = rag.answer(request.question, history=request.history)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\rag_engine.py", line 37, in answer
+    answer = self.llm.generate(messages)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\groq_provider.py", line 12, in generate
+    response = self.client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\resources\chat\completions.py", line 462, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1284, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1071, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.BadRequestError: Error code: 400 - {'error': {'message': "'model' : doesn't match any schema from 'anyOf'", 'type': 'invalid_request_error'}}
+2026-07-04 22:33:21,995 - watchfiles.main - INFO - 1 change detected
+2026-07-04 22:33:23,504 - watchfiles.main - INFO - 1 change detected
+2026-07-04 22:33:25,775 - watchfiles.main - INFO - 5 changes detected
+2026-07-04 22:33:33,518 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 22:33:36,716 - watchfiles.main - INFO - 2 changes detected
+2026-07-04 22:33:37,079 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 22:38:19,722 - watchfiles.main - INFO - 1 change detected
+2026-07-04 22:38:21,221 - watchfiles.main - INFO - 1 change detected
+2026-07-04 22:38:25,755 - watchfiles.main - INFO - 5 changes detected
+2026-07-04 22:38:56,272 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 22:39:48,110 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 22:40:08,762 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 22:40:18,252 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 22:40:43,909 - backend.main - INFO - Новый запрос: привет...
+2026-07-04 22:40:44,389 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-07-04 22:40:44,390 - backend.main - ERROR - Ошибка: Error code: 404 - {'error': {'message': 'The model `gpt-oss-120b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+Traceback (most recent call last):
+  File "F:\rag-support-agent\backend\main.py", line 49, in chat
+    result = rag.answer(request.question, history=request.history)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\rag_engine.py", line 32, in answer
+    answer = self.llm.generate(messages)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\groq_provider.py", line 12, in generate
+    response = self.client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\resources\chat\completions.py", line 462, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1284, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1071, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.NotFoundError: Error code: 404 - {'error': {'message': 'The model `gpt-oss-120b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-07-04 22:45:35,833 - watchfiles.main - INFO - 1 change detected
+2026-07-04 22:45:38,017 - watchfiles.main - INFO - 1 change detected
+2026-07-04 22:45:40,739 - watchfiles.main - INFO - 5 changes detected
+2026-07-04 22:45:49,160 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 22:45:52,571 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 22:46:10,308 - watchfiles.main - INFO - 1 change detected
+2026-07-04 22:47:34,001 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 22:47:55,044 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 22:48:04,713 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 22:48:14,311 - backend.main - INFO - Новый запрос: привет...
+2026-07-04 22:48:15,027 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-07-04 22:48:15,028 - backend.main - ERROR - Ошибка: Error code: 404 - {'error': {'message': 'The model `gpt-oss-120b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+Traceback (most recent call last):
+  File "F:\rag-support-agent\backend\main.py", line 49, in chat
+    result = rag.answer(request.question, history=request.history)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\rag_engine.py", line 32, in answer
+    answer = self.llm.generate(messages)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\groq_provider.py", line 17, in generate
+    response = self.client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\resources\chat\completions.py", line 462, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1284, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1071, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.NotFoundError: Error code: 404 - {'error': {'message': 'The model `gpt-oss-120b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-07-04 22:48:24,691 - watchfiles.main - INFO - 1 change detected
+2026-07-04 22:48:31,141 - watchfiles.main - INFO - 1 change detected
+2026-07-04 22:48:34,932 - watchfiles.main - INFO - 1 change detected
+2026-07-04 22:48:35,297 - watchfiles.main - INFO - 1 change detected
+2026-07-04 22:48:39,674 - watchfiles.main - INFO - 1 change detected
+2026-07-04 22:49:03,682 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 22:49:23,864 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-04 22:49:36,239 - watchfiles.main - INFO - 4 changes detected
+2026-07-04 22:49:51,408 - backend.main - INFO - Новый запрос: привет...
+2026-07-04 22:49:51,904 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-04 22:49:51,948 - backend.main - INFO - Ответ отправлен, длина: 38
+2026-07-04 22:49:51,949 - backend.main - INFO - Обработано за 2026-07-04T22:49:51.948521 - 2026-07-04T22:49:51.409479
+2026-07-04 23:54:48,946 - watchfiles.main - INFO - 1 change detected
+2026-07-04 23:54:57,926 - watchfiles.main - INFO - 1 change detected
+2026-07-04 23:55:06,680 - backend.main - INFO - Новый запрос: Где скачать последнюю версию ПО?...
+2026-07-04 23:55:07,136 - backend.main - INFO - Ответ отправлен, длина: 90
+2026-07-04 23:55:07,136 - backend.main - INFO - Обработано за 2026-07-04T23:55:07.136027 - 2026-07-04T23:55:06.683055
+2026-07-04 23:55:07,169 - watchfiles.main - INFO - 1 change detected
+2026-07-04 23:55:31,442 - backend.main - INFO - Новый запрос: что токой CATE...
+2026-07-04 23:55:31,477 - backend.main - INFO - Ответ отправлен, длина: 90
+2026-07-04 23:55:31,478 - backend.main - INFO - Обработано за 2026-07-04T23:55:31.477437 - 2026-07-04T23:55:31.443056
+2026-07-04 23:55:37,525 - backend.main - INFO - Новый запрос: привет...
+2026-07-04 23:55:37,992 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-04 23:55:37,999 - backend.main - INFO - Ответ отправлен, длина: 38
+2026-07-04 23:55:38,000 - backend.main - INFO - Обработано за 2026-07-04T23:55:37.999224 - 2026-07-04T23:55:37.525169
+2026-07-04 23:55:51,532 - backend.main - INFO - Новый запрос: я Салма...
+2026-07-04 23:55:51,564 - backend.main - INFO - Ответ отправлен, длина: 90
+2026-07-04 23:55:51,565 - backend.main - INFO - Обработано за 2026-07-04T23:55:51.564340 - 2026-07-04T23:55:51.532546
+2026-07-04 23:56:20,353 - backend.main - INFO - Новый запрос: как дела...
+2026-07-04 23:56:20,704 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-04 23:56:20,705 - backend.main - INFO - Ответ отправлен, длина: 72
+2026-07-04 23:56:20,705 - backend.main - INFO - Обработано за 2026-07-04T23:56:20.705180 - 2026-07-04T23:56:20.354983
+2026-07-04 23:56:42,366 - backend.main - INFO - Новый запрос: хорошо...
+2026-07-04 23:56:42,391 - backend.main - INFO - Ответ отправлен, длина: 90
+2026-07-04 23:56:42,392 - backend.main - INFO - Обработано за 2026-07-04T23:56:42.391124 - 2026-07-04T23:56:42.366062
+2026-07-04 23:57:08,634 - backend.main - INFO - Новый запрос: как жизнь...
+2026-07-04 23:57:09,129 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-04 23:57:09,133 - backend.main - INFO - Ответ отправлен, длина: 238
+2026-07-04 23:57:09,133 - backend.main - INFO - Обработано за 2026-07-04T23:57:09.133700 - 2026-07-04T23:57:08.635509
+2026-07-04 23:59:44,692 - backend.main - INFO - Новый запрос: что токое жизнь...
+2026-07-04 23:59:44,782 - backend.main - INFO - Ответ отправлен, длина: 90
+2026-07-04 23:59:44,783 - backend.main - INFO - Обработано за 2026-07-04T23:59:44.782388 - 2026-07-04T23:59:44.694343
+2026-07-05 00:00:14,388 - backend.main - INFO - Новый запрос: спасибо...
+2026-07-05 00:00:14,834 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 00:00:14,835 - backend.main - INFO - Ответ отправлен, длина: 40
+2026-07-05 00:00:14,835 - backend.main - INFO - Обработано за 2026-07-05T00:00:14.835645 - 2026-07-05T00:00:14.388156
+2026-07-05 00:00:31,033 - backend.main - INFO - Новый запрос: спасибо вам большое...
+2026-07-05 00:00:31,402 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 00:00:31,426 - backend.main - INFO - Ответ отправлен, длина: 70
+2026-07-05 00:00:31,427 - backend.main - INFO - Обработано за 2026-07-05T00:00:31.426995 - 2026-07-05T00:00:31.033323
+2026-07-05 00:03:23,101 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 00:03:47,666 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 00:03:59,366 - watchfiles.main - INFO - 4 changes detected
+2026-07-05 00:04:23,223 - backend.main - INFO - Новый запрос: привет...
+2026-07-05 00:04:24,031 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 00:04:24,042 - backend.main - INFO - Ответ отправлен, длина: 26
+2026-07-05 00:04:24,042 - backend.main - INFO - Обработано за 2026-07-05T00:04:24.042658 - 2026-07-05T00:04:23.223699
+2026-07-05 00:04:53,649 - backend.main - INFO - Новый запрос: Расскажи что-нибудь забавное....
+2026-07-05 00:04:53,686 - backend.main - INFO - Ответ отправлен, длина: 90
+2026-07-05 00:04:53,686 - backend.main - INFO - Обработано за 2026-07-05T00:04:53.686752 - 2026-07-05T00:04:53.650074
+2026-07-05 00:11:45,858 - watchfiles.main - INFO - 1 change detected
+2026-07-05 00:11:47,869 - watchfiles.main - INFO - 1 change detected
+2026-07-05 00:12:05,872 - watchfiles.main - INFO - 1 change detected
+2026-07-05 00:12:08,458 - watchfiles.main - INFO - 5 changes detected
+2026-07-05 00:12:17,615 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 00:13:23,001 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 00:13:44,387 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 00:13:55,686 - watchfiles.main - INFO - 4 changes detected
+2026-07-05 00:14:06,837 - backend.main - INFO - Новый запрос: hi...
+2026-07-05 00:14:07,688 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 00:14:07,699 - backend.main - INFO - Ответ отправлен, длина: 24
+2026-07-05 00:14:07,699 - backend.main - INFO - Обработано за 2026-07-05T00:14:07.699934 - 2026-07-05T00:14:06.837283
+2026-07-05 00:14:27,671 - backend.main - INFO - Новый запрос: Расскажи что-нибудь забавное....
+2026-07-05 00:14:28,747 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 00:14:28,748 - backend.main - INFO - Ответ отправлен, длина: 492
+2026-07-05 00:14:28,748 - backend.main - INFO - Обработано за 2026-07-05T00:14:28.748996 - 2026-07-05T00:14:27.671874
+2026-07-05 00:14:57,383 - backend.main - INFO - Новый запрос: что токой AI...
+2026-07-05 00:14:58,550 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 00:14:58,551 - backend.main - INFO - Ответ отправлен, длина: 974
+2026-07-05 00:14:58,551 - backend.main - INFO - Обработано за 2026-07-05T00:14:58.551848 - 2026-07-05T00:14:57.383811
+2026-07-05 00:15:55,037 - backend.main - INFO - Новый запрос: что токой CATE...
+2026-07-05 00:15:56,670 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 00:15:56,670 - backend.main - INFO - Ответ отправлен, длина: 1503
+2026-07-05 00:15:56,671 - backend.main - INFO - Обработано за 2026-07-05T00:15:56.670171 - 2026-07-05T00:15:55.039504
+2026-07-05 00:16:46,783 - backend.main - INFO - Новый запрос: подскажите идею статьи персонализированного эффекта лечения на на основе модели смеси экспертов и си...
+2026-07-05 00:16:48,287 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 00:16:48,288 - backend.main - INFO - Ответ отправлен, длина: 1433
+2026-07-05 00:16:48,288 - backend.main - INFO - Обработано за 2026-07-05T00:16:48.288616 - 2026-07-05T00:16:46.783209
+2026-07-05 00:20:53,595 - watchfiles.main - INFO - 1 change detected
+2026-07-05 00:20:55,456 - watchfiles.main - INFO - 1 change detected
+2026-07-05 00:20:58,277 - watchfiles.main - INFO - 5 changes detected
+2026-07-05 00:21:09,117 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 00:21:42,545 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 00:22:03,883 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 00:22:13,435 - watchfiles.main - INFO - 3 changes detected
+2026-07-05 00:23:36,466 - backend.main - INFO - Новый запрос: hi...
+2026-07-05 00:23:59,432 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 0.492615 seconds
+2026-07-05 00:24:30,210 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 0.758167 seconds
+2026-07-05 00:24:50,998 - backend.main - ERROR - Ошибка: Request timed out.
+Traceback (most recent call last):
+  File "F:\rag-support-agent\venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "F:\rag-support-agent\venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "F:\rag-support-agent\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "F:\rag-support-agent\venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Salma\AppData\Local\Programs\Python\Python312\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "F:\rag-support-agent\venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectTimeout: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1007, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Salma\AppData\Local\Programs\Python\Python312\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "F:\rag-support-agent\venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectTimeout: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\rag-support-agent\backend\main.py", line 49, in chat
+    result = rag.answer(request.question, history=request.history)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\rag_engine.py", line 56, in answer
+    answer = self.llm.generate(messages)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\groq_provider.py", line 17, in generate
+    response = self.client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\resources\chat\completions.py", line 462, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1284, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1025, in request
+    raise APITimeoutError(request=request) from err
+groq.APITimeoutError: Request timed out.
+2026-07-05 00:25:57,603 - backend.main - INFO - Новый запрос: hi...
+2026-07-05 00:26:17,669 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 0.393617 seconds
+2026-07-05 00:26:38,104 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 0.949567 seconds
+2026-07-05 00:26:59,079 - backend.main - ERROR - Ошибка: Request timed out.
+Traceback (most recent call last):
+  File "F:\rag-support-agent\venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "F:\rag-support-agent\venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "F:\rag-support-agent\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "F:\rag-support-agent\venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Salma\AppData\Local\Programs\Python\Python312\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "F:\rag-support-agent\venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectTimeout: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1007, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Salma\AppData\Local\Programs\Python\Python312\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "F:\rag-support-agent\venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectTimeout: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\rag-support-agent\backend\main.py", line 49, in chat
+    result = rag.answer(request.question, history=request.history)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\rag_engine.py", line 56, in answer
+    answer = self.llm.generate(messages)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\groq_provider.py", line 17, in generate
+    response = self.client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\resources\chat\completions.py", line 462, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1284, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1025, in request
+    raise APITimeoutError(request=request) from err
+groq.APITimeoutError: Request timed out.
+2026-07-05 00:27:44,779 - watchfiles.main - INFO - 1 change detected
+2026-07-05 00:27:47,009 - watchfiles.main - INFO - 1 change detected
+2026-07-05 00:27:49,786 - watchfiles.main - INFO - 5 changes detected
+2026-07-05 00:27:59,014 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 00:28:23,569 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 00:28:37,376 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 00:28:41,138 - watchfiles.main - INFO - 4 changes detected
+2026-07-05 00:28:49,809 - backend.main - INFO - Новый запрос: hi...
+2026-07-05 00:28:50,295 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-07-05 00:28:50,296 - backend.main - ERROR - Ошибка: Error code: 403 - {'error': {'message': 'Access denied. Please check your network settings.'}}
+Traceback (most recent call last):
+  File "F:\rag-support-agent\backend\main.py", line 49, in chat
+    result = rag.answer(request.question, history=request.history)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\rag_engine.py", line 82, in answer
+    answer = self.llm.generate(messages)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\groq_provider.py", line 17, in generate
+    response = self.client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\resources\chat\completions.py", line 462, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1284, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1071, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.PermissionDeniedError: Error code: 403 - {'error': {'message': 'Access denied. Please check your network settings.'}}
+2026-07-05 00:29:16,121 - backend.main - INFO - Новый запрос: hi...
+2026-07-05 00:29:16,793 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 00:29:16,805 - backend.main - INFO - Ответ отправлен, длина: 24
+2026-07-05 00:29:16,805 - backend.main - INFO - Обработано за 2026-07-05T00:29:16.805883 - 2026-07-05T00:29:16.121558
+2026-07-05 00:29:50,069 - backend.main - INFO - Новый запрос: что токой жизнь...
+2026-07-05 00:29:52,977 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 00:29:52,977 - backend.main - INFO - Ответ отправлен, длина: 1638
+2026-07-05 00:29:52,977 - backend.main - INFO - Обработано за 2026-07-05T00:29:52.977983 - 2026-07-05T00:29:50.069793
+2026-07-05 00:30:08,444 - backend.main - INFO - Новый запрос: что токой  работа...
+2026-07-05 00:30:10,007 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 00:30:10,008 - backend.main - INFO - Ответ отправлен, длина: 1474
+2026-07-05 00:30:10,009 - backend.main - INFO - Обработано за 2026-07-05T00:30:10.008416 - 2026-07-05T00:30:08.444996
+2026-07-05 00:30:25,543 - backend.main - INFO - Новый запрос: что токой  здарова...
+2026-07-05 00:30:27,199 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 00:30:27,200 - backend.main - INFO - Ответ отправлен, длина: 1217
+2026-07-05 00:30:27,200 - backend.main - INFO - Обработано за 2026-07-05T00:30:27.200017 - 2026-07-05T00:30:25.543602
+2026-07-05 00:31:16,143 - backend.main - INFO - Новый запрос: я салма...
+2026-07-05 00:31:16,923 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 00:31:16,924 - backend.main - INFO - Ответ отправлен, длина: 121
+2026-07-05 00:31:16,924 - backend.main - INFO - Обработано за 2026-07-05T00:31:16.924900 - 2026-07-05T00:31:16.144069
+2026-07-05 00:31:45,547 - backend.main - INFO - Новый запрос: Расскажи что-нибудь забавное....
+2026-07-05 00:31:47,088 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 00:31:47,090 - backend.main - INFO - Ответ отправлен, длина: 1481
+2026-07-05 00:31:47,090 - backend.main - INFO - Обработано за 2026-07-05T00:31:47.090386 - 2026-07-05T00:31:45.547670
+2026-07-05 00:32:32,554 - watchfiles.main - INFO - 1 change detected
+2026-07-05 00:32:34,120 - watchfiles.main - INFO - 1 change detected
+2026-07-05 00:32:36,439 - watchfiles.main - INFO - 5 changes detected
+2026-07-05 00:32:42,335 - watchfiles.main - INFO - 6 changes detected
+2026-07-05 00:32:44,628 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 00:32:55,696 - watchfiles.main - INFO - 6 changes detected
+2026-07-05 00:33:05,560 - watchfiles.main - INFO - 5 changes detected
+2026-07-05 00:33:36,191 - watchfiles.main - INFO - 1 change detected
+2026-07-05 00:33:38,668 - watchfiles.main - INFO - 5 changes detected
+2026-07-05 00:34:06,461 - watchfiles.main - INFO - 1 change detected
+2026-07-05 00:34:08,939 - watchfiles.main - INFO - 5 changes detected
+2026-07-05 00:34:51,294 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 00:35:09,806 - watchfiles.main - INFO - 1 change detected
+2026-07-05 00:35:11,656 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 00:35:21,161 - watchfiles.main - INFO - 4 changes detected
+2026-07-05 00:35:43,932 - backend.main - INFO - Новый запрос: hi...
+2026-07-05 00:35:43,982 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 00:35:44,471 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 00:35:44,481 - backend.main - INFO - Ответ отправлен, длина: 24
+2026-07-05 00:35:44,481 - backend.main - INFO - Обработано за 2026-07-05T00:35:44.481526 - 2026-07-05T00:35:43.933242
+2026-07-05 00:35:49,479 - backend.main - INFO - Новый запрос: Расскажи что-нибудь забавное....
+2026-07-05 00:35:49,496 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 00:35:50,416 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 00:35:50,417 - backend.main - INFO - Ответ отправлен, длина: 593
+2026-07-05 00:35:50,417 - backend.main - INFO - Обработано за 2026-07-05T00:35:50.417145 - 2026-07-05T00:35:49.479308
+2026-07-05 00:35:55,294 - backend.main - INFO - Новый запрос: Расскажи что-нибудь забавное....
+2026-07-05 00:35:55,310 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 00:35:55,970 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 00:35:55,971 - backend.main - INFO - Ответ отправлен, длина: 622
+2026-07-05 00:35:55,971 - backend.main - INFO - Обработано за 2026-07-05T00:35:55.971105 - 2026-07-05T00:35:55.295748
+2026-07-05 00:38:54,024 - watchfiles.main - INFO - 1 change detected
+2026-07-05 00:38:55,688 - watchfiles.main - INFO - 1 change detected
+2026-07-05 00:39:05,843 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 00:39:31,276 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 00:39:44,297 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 00:39:47,581 - watchfiles.main - INFO - 4 changes detected
+2026-07-05 00:40:04,189 - backend.main - INFO - Новый запрос: hi...
+2026-07-05 00:40:04,975 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 00:40:04,986 - backend.main - INFO - Ответ отправлен, длина: 24
+2026-07-05 00:40:04,986 - backend.main - INFO - Обработано за 2026-07-05T00:40:04.985267 - 2026-07-05T00:40:04.190868
+2026-07-05 00:40:10,092 - backend.main - INFO - Новый запрос: Расскажи что-нибудь забавное....
+2026-07-05 00:40:10,966 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 00:40:10,967 - backend.main - INFO - Ответ отправлен, длина: 380
+2026-07-05 00:40:10,967 - backend.main - INFO - Обработано за 2026-07-05T00:40:10.967293 - 2026-07-05T00:40:10.092736
+2026-07-05 00:40:24,176 - backend.main - INFO - Новый запрос: Расскажи что-нибудь забавное....
+2026-07-05 00:40:25,094 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 00:40:25,097 - backend.main - INFO - Ответ отправлен, длина: 577
+2026-07-05 00:40:25,097 - backend.main - INFO - Обработано за 2026-07-05T00:40:25.097064 - 2026-07-05T00:40:24.176771
+2026-07-05 00:40:28,432 - backend.main - INFO - Новый запрос: Расскажи что-нибудь забавное....
+2026-07-05 00:40:29,530 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 00:40:29,531 - backend.main - INFO - Ответ отправлен, длина: 939
+2026-07-05 00:40:29,531 - backend.main - INFO - Обработано за 2026-07-05T00:40:29.531734 - 2026-07-05T00:40:28.432994
+2026-07-05 00:41:05,292 - watchfiles.main - INFO - 1 change detected
+2026-07-05 00:41:06,897 - watchfiles.main - INFO - 1 change detected
+2026-07-05 00:41:09,369 - watchfiles.main - INFO - 5 changes detected
+2026-07-05 00:41:16,124 - watchfiles.main - INFO - 1 change detected
+2026-07-05 00:41:16,836 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 00:41:20,362 - watchfiles.main - INFO - 4 changes detected
+2026-07-05 00:41:45,136 - backend.main - INFO - Новый запрос: Расскажи что-нибудь забавное....
+2026-07-05 00:41:45,198 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 00:41:46,185 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 00:41:46,195 - backend.main - INFO - Ответ отправлен, длина: 358
+2026-07-05 00:41:46,195 - backend.main - INFO - Обработано за 2026-07-05T00:41:46.195488 - 2026-07-05T00:41:45.136878
+2026-07-05 12:17:42,248 - watchfiles.main - INFO - 2 changes detected
+2026-07-05 12:45:36,191 - watchfiles.main - INFO - 1 change detected
+2026-07-05 12:45:40,124 - watchfiles.main - INFO - 1 change detected
+2026-07-05 12:46:40,225 - watchfiles.main - INFO - 1 change detected
+2026-07-05 12:46:42,273 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 12:46:52,372 - watchfiles.main - INFO - 3 changes detected
+2026-07-05 12:51:35,126 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 12:51:46,978 - watchfiles.main - INFO - 1 change detected
+2026-07-05 12:51:47,739 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 12:51:51,011 - watchfiles.main - INFO - 4 changes detected
+2026-07-05 13:06:09,587 - watchfiles.main - INFO - 1 change detected
+2026-07-05 13:06:14,035 - watchfiles.main - INFO - 1 change detected
+2026-07-05 13:06:17,262 - watchfiles.main - INFO - 5 changes detected
+2026-07-05 13:06:26,426 - watchfiles.main - INFO - 1 change detected
+2026-07-05 13:06:27,217 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 13:06:30,764 - watchfiles.main - INFO - 4 changes detected
+2026-07-05 13:06:50,778 - backend.main - INFO - Новый запрос: Расскажи что-нибудь забавное....
+2026-07-05 13:06:51,123 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 13:06:52,327 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 13:06:52,338 - backend.main - INFO - Ответ отправлен, длина: 98
+2026-07-05 13:06:52,338 - backend.main - INFO - Обработано за 2026-07-05T13:06:52.338912 - 2026-07-05T13:06:50.779980
+2026-07-05 13:07:19,608 - backend.main - INFO - Новый запрос: hi...
+2026-07-05 13:07:19,627 - backend.rag_engine - INFO - failure_count: 1...
+2026-07-05 13:07:21,505 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 13:07:21,506 - backend.main - INFO - Ответ отправлен, длина: 98
+2026-07-05 13:07:21,506 - backend.main - INFO - Обработано за 2026-07-05T13:07:21.506479 - 2026-07-05T13:07:19.608660
+2026-07-05 13:09:31,819 - watchfiles.main - INFO - 1 change detected
+2026-07-05 13:09:33,410 - watchfiles.main - INFO - 1 change detected
+2026-07-05 13:09:36,437 - watchfiles.main - INFO - 5 changes detected
+2026-07-05 13:09:44,815 - watchfiles.main - INFO - 1 change detected
+2026-07-05 13:09:45,551 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 13:09:48,945 - watchfiles.main - INFO - 4 changes detected
+2026-07-05 13:09:56,405 - backend.main - INFO - Новый запрос: Расскажи что-нибудь забавное....
+2026-07-05 13:09:56,463 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 13:09:57,420 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 13:09:57,439 - backend.main - INFO - Ответ отправлен, длина: 337
+2026-07-05 13:09:57,440 - backend.main - INFO - Обработано за 2026-07-05T13:09:57.439657 - 2026-07-05T13:09:56.405055
+2026-07-05 13:10:05,717 - backend.main - INFO - Новый запрос: اه...
+2026-07-05 13:10:05,737 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 13:10:06,544 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 13:10:06,545 - backend.main - INFO - Ответ отправлен, длина: 142
+2026-07-05 13:10:06,546 - backend.main - INFO - Обработано за 2026-07-05T13:10:06.545231 - 2026-07-05T13:10:05.717900
+2026-07-05 13:10:43,571 - backend.main - INFO - Новый запрос: что токой жизинь...
+2026-07-05 13:10:43,596 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 13:10:45,869 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 13:10:45,870 - backend.main - INFO - Ответ отправлен, длина: 1112
+2026-07-05 13:10:45,870 - backend.main - INFO - Обработано за 2026-07-05T13:10:45.870991 - 2026-07-05T13:10:43.572658
+2026-07-05 13:12:05,499 - watchfiles.main - INFO - 1 change detected
+2026-07-05 13:12:07,263 - watchfiles.main - INFO - 1 change detected
+2026-07-05 13:12:10,088 - watchfiles.main - INFO - 5 changes detected
+2026-07-05 13:12:17,596 - watchfiles.main - INFO - 1 change detected
+2026-07-05 13:12:19,547 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 13:12:29,139 - watchfiles.main - INFO - 4 changes detected
+2026-07-05 13:12:37,518 - backend.main - INFO - Новый запрос: hi...
+2026-07-05 13:12:37,580 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 13:12:38,075 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 13:12:38,089 - backend.main - INFO - Ответ отправлен, длина: 40
+2026-07-05 13:12:38,089 - backend.main - INFO - Обработано за 2026-07-05T13:12:38.089491 - 2026-07-05T13:12:37.518460
+2026-07-05 13:13:01,806 - backend.main - INFO - Новый запрос: Расскажи что-нибудь смешное....
+2026-07-05 13:13:01,830 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 13:13:02,356 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 13:13:02,357 - backend.main - INFO - Ответ отправлен, длина: 218
+2026-07-05 13:13:02,357 - backend.main - INFO - Обработано за 2026-07-05T13:13:02.357891 - 2026-07-05T13:13:01.807907
+2026-07-05 13:13:42,943 - watchfiles.main - INFO - 1 change detected
+2026-07-05 13:13:44,769 - watchfiles.main - INFO - 1 change detected
+2026-07-05 13:13:47,040 - watchfiles.main - INFO - 5 changes detected
+2026-07-05 13:13:53,202 - watchfiles.main - INFO - 1 change detected
+2026-07-05 13:13:53,932 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 13:13:57,341 - watchfiles.main - INFO - 4 changes detected
+2026-07-05 13:14:05,352 - backend.main - INFO - Новый запрос: Расскажи что-нибудь смешное....
+2026-07-05 13:14:05,408 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 13:14:06,370 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 13:14:06,381 - backend.main - INFO - Ответ отправлен, длина: 193
+2026-07-05 13:14:06,382 - backend.main - INFO - Обработано за 2026-07-05T13:14:06.381301 - 2026-07-05T13:14:05.353254
+2026-07-05 13:14:15,217 - backend.main - INFO - Новый запрос: Расскажи что-нибудь смешное....
+2026-07-05 13:14:15,239 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 13:14:15,943 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 13:14:15,945 - backend.main - INFO - Ответ отправлен, длина: 197
+2026-07-05 13:14:15,945 - backend.main - INFO - Обработано за 2026-07-05T13:14:15.945243 - 2026-07-05T13:14:15.218108
+2026-07-05 13:14:45,399 - backend.main - INFO - Новый запрос: Расскажи мне историю из своей жизни....
+2026-07-05 13:14:45,423 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 13:14:46,393 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 13:14:46,394 - backend.main - INFO - Ответ отправлен, длина: 473
+2026-07-05 13:14:46,394 - backend.main - INFO - Обработано за 2026-07-05T13:14:46.394935 - 2026-07-05T13:14:45.399344
+2026-07-05 13:52:22,627 - watchfiles.main - INFO - 1 change detected
+2026-07-05 13:52:25,658 - watchfiles.main - INFO - 1 change detected
+2026-07-05 13:52:36,645 - watchfiles.main - INFO - 1 change detected
+2026-07-05 13:52:38,944 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 13:52:48,936 - watchfiles.main - INFO - 4 changes detected
+2026-07-05 13:53:56,963 - watchfiles.main - INFO - 1 change detected
+2026-07-05 13:53:58,490 - watchfiles.main - INFO - 1 change detected
+2026-07-05 13:54:08,260 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 13:54:47,305 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 13:54:59,292 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 13:55:00,419 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 13:55:00,976 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 13:55:01,414 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 13:55:01,967 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 13:55:02,652 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 13:55:03,186 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 13:55:04,311 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 13:55:04,846 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 13:55:04,906 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-05 13:55:04,906 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 9.000000 seconds
+2026-07-05 13:55:15,111 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 13:55:15,637 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 13:55:15,694 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-05 13:55:15,695 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 16.000000 seconds
+2026-07-05 13:55:32,986 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 13:55:33,514 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 13:55:33,604 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-05 13:55:33,605 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 21.000000 seconds
+2026-07-05 13:55:55,815 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 14:02:13,815 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 14:02:33,456 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 14:02:33,905 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 14:02:58,365 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 14:02:59,196 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 14:13:42,238 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 14:14:02,829 - watchfiles.main - INFO - 1 change detected
+2026-07-05 14:14:03,510 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 14:14:06,925 - watchfiles.main - INFO - 4 changes detected
+2026-07-05 14:14:12,401 - backend.main - INFO - Новый запрос: hi...
+2026-07-05 14:14:12,610 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 14:14:13,121 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 14:14:13,149 - backend.main - INFO - Ответ отправлен, длина: 42
+2026-07-05 14:14:13,149 - backend.main - INFO - Обработано за 2026-07-05T14:14:13.149482 - 2026-07-05T14:14:12.401168
+2026-07-05 14:14:15,329 - backend.main - INFO - Новый запрос: что токой CATE...
+2026-07-05 14:14:15,360 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 14:14:16,238 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 14:14:16,239 - backend.main - INFO - Ответ отправлен, длина: 915
+2026-07-05 14:14:16,239 - backend.main - INFO - Обработано за 2026-07-05T14:14:16.239585 - 2026-07-05T14:14:15.329292
+2026-07-05 14:15:41,029 - watchfiles.main - INFO - 1 change detected
+2026-07-05 14:15:42,688 - watchfiles.main - INFO - 1 change detected
+2026-07-05 14:15:52,420 - watchfiles.main - INFO - 1 change detected
+2026-07-05 14:15:53,215 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 14:15:56,909 - watchfiles.main - INFO - 4 changes detected
+2026-07-05 14:16:03,576 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 14:16:07,145 - watchfiles.main - INFO - 4 changes detected
+2026-07-05 14:16:28,886 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 14:16:30,756 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 14:16:37,965 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 14:16:41,105 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 20:23:59,705 - watchfiles.main - INFO - 1 change detected
+2026-07-05 20:24:03,299 - watchfiles.main - INFO - 1 change detected
+2026-07-05 20:24:55,138 - watchfiles.main - INFO - 1 change detected
+2026-07-05 20:24:59,283 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 20:25:11,995 - watchfiles.main - INFO - 4 changes detected
+2026-07-05 20:25:25,878 - watchfiles.main - INFO - 1 change detected
+2026-07-05 20:25:27,625 - watchfiles.main - INFO - 1 change detected
+2026-07-05 20:25:36,849 - watchfiles.main - INFO - 1 change detected
+2026-07-05 20:25:38,892 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 20:25:50,582 - watchfiles.main - INFO - 4 changes detected
+2026-07-05 20:26:13,187 - watchfiles.main - INFO - 1 change detected
+2026-07-05 20:26:14,640 - watchfiles.main - INFO - 1 change detected
+2026-07-05 20:26:16,763 - watchfiles.main - INFO - 5 changes detected
+2026-07-05 20:26:22,885 - watchfiles.main - INFO - 1 change detected
+2026-07-05 20:26:25,011 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 20:26:36,322 - watchfiles.main - INFO - 4 changes detected
+2026-07-05 20:28:03,919 - watchfiles.main - INFO - 1 change detected
+2026-07-05 20:28:05,589 - watchfiles.main - INFO - 1 change detected
+2026-07-05 20:28:08,313 - watchfiles.main - INFO - 5 changes detected
+2026-07-05 20:28:15,582 - watchfiles.main - INFO - 1 change detected
+2026-07-05 20:28:17,445 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 20:28:27,035 - watchfiles.main - INFO - 4 changes detected
+2026-07-05 20:29:37,703 - watchfiles.main - INFO - 1 change detected
+2026-07-05 20:29:39,186 - watchfiles.main - INFO - 1 change detected
+2026-07-05 20:29:48,273 - watchfiles.main - INFO - 5 changes detected
+2026-07-05 20:29:48,634 - watchfiles.main - INFO - 1 change detected
+2026-07-05 20:29:50,583 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 20:30:02,276 - watchfiles.main - INFO - 4 changes detected
+2026-07-05 20:32:28,867 - watchfiles.main - INFO - 1 change detected
+2026-07-05 20:38:30,744 - watchfiles.main - INFO - 1 change detected
+2026-07-05 20:39:31,873 - watchfiles.main - INFO - 1 change detected
+2026-07-05 20:40:42,801 - watchfiles.main - INFO - 1 change detected
+2026-07-05 20:41:37,791 - backend.main - INFO - Новый запрос: hi...
+2026-07-05 20:41:38,601 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 20:41:39,383 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-07-05 20:41:39,390 - backend.main - ERROR - Ошибка: Error code: 403 - {'error': {'message': 'Access denied. Please check your network settings.'}}
+Traceback (most recent call last):
+  File "F:\rag-support-agent\backend\main.py", line 49, in chat
+    result = rag.answer(request.question, history=request.history)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\rag_engine.py", line 89, in answer
+    answer = self.llm.generate(messages)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\groq_provider.py", line 17, in generate
+    response = self.client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\resources\chat\completions.py", line 462, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1284, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1071, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.PermissionDeniedError: Error code: 403 - {'error': {'message': 'Access denied. Please check your network settings.'}}
+2026-07-05 20:42:21,052 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 20:42:35,903 - watchfiles.main - INFO - 1 change detected
+2026-07-05 20:42:36,763 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 20:42:41,656 - watchfiles.main - INFO - 4 changes detected
+2026-07-05 20:42:48,922 - backend.main - INFO - Новый запрос: hi...
+2026-07-05 20:42:49,180 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 20:42:49,722 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-07-05 20:42:49,724 - backend.main - ERROR - Ошибка: Error code: 403 - {'error': {'message': 'Access denied. Please check your network settings.'}}
+Traceback (most recent call last):
+  File "F:\rag-support-agent\backend\main.py", line 49, in chat
+    result = rag.answer(request.question, history=request.history)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\rag_engine.py", line 89, in answer
+    answer = self.llm.generate(messages)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\groq_provider.py", line 17, in generate
+    response = self.client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\resources\chat\completions.py", line 462, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1284, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1071, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.PermissionDeniedError: Error code: 403 - {'error': {'message': 'Access denied. Please check your network settings.'}}
+2026-07-05 20:43:10,355 - backend.main - INFO - Новый запрос: hi...
+2026-07-05 20:43:10,377 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 20:43:11,663 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-07-05 20:43:11,664 - backend.main - ERROR - Ошибка: Error code: 403 - {'error': {'message': 'Access denied. Please check your network settings.'}}
+Traceback (most recent call last):
+  File "F:\rag-support-agent\backend\main.py", line 49, in chat
+    result = rag.answer(request.question, history=request.history)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\rag_engine.py", line 89, in answer
+    answer = self.llm.generate(messages)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\groq_provider.py", line 17, in generate
+    response = self.client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\resources\chat\completions.py", line 462, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1284, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1071, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.PermissionDeniedError: Error code: 403 - {'error': {'message': 'Access denied. Please check your network settings.'}}
+2026-07-05 20:43:26,326 - backend.main - INFO - Новый запрос: hi...
+2026-07-05 20:43:26,341 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 20:43:27,071 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 20:43:27,098 - backend.main - INFO - Ответ отправлен, длина: 55
+2026-07-05 20:43:27,098 - backend.main - INFO - Обработано за 2026-07-05T20:43:27.098857 - 2026-07-05T20:43:26.326189
+2026-07-05 20:57:44,452 - watchfiles.main - INFO - 1 change detected
+2026-07-05 20:57:47,061 - watchfiles.main - INFO - 1 change detected
+2026-07-05 20:57:50,487 - watchfiles.main - INFO - 5 changes detected
+2026-07-05 20:57:58,858 - watchfiles.main - INFO - 1 change detected
+2026-07-05 20:57:59,469 - sentence_transformers.base.model - INFO - No modules.json found for openai/gpt-oss-120b, initializing a new SentenceTransformer model.
+2026-07-05 20:57:59,469 - sentence_transformers.util.decorators - WARNING - The Transformer `cache_dir` argument is deprecated. Please pass `cache_dir` via `model_kwargs`, `processor_kwargs`, and/or `config_kwargs` instead.
+2026-07-05 20:58:00,985 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2026-07-05 20:58:00,986 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2026-07-05 20:58:00,995 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2026-07-05 20:58:01,022 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2026-07-05 20:58:01,022 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2026-07-05 20:58:01,061 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2026-07-05 20:58:01,168 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2026-07-05 20:58:01,168 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2026-07-05 20:58:30,914 - watchfiles.main - INFO - 1 change detected
+2026-07-05 20:59:01,893 - watchfiles.main - INFO - 1 change detected
+2026-07-05 21:06:08,547 - huggingface_hub.file_download - WARNING - Error while downloading from https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00006-of-00014.safetensors: HTTPSConnectionPool(host='us.aws.cdn.hf.co', port=443): Read timed out.
+Trying to resume download...
+2026-07-05 21:08:09,812 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00006-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b2849e3c0>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: 94026702-b0fa-4550-b434-fe9fefdce7cb)')' thrown while requesting GET https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00006-of-00014.safetensors
+2026-07-05 21:08:09,814 - huggingface_hub.utils._http - WARNING - Retrying in 1s [Retry 1/5].
+2026-07-05 21:09:41,989 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00006-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b2849fa70>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: 47541bd5-433f-4666-a7b8-8342af4f7b45)')' thrown while requesting GET https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00006-of-00014.safetensors
+2026-07-05 21:09:41,989 - huggingface_hub.utils._http - WARNING - Retrying in 2s [Retry 2/5].
+2026-07-05 21:09:55,112 - huggingface_hub.utils._http - WARNING - '(MaxRetryError('HTTPSConnectionPool(host=\'huggingface.co\', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00006-of-00014.safetensors (Caused by NameResolutionError("HTTPSConnection(host=\'huggingface.co\', port=443): Failed to resolve \'huggingface.co\' ([Errno 11001] getaddrinfo failed)"))'), '(Request ID: b92e8e8b-4602-4fcc-b4ab-c964a0155424)')' thrown while requesting GET https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00006-of-00014.safetensors
+2026-07-05 21:09:55,113 - huggingface_hub.utils._http - WARNING - Retrying in 4s [Retry 3/5].
+2026-07-05 21:10:10,219 - huggingface_hub.utils._http - WARNING - '(MaxRetryError('HTTPSConnectionPool(host=\'huggingface.co\', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00006-of-00014.safetensors (Caused by NameResolutionError("HTTPSConnection(host=\'huggingface.co\', port=443): Failed to resolve \'huggingface.co\' ([Errno 11001] getaddrinfo failed)"))'), '(Request ID: e86393ae-21e0-4c2f-a7e4-b84f6f1711cf)')' thrown while requesting GET https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00006-of-00014.safetensors
+2026-07-05 21:10:10,220 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 4/5].
+2026-07-05 21:11:09,358 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00006-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b28409430>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: a48532f6-255c-4462-b973-9cedefca344c)')' thrown while requesting GET https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00006-of-00014.safetensors
+2026-07-05 21:11:09,358 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 5/5].
+2026-07-05 21:11:28,462 - huggingface_hub.utils._http - WARNING - '(MaxRetryError('HTTPSConnectionPool(host=\'huggingface.co\', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00006-of-00014.safetensors (Caused by NameResolutionError("HTTPSConnection(host=\'huggingface.co\', port=443): Failed to resolve \'huggingface.co\' ([Errno 11001] getaddrinfo failed)"))'), '(Request ID: 9403529b-5714-4ac3-8745-caac24ef6b67)')' thrown while requesting GET https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00006-of-00014.safetensors
+2026-07-05 21:12:08,531 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00008-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b28559f40>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: 3f871bf2-94ae-4d95-86a5-9f495d18c254)')' thrown while requesting HEAD https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00008-of-00014.safetensors
+2026-07-05 21:12:08,532 - huggingface_hub.utils._http - WARNING - Retrying in 1s [Retry 1/5].
+2026-07-05 21:12:20,624 - huggingface_hub.utils._http - WARNING - '(MaxRetryError('HTTPSConnectionPool(host=\'huggingface.co\', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00008-of-00014.safetensors (Caused by NameResolutionError("HTTPSConnection(host=\'huggingface.co\', port=443): Failed to resolve \'huggingface.co\' ([Errno 11001] getaddrinfo failed)"))'), '(Request ID: 25d365b5-86eb-4de9-8392-79ca35503769)')' thrown while requesting HEAD https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00008-of-00014.safetensors
+2026-07-05 21:12:20,624 - huggingface_hub.utils._http - WARNING - Retrying in 2s [Retry 2/5].
+2026-07-05 21:12:33,713 - huggingface_hub.utils._http - WARNING - '(MaxRetryError('HTTPSConnectionPool(host=\'huggingface.co\', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00008-of-00014.safetensors (Caused by NameResolutionError("HTTPSConnection(host=\'huggingface.co\', port=443): Failed to resolve \'huggingface.co\' ([Errno 11001] getaddrinfo failed)"))'), '(Request ID: 642835f8-1e48-49f4-88c5-e25192a98281)')' thrown while requesting HEAD https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00008-of-00014.safetensors
+2026-07-05 21:12:33,713 - huggingface_hub.utils._http - WARNING - Retrying in 4s [Retry 3/5].
+2026-07-05 21:14:41,003 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00008-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b28516cf0>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: 01360ecf-783a-4b3e-a41c-eeb8bd5396f9)')' thrown while requesting HEAD https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00008-of-00014.safetensors
+2026-07-05 21:14:41,003 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 4/5].
+2026-07-05 21:16:20,207 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00008-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b2849dac0>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: 2db7556f-f8b5-4470-8431-c9f33dfca222)')' thrown while requesting HEAD https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00008-of-00014.safetensors
+2026-07-05 21:16:20,208 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 5/5].
+2026-07-05 21:17:59,376 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00008-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b2849f860>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: 78c03e5d-ccaf-46f2-8d23-4e891d580a95)')' thrown while requesting HEAD https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00008-of-00014.safetensors
+2026-07-05 21:18:10,632 - huggingface_hub.utils._http - WARNING - '(MaxRetryError('HTTPSConnectionPool(host=\'huggingface.co\', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00009-of-00014.safetensors (Caused by NameResolutionError("HTTPSConnection(host=\'huggingface.co\', port=443): Failed to resolve \'huggingface.co\' ([Errno 11001] getaddrinfo failed)"))'), '(Request ID: 201f6857-70b3-4744-867f-f3ec280d823f)')' thrown while requesting HEAD https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00009-of-00014.safetensors
+2026-07-05 21:18:10,633 - huggingface_hub.utils._http - WARNING - Retrying in 1s [Retry 1/5].
+2026-07-05 21:18:22,877 - huggingface_hub.utils._http - WARNING - '(MaxRetryError('HTTPSConnectionPool(host=\'huggingface.co\', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00009-of-00014.safetensors (Caused by NameResolutionError("HTTPSConnection(host=\'huggingface.co\', port=443): Failed to resolve \'huggingface.co\' ([Errno 11001] getaddrinfo failed)"))'), '(Request ID: fcb03097-ec62-40e8-a666-a61c10b6a270)')' thrown while requesting HEAD https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00009-of-00014.safetensors
+2026-07-05 21:18:22,877 - huggingface_hub.utils._http - WARNING - Retrying in 2s [Retry 2/5].
+2026-07-05 21:20:27,304 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00009-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b2855a840>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: 34587eaa-7ba9-45c9-bec9-1a459847c5d5)')' thrown while requesting HEAD https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00009-of-00014.safetensors
+2026-07-05 21:20:27,305 - huggingface_hub.utils._http - WARNING - Retrying in 4s [Retry 3/5].
+2026-07-05 21:20:47,354 - huggingface_hub.file_download - WARNING - Error while downloading from https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00005-of-00014.safetensors: HTTPSConnectionPool(host='us.aws.cdn.hf.co', port=443): Read timed out.
+Trying to resume download...
+2026-07-05 21:21:09,486 - huggingface_hub.file_download - WARNING - Error while downloading from https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00002-of-00014.safetensors: HTTPSConnectionPool(host='us.aws.cdn.hf.co', port=443): Read timed out.
+Trying to resume download...
+2026-07-05 21:21:22,561 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00009-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b2855ab40>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: c5fc4093-522b-493d-a513-b792bcf80573)')' thrown while requesting HEAD https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00009-of-00014.safetensors
+2026-07-05 21:21:22,561 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 4/5].
+2026-07-05 21:22:48,450 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00005-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b2855b410>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: 70e90085-a6fc-48f5-aeb6-4aa1c6f43f2a)')' thrown while requesting GET https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00005-of-00014.safetensors
+2026-07-05 21:22:48,450 - huggingface_hub.utils._http - WARNING - Retrying in 1s [Retry 1/5].
+2026-07-05 21:22:49,258 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00010-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b28559ca0>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: c1d3a72c-bc97-4962-8f9f-fd581a019184)')' thrown while requesting HEAD https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00010-of-00014.safetensors
+2026-07-05 21:22:49,258 - huggingface_hub.utils._http - WARNING - Retrying in 1s [Retry 1/5].
+2026-07-05 21:23:10,599 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00002-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b2849c320>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: 927c35ae-1bdd-405b-859e-2bdd3744958b)')' thrown while requesting GET https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00002-of-00014.safetensors
+2026-07-05 21:23:10,599 - huggingface_hub.utils._http - WARNING - Retrying in 1s [Retry 1/5].
+2026-07-05 21:23:30,679 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00009-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b28409cd0>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: 50183f34-49b6-41bb-bd57-2794e159f307)')' thrown while requesting HEAD https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00009-of-00014.safetensors
+2026-07-05 21:23:30,679 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 5/5].
+2026-07-05 21:23:40,677 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00010-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b2855bcb0>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: 2bd1ccfe-4170-47c1-8945-c27cd0975269)')' thrown while requesting HEAD https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00010-of-00014.safetensors
+2026-07-05 21:23:40,677 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00005-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b2855a4b0>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: 2bafc222-9d84-49db-ad52-83d00ca11898)')' thrown while requesting GET https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00005-of-00014.safetensors
+2026-07-05 21:23:40,678 - huggingface_hub.utils._http - WARNING - Retrying in 2s [Retry 2/5].
+2026-07-05 21:23:40,679 - huggingface_hub.utils._http - WARNING - Retrying in 2s [Retry 2/5].
+2026-07-05 21:25:11,707 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00002-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b2855bfb0>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: a44435d8-7a7d-4fa0-a738-f7f4fcf18a15)')' thrown while requesting GET https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00002-of-00014.safetensors
+2026-07-05 21:25:11,707 - huggingface_hub.utils._http - WARNING - Retrying in 2s [Retry 2/5].
+2026-07-05 21:25:24,872 - huggingface_hub.utils._http - WARNING - '(MaxRetryError('HTTPSConnectionPool(host=\'huggingface.co\', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00002-of-00014.safetensors (Caused by NameResolutionError("HTTPSConnection(host=\'huggingface.co\', port=443): Failed to resolve \'huggingface.co\' ([Errno 11001] getaddrinfo failed)"))'), '(Request ID: 955a5e68-25d2-4498-9e70-bde5bc7bf78c)')' thrown while requesting GET https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00002-of-00014.safetensors
+2026-07-05 21:25:24,873 - huggingface_hub.utils._http - WARNING - Retrying in 4s [Retry 3/5].
+2026-07-05 21:25:38,778 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00009-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b30e14470>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: 90b3c98c-8b3a-4a69-ba85-e09d901200ec)')' thrown while requesting HEAD https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00009-of-00014.safetensors
+2026-07-05 21:25:40,034 - huggingface_hub.utils._http - WARNING - '(MaxRetryError('HTTPSConnectionPool(host=\'huggingface.co\', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00002-of-00014.safetensors (Caused by NameResolutionError("HTTPSConnection(host=\'huggingface.co\', port=443): Failed to resolve \'huggingface.co\' ([Errno 11001] getaddrinfo failed)"))'), '(Request ID: 9b67893b-9767-4bb5-9fb9-e11da374dc47)')' thrown while requesting GET https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00002-of-00014.safetensors
+2026-07-05 21:25:40,034 - huggingface_hub.utils._http - WARNING - '(MaxRetryError('HTTPSConnectionPool(host=\'huggingface.co\', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00011-of-00014.safetensors (Caused by NameResolutionError("HTTPSConnection(host=\'huggingface.co\', port=443): Failed to resolve \'huggingface.co\' ([Errno 11001] getaddrinfo failed)"))'), '(Request ID: e3aea5ae-f512-4ff6-b7e9-cfdd145a457d)')' thrown while requesting HEAD https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00011-of-00014.safetensors
+2026-07-05 21:25:40,034 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 4/5].
+2026-07-05 21:25:40,035 - huggingface_hub.utils._http - WARNING - Retrying in 1s [Retry 1/5].
+2026-07-05 21:25:42,790 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00010-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b30e14560>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: 579791bc-db5f-4caf-9084-65a83d65cb4e)')' thrown while requesting HEAD https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00010-of-00014.safetensors
+2026-07-05 21:25:42,790 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00005-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b30e14bc0>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: 09ae4db1-0f99-4b2c-aaac-71f9778fba5a)')' thrown while requesting GET https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00005-of-00014.safetensors
+2026-07-05 21:25:42,791 - huggingface_hub.utils._http - WARNING - Retrying in 4s [Retry 3/5].
+2026-07-05 21:25:42,791 - huggingface_hub.utils._http - WARNING - Retrying in 4s [Retry 3/5].
+2026-07-05 21:26:32,234 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00005-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b2855a750>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: 1547af6a-4e2e-4dec-b25f-94c93a2f9119)')' thrown while requesting GET https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00005-of-00014.safetensors
+2026-07-05 21:26:32,235 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00010-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b2855b0b0>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: 73d702ae-a99a-4fd9-9ac5-0818f04b0c35)')' thrown while requesting HEAD https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00010-of-00014.safetensors
+2026-07-05 21:26:32,235 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00002-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b2849d730>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: 35443293-2fc5-4c5a-9cc5-af2a8153d6fa)')' thrown while requesting GET https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00002-of-00014.safetensors
+2026-07-05 21:26:32,235 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00011-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b2855a600>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: 9d5971e1-715f-4f23-a938-7d4fff3f3ca8)')' thrown while requesting HEAD https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00011-of-00014.safetensors
+2026-07-05 21:26:32,235 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 4/5].
+2026-07-05 21:26:32,235 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 4/5].
+2026-07-05 21:26:32,235 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 5/5].
+2026-07-05 21:26:32,235 - huggingface_hub.utils._http - WARNING - Retrying in 2s [Retry 2/5].
+2026-07-05 21:27:25,445 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00011-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b2849fd70>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: 34194e40-9c74-4283-b5e9-bea662087991)')' thrown while requesting HEAD https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00011-of-00014.safetensors
+2026-07-05 21:27:25,445 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00005-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b30e14050>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: 128aed7c-40f6-482d-9686-32f315c09995)')' thrown while requesting GET https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00005-of-00014.safetensors
+2026-07-05 21:27:25,445 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00010-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b30e15760>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: 9db3ed13-11df-46e5-8be6-019ce9fe8a77)')' thrown while requesting HEAD https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00010-of-00014.safetensors
+2026-07-05 21:27:25,446 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00002-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b30e159a0>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: f837b4bb-f9ea-43d5-afc0-614be5f1f82d)')' thrown while requesting GET https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00002-of-00014.safetensors
+2026-07-05 21:27:25,446 - huggingface_hub.utils._http - WARNING - Retrying in 4s [Retry 3/5].
+2026-07-05 21:27:25,446 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 5/5].
+2026-07-05 21:27:25,446 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 5/5].
+2026-07-05 21:28:16,596 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00010-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b28559370>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: 2606f1b9-36f8-4c71-a511-e12a3a40975c)')' thrown while requesting HEAD https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00010-of-00014.safetensors
+2026-07-05 21:28:16,596 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00005-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b2855a600>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: 27af33ba-bb62-4fef-a399-55fa35208b70)')' thrown while requesting GET https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00005-of-00014.safetensors
+2026-07-05 21:28:16,596 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00012-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b30e16180>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: e4377175-33a1-4915-94ab-d79175796811)')' thrown while requesting HEAD https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00012-of-00014.safetensors
+2026-07-05 21:28:16,597 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00011-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b30e16540>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: 23482498-0ac8-4a1a-bc82-6fa000829692)')' thrown while requesting HEAD https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00011-of-00014.safetensors
+2026-07-05 21:28:16,608 - huggingface_hub.utils._http - WARNING - Retrying in 1s [Retry 1/5].
+2026-07-05 21:28:16,609 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 4/5].
+2026-07-05 21:30:16,694 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00014-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b30e15520>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: 49cf8fa1-e849-4bbf-91f4-3cc0d7633df2)')' thrown while requesting HEAD https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00014-of-00014.safetensors
+2026-07-05 21:30:16,694 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00013-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b2855bbc0>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: 0ea3c4c1-21aa-4828-9908-7d2735a60cce)')' thrown while requesting HEAD https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00013-of-00014.safetensors
+2026-07-05 21:30:16,695 - huggingface_hub.utils._http - WARNING - Retrying in 1s [Retry 1/5].
+2026-07-05 21:30:16,695 - huggingface_hub.utils._http - WARNING - Retrying in 1s [Retry 1/5].
+2026-07-05 21:30:17,718 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00012-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b30e15010>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: 4159dd8c-6791-4008-bc4f-cbde0423918c)')' thrown while requesting HEAD https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00012-of-00014.safetensors
+2026-07-05 21:30:17,718 - huggingface_hub.utils._http - WARNING - Retrying in 2s [Retry 2/5].
+2026-07-05 21:30:24,719 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00011-of-00014.safetensors (Caused by ConnectTimeoutError(<HTTPSConnection(host='huggingface.co', port=443) at 0x21b30e14a40>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: 58993839-7a4a-423c-943d-e3b413a43a70)')' thrown while requesting HEAD https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00011-of-00014.safetensors
+2026-07-05 21:30:24,719 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 5/5].
+2026-07-05 21:30:28,783 - huggingface_hub.utils._http - WARNING - '(MaxRetryError('HTTPSConnectionPool(host=\'huggingface.co\', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00014-of-00014.safetensors (Caused by NameResolutionError("HTTPSConnection(host=\'huggingface.co\', port=443): Failed to resolve \'huggingface.co\' ([Errno 11001] getaddrinfo failed)"))'), '(Request ID: 290f77a2-4727-4196-a7ac-d1e9c5045779)')' thrown while requesting HEAD https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00014-of-00014.safetensors
+2026-07-05 21:30:28,783 - huggingface_hub.utils._http - WARNING - '(MaxRetryError('HTTPSConnectionPool(host=\'huggingface.co\', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00012-of-00014.safetensors (Caused by NameResolutionError("HTTPSConnection(host=\'huggingface.co\', port=443): Failed to resolve \'huggingface.co\' ([Errno 11001] getaddrinfo failed)"))'), '(Request ID: cf3ea603-e4c4-4f2f-ac81-fa9a130bcbce)')' thrown while requesting HEAD https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00012-of-00014.safetensors
+2026-07-05 21:30:28,783 - huggingface_hub.utils._http - WARNING - '(MaxRetryError('HTTPSConnectionPool(host=\'huggingface.co\', port=443): Max retries exceeded with url: /openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00013-of-00014.safetensors (Caused by NameResolutionError("HTTPSConnection(host=\'huggingface.co\', port=443): Failed to resolve \'huggingface.co\' ([Errno 11001] getaddrinfo failed)"))'), '(Request ID: 328f9048-df69-4caf-b2cf-378914a67e1d)')' thrown while requesting HEAD https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00013-of-00014.safetensors
+2026-07-05 21:30:28,785 - huggingface_hub.utils._http - WARNING - Retrying in 2s [Retry 2/5].
+2026-07-05 21:30:28,785 - huggingface_hub.utils._http - WARNING - Retrying in 4s [Retry 3/5].
+2026-07-05 21:30:28,785 - huggingface_hub.utils._http - WARNING - Retrying in 2s [Retry 2/5].
+2026-07-05 21:31:30,275 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2026-07-05 21:31:34,376 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2026-07-05 21:31:34,377 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2026-07-05 21:31:38,640 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2026-07-05 21:36:58,933 - huggingface_hub.file_download - WARNING - Error while downloading from https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00012-of-00014.safetensors: HTTPSConnectionPool(host='us.aws.cdn.hf.co', port=443): Read timed out.
+Trying to resume download...
+2026-07-05 21:37:04,517 - huggingface_hub.file_download - WARNING - Error while downloading from https://huggingface.co/openai/gpt-oss-120b/resolve/b5c939de8f754692c1647ca79fbf85e8c1e70f8a/model-00014-of-00014.safetensors: HTTPSConnectionPool(host='us.aws.cdn.hf.co', port=443): Read timed out.
+Trying to resume download...
+2026-07-05 22:05:27,577 - sentence_transformers.base.model - INFO - No modules.json found for openai/gpt-oss-20b, initializing a new SentenceTransformer model.
+2026-07-05 22:05:27,577 - sentence_transformers.util.decorators - WARNING - The Transformer `cache_dir` argument is deprecated. Please pass `cache_dir` via `model_kwargs`, `processor_kwargs`, and/or `config_kwargs` instead.
+2026-07-05 22:05:29,425 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2026-07-05 22:05:29,487 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2026-07-05 22:05:34,927 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2026-07-05 23:09:21,116 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from intfloat/multilingual-e5-base.
+2026-07-05 23:09:22,411 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2026-07-05 23:17:31,251 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2026-07-05 23:17:33,997 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2026-07-05 23:17:57,090 - watchfiles.main - INFO - 1 change detected
+2026-07-05 23:17:57,705 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from intfloat/multilingual-e5-base.
+2026-07-05 23:17:59,123 - watchfiles.main - INFO - 1 change detected
+2026-07-05 23:19:37,879 - watchfiles.main - INFO - 1 change detected
+2026-07-05 23:20:46,939 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from intfloat/multilingual-e5-base.
+2026-07-05 23:21:00,947 - watchfiles.main - INFO - 1 change detected
+2026-07-05 23:21:01,742 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from intfloat/multilingual-e5-base.
+2026-07-05 23:21:03,267 - watchfiles.main - INFO - 1 change detected
+2026-07-05 23:21:39,777 - watchfiles.main - INFO - 1 change detected
+2026-07-05 23:21:42,806 - watchfiles.main - INFO - 5 changes detected
+2026-07-05 23:21:49,942 - watchfiles.main - INFO - 1 change detected
+2026-07-05 23:21:50,514 - sentence_transformers.base.model - INFO - No modules.json found for openai/gpt-oss-20b, initializing a new SentenceTransformer model.
+2026-07-05 23:21:50,514 - sentence_transformers.util.decorators - WARNING - The Transformer `cache_dir` argument is deprecated. Please pass `cache_dir` via `model_kwargs`, `processor_kwargs`, and/or `config_kwargs` instead.
+2026-07-05 23:22:11,462 - watchfiles.main - INFO - 1 change detected
+2026-07-05 23:24:16,736 - watchfiles.main - INFO - 1 change detected
+2026-07-05 23:24:46,768 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 23:24:58,139 - watchfiles.main - INFO - 1 change detected
+2026-07-05 23:25:00,768 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 23:25:05,779 - watchfiles.main - INFO - 6 changes detected
+2026-07-05 23:25:15,327 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 23:25:20,098 - watchfiles.main - INFO - 10 changes detected
+2026-07-05 23:25:28,107 - watchfiles.main - INFO - 1 change detected
+2026-07-05 23:25:28,671 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 23:25:31,985 - watchfiles.main - INFO - 4 changes detected
+2026-07-05 23:25:54,356 - watchfiles.main - INFO - 1 change detected
+2026-07-05 23:27:11,625 - sentence_transformers.base.model - INFO - No modules.json found for qwen/qwen3-32b, initializing a new SentenceTransformer model.
+2026-07-05 23:27:11,627 - sentence_transformers.util.decorators - WARNING - The Transformer `cache_dir` argument is deprecated. Please pass `cache_dir` via `model_kwargs`, `processor_kwargs`, and/or `config_kwargs` instead.
+2026-07-05 23:27:14,405 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2026-07-05 23:27:14,467 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2026-07-05 23:27:14,493 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2026-07-05 23:27:14,583 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2026-07-05 23:27:14,601 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2026-07-05 23:27:14,635 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2026-07-05 23:27:14,636 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2026-07-05 23:27:14,662 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2026-07-05 23:32:29,928 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 23:32:44,142 - watchfiles.main - INFO - 1 change detected
+2026-07-05 23:32:44,767 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-05 23:32:47,891 - watchfiles.main - INFO - 4 changes detected
+2026-07-05 23:32:56,168 - backend.main - INFO - Новый запрос: hi...
+2026-07-05 23:32:56,396 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 23:32:57,282 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 23:32:57,298 - backend.main - INFO - Ответ отправлен, длина: 755
+2026-07-05 23:32:57,298 - backend.main - INFO - Обработано за 2026-07-05T23:32:57.298854 - 2026-07-05T23:32:56.169913
+2026-07-05 23:33:36,986 - backend.main - INFO - Новый запрос: что токой CATE...
+2026-07-05 23:33:37,019 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-05 23:33:37,082 - watchfiles.main - INFO - 1 change detected
+2026-07-05 23:33:39,474 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 23:33:39,475 - backend.main - INFO - Ответ отправлен, длина: 1775
+2026-07-05 23:33:39,475 - backend.main - INFO - Обработано за 2026-07-05T23:33:39.475761 - 2026-07-05T23:33:36.986331
+2026-07-06 19:54:15,188 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 20:08:12,663 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-06 20:08:13,126 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-07-06 20:08:42,778 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 20:08:50,476 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-06 20:08:51,836 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 20:11:42,352 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 20:11:58,628 - watchfiles.main - INFO - 1 change detected
+2026-07-06 20:11:59,609 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 20:12:04,366 - watchfiles.main - INFO - 4 changes detected
+2026-07-06 20:12:23,060 - backend.main - INFO - Новый запрос: hi...
+2026-07-06 20:12:23,154 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-06 20:12:24,518 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 20:12:24,573 - backend.main - INFO - Ответ отправлен, длина: 693
+2026-07-06 20:12:24,575 - backend.main - INFO - Обработано за 2026-07-06T20:12:24.573927 - 2026-07-06T20:12:23.061490
+2026-07-06 20:13:18,886 - watchfiles.main - INFO - 1 change detected
+2026-07-06 20:13:51,020 - watchfiles.main - INFO - 1 change detected
+2026-07-06 20:14:53,831 - watchfiles.main - INFO - 1 change detected
+2026-07-06 20:18:50,037 - watchfiles.main - INFO - 1 change detected
+2026-07-06 20:20:59,722 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 20:21:16,926 - watchfiles.main - INFO - 1 change detected
+2026-07-06 20:21:17,987 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 20:21:23,001 - watchfiles.main - INFO - 4 changes detected
+2026-07-06 20:21:33,714 - backend.main - INFO - Новый запрос: hi...
+2026-07-06 20:21:34,065 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-06 20:21:35,959 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 20:21:35,989 - backend.main - INFO - Ответ отправлен, длина: 898
+2026-07-06 20:21:35,989 - backend.main - INFO - Обработано за 2026-07-06T20:21:35.989208 - 2026-07-06T20:21:33.718075
+2026-07-06 20:22:03,924 - watchfiles.main - INFO - 1 change detected
+2026-07-06 20:23:39,935 - backend.main - INFO - Новый запрос: gi...
+2026-07-06 20:23:39,959 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-06 20:23:41,853 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 20:23:41,856 - backend.main - INFO - Ответ отправлен, длина: 854
+2026-07-06 20:23:41,857 - backend.main - INFO - Обработано за 2026-07-06T20:23:41.856891 - 2026-07-06T20:23:39.935210
+2026-07-06 20:24:15,366 - watchfiles.main - INFO - 1 change detected
+2026-07-06 20:25:11,061 - watchfiles.main - INFO - 1 change detected
+2026-07-06 20:26:16,991 - watchfiles.main - INFO - 1 change detected
+2026-07-06 20:26:23,512 - watchfiles.main - INFO - 1 change detected
+2026-07-06 20:26:38,240 - backend.main - INFO - Новый запрос: hi...
+2026-07-06 20:26:38,375 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-06 20:26:39,607 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 20:26:39,609 - backend.main - INFO - Ответ отправлен, длина: 955
+2026-07-06 20:26:39,610 - backend.main - INFO - Обработано за 2026-07-06T20:26:39.609824 - 2026-07-06T20:26:38.241668
+2026-07-06 20:28:52,492 - watchfiles.main - INFO - 1 change detected
+2026-07-06 20:35:15,759 - watchfiles.main - INFO - 1 change detected
+2026-07-06 20:35:24,376 - watchfiles.main - INFO - 1 change detected
+2026-07-06 20:36:58,454 - watchfiles.main - INFO - 1 change detected
+2026-07-06 20:37:04,275 - watchfiles.main - INFO - 1 change detected
+2026-07-06 20:37:18,185 - backend.main - INFO - Новый запрос: hi...
+2026-07-06 20:37:18,334 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-06 20:37:19,748 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 20:37:19,771 - backend.main - INFO - Ответ отправлен, длина: 951
+2026-07-06 20:37:19,772 - backend.main - INFO - Обработано за 2026-07-06T20:37:19.771132 - 2026-07-06T20:37:18.186465
+2026-07-06 20:38:39,779 - watchfiles.main - INFO - 1 change detected
+2026-07-06 20:42:08,591 - watchfiles.main - INFO - 1 change detected
+2026-07-06 20:42:34,109 - watchfiles.main - INFO - 1 change detected
+2026-07-06 20:43:01,869 - watchfiles.main - INFO - 1 change detected
+2026-07-06 20:43:09,359 - watchfiles.main - INFO - 1 change detected
+2026-07-06 20:43:37,382 - watchfiles.main - INFO - 1 change detected
+2026-07-06 20:44:22,216 - watchfiles.main - INFO - 1 change detected
+2026-07-06 20:49:19,693 - watchfiles.main - INFO - 1 change detected
+2026-07-06 20:49:31,222 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:06:31,642 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:06:39,964 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:07:21,992 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:07:26,596 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:07:30,432 - watchfiles.main - INFO - 5 changes detected
+2026-07-06 21:07:42,615 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:07:43,891 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 21:07:49,335 - watchfiles.main - INFO - 4 changes detected
+2026-07-06 21:08:03,208 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:08:05,350 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:08:08,330 - watchfiles.main - INFO - 5 changes detected
+2026-07-06 21:08:17,745 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:08:18,947 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 21:08:23,908 - watchfiles.main - INFO - 3 changes detected
+2026-07-06 21:08:53,320 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:09:12,575 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:09:14,790 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:09:18,170 - watchfiles.main - INFO - 5 changes detected
+2026-07-06 21:09:26,050 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:09:27,091 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 21:09:31,970 - watchfiles.main - INFO - 3 changes detected
+2026-07-06 21:13:18,586 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:13:31,291 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:13:33,844 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:13:37,173 - watchfiles.main - INFO - 5 changes detected
+2026-07-06 21:13:50,007 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:14:08,746 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:17:03,925 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:17:07,318 - watchfiles.main - INFO - 10 changes detected
+2026-07-06 21:17:16,865 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 21:17:19,581 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 21:17:24,208 - watchfiles.main - INFO - 9 changes detected
+2026-07-06 21:17:24,566 - watchfiles.main - INFO - 4 changes detected
+2026-07-06 21:17:34,502 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:17:35,666 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 21:17:40,578 - watchfiles.main - INFO - 4 changes detected
+2026-07-06 21:19:07,691 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:19:10,281 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:19:13,057 - watchfiles.main - INFO - 5 changes detected
+2026-07-06 21:19:20,971 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:19:22,207 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 21:19:27,085 - watchfiles.main - INFO - 4 changes detected
+2026-07-06 21:20:22,312 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:20:24,714 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:20:27,144 - watchfiles.main - INFO - 5 changes detected
+2026-07-06 21:20:34,354 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:20:35,566 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 21:20:40,577 - watchfiles.main - INFO - 4 changes detected
+2026-07-06 21:20:40,935 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:21:13,167 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:21:43,897 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:21:47,454 - watchfiles.main - INFO - 5 changes detected
+2026-07-06 21:21:55,536 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:21:56,644 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 21:22:01,414 - watchfiles.main - INFO - 3 changes detected
+2026-07-06 21:22:29,782 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:22:31,560 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:22:33,629 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:22:43,041 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 21:22:49,535 - watchfiles.main - INFO - 14 changes detected
+2026-07-06 21:22:51,337 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 21:22:55,791 - watchfiles.main - INFO - 4 changes detected
+2026-07-06 21:22:59,420 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:23:00,606 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 21:23:03,140 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-06 21:23:05,006 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 21:23:05,388 - watchfiles.main - INFO - 4 changes detected
+2026-07-06 21:23:23,186 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-06 21:23:25,736 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 21:24:13,492 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-06 21:24:17,759 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 21:24:23,831 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:25:37,334 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:25:39,946 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:25:43,169 - watchfiles.main - INFO - 5 changes detected
+2026-07-06 21:25:50,325 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:25:51,336 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 21:25:52,881 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 21:25:56,207 - watchfiles.main - INFO - 3 changes detected
+2026-07-06 21:25:57,619 - watchfiles.main - INFO - 4 changes detected
+2026-07-06 21:26:05,296 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-06 21:26:07,327 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 21:26:19,101 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-06 21:26:21,629 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 21:26:46,206 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-06 21:26:47,979 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 21:27:25,548 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:27:43,259 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:27:45,804 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:27:47,419 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:27:49,190 - watchfiles.main - INFO - 5 changes detected
+2026-07-06 21:27:56,401 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:27:57,325 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 21:28:01,506 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 21:28:02,048 - watchfiles.main - INFO - 3 changes detected
+2026-07-06 21:28:06,042 - watchfiles.main - INFO - 4 changes detected
+2026-07-06 21:28:25,448 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-06 21:28:27,338 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 21:29:36,846 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:29:39,320 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:29:41,624 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:29:44,352 - watchfiles.main - INFO - 5 changes detected
+2026-07-06 21:29:48,986 - watchfiles.main - INFO - 5 changes detected
+2026-07-06 21:29:50,964 - watchfiles.main - INFO - 5 changes detected
+2026-07-06 21:29:51,330 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:29:52,214 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 21:29:56,678 - watchfiles.main - INFO - 3 changes detected
+2026-07-06 21:30:04,404 - watchfiles.main - INFO - 4 changes detected
+2026-07-06 21:30:12,271 - watchfiles.main - INFO - 5 changes detected
+2026-07-06 21:30:18,637 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:30:35,678 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 21:30:40,714 - watchfiles.main - INFO - 3 changes detected
+2026-07-06 21:30:46,378 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:31:02,877 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-06 21:31:04,816 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 21:31:46,289 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-06 21:31:49,173 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 21:33:34,304 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:33:36,667 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:33:38,638 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:33:40,502 - watchfiles.main - INFO - 5 changes detected
+2026-07-06 21:33:49,578 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:33:50,612 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 21:33:54,915 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 21:33:55,348 - watchfiles.main - INFO - 3 changes detected
+2026-07-06 21:33:59,705 - watchfiles.main - INFO - 4 changes detected
+2026-07-06 21:34:05,725 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-06 21:34:07,661 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 21:34:14,878 - backend.rag_engine - INFO - failure_count: 1...
+2026-07-06 21:34:16,599 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 21:37:28,372 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:38:00,741 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:38:03,416 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:38:06,591 - watchfiles.main - INFO - 5 changes detected
+2026-07-06 21:38:15,557 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:38:16,806 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 21:38:16,818 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:38:24,554 - watchfiles.main - INFO - 4 changes detected
+2026-07-06 21:38:26,071 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:38:27,328 - watchfiles.main - INFO - 5 changes detected
+2026-07-06 21:38:36,046 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:38:37,167 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 21:38:38,214 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:38:41,440 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 21:38:41,901 - watchfiles.main - INFO - 3 changes detected
+2026-07-06 21:38:46,304 - watchfiles.main - INFO - 4 changes detected
+2026-07-06 21:38:46,921 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:38:51,846 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-06 21:38:53,715 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 21:39:00,516 - backend.rag_engine - INFO - failure_count: 0...
+2026-07-06 21:39:02,591 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 21:40:09,670 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:40:12,207 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:41:17,732 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:41:21,623 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:41:55,489 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:41:59,196 - watchfiles.main - INFO - 5 changes detected
+2026-07-06 21:42:07,281 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:42:08,344 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 21:42:08,913 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 21:42:13,201 - watchfiles.main - INFO - 3 changes detected
+2026-07-06 21:42:13,755 - watchfiles.main - INFO - 4 changes detected
+2026-07-06 21:42:42,157 - backend.rag_engine - INFO - failure: true...
+2026-07-06 21:42:43,349 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 21:42:50,836 - backend.rag_engine - INFO - failure: true...
+2026-07-06 21:42:53,671 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 21:44:03,286 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:44:05,916 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:44:09,199 - watchfiles.main - INFO - 5 changes detected
+2026-07-06 21:44:16,679 - watchfiles.main - INFO - 1 change detected
+2026-07-06 21:44:17,876 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 21:44:22,750 - watchfiles.main - INFO - 4 changes detected
+2026-07-06 21:44:36,420 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:04:06,971 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:04:25,236 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 23:04:30,263 - watchfiles.main - INFO - 3 changes detected
+2026-07-06 23:04:45,170 - backend.rag_engine - INFO - failure: true...
+2026-07-06 23:04:46,480 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 23:05:20,904 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:05:25,484 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:05:28,411 - watchfiles.main - INFO - 5 changes detected
+2026-07-06 23:05:36,838 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:05:37,734 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 23:05:41,278 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 23:05:42,542 - watchfiles.main - INFO - 4 changes detected
+2026-07-06 23:05:46,025 - watchfiles.main - INFO - 4 changes detected
+2026-07-06 23:05:57,346 - backend.rag_engine - INFO - failure: true...
+2026-07-06 23:05:59,438 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 23:06:23,908 - backend.rag_engine - INFO - failure: true...
+2026-07-06 23:06:26,541 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 23:06:46,616 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:06:48,900 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:06:51,828 - watchfiles.main - INFO - 5 changes detected
+2026-07-06 23:06:58,535 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:06:59,696 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 23:07:04,661 - watchfiles.main - INFO - 4 changes detected
+2026-07-06 23:09:15,628 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:09:31,494 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:09:34,041 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:09:37,724 - watchfiles.main - INFO - 5 changes detected
+2026-07-06 23:09:49,701 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:09:50,946 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 23:09:55,815 - watchfiles.main - INFO - 3 changes detected
+2026-07-06 23:10:16,577 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:10:29,461 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:10:31,730 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:10:34,351 - watchfiles.main - INFO - 5 changes detected
+2026-07-06 23:10:37,631 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:10:41,613 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:10:42,681 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 23:10:47,583 - watchfiles.main - INFO - 3 changes detected
+2026-07-06 23:11:31,214 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 23:11:46,886 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:11:47,923 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 23:11:52,716 - watchfiles.main - INFO - 4 changes detected
+2026-07-06 23:12:46,803 - backend.main - INFO - Новый запрос: привет...
+2026-07-06 23:12:47,081 - backend.rag_engine - INFO - failure: true...
+2026-07-06 23:12:48,237 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 23:12:48,338 - backend.main - INFO - Ответ отправлен, длина: 742
+2026-07-06 23:12:48,339 - backend.main - INFO - Обработано за 2026-07-06T23:12:48.338473 - 2026-07-06T23:12:46.805112
+2026-07-06 23:13:04,631 - backend.main - INFO - Новый запрос: что токой CATE...
+2026-07-06 23:13:04,677 - backend.rag_engine - INFO - failure: true...
+2026-07-06 23:13:06,117 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 23:13:06,119 - backend.main - INFO - Ответ отправлен, длина: 1069
+2026-07-06 23:13:06,120 - backend.main - INFO - Обработано за 2026-07-06T23:13:06.119140 - 2026-07-06T23:13:04.631086
+2026-07-06 23:13:13,140 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:13:27,801 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:13:30,562 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:13:34,038 - watchfiles.main - INFO - 5 changes detected
+2026-07-06 23:13:45,444 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:13:46,514 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 23:13:51,464 - watchfiles.main - INFO - 3 changes detected
+2026-07-06 23:13:51,933 - backend.main - INFO - Новый запрос: что токой CATE...
+2026-07-06 23:13:52,204 - backend.rag_engine - INFO - failure: true...
+2026-07-06 23:13:54,171 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 23:13:54,187 - backend.main - INFO - Ответ отправлен, длина: 2049
+2026-07-06 23:13:54,187 - backend.main - INFO - Обработано за 2026-07-06T23:13:54.187414 - 2026-07-06T23:13:51.933169
+2026-07-06 23:14:17,845 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:16:01,044 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 23:16:17,357 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:16:18,253 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 23:16:23,017 - watchfiles.main - INFO - 4 changes detected
+2026-07-06 23:16:27,952 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:16:43,704 - backend.main - INFO - Новый запрос: привет...
+2026-07-06 23:16:43,955 - backend.rag_engine - INFO - failure: true...
+2026-07-06 23:16:44,945 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 23:16:44,959 - backend.main - INFO - Ответ отправлен, длина: 480
+2026-07-06 23:16:44,959 - backend.main - INFO - Обработано за 2026-07-06T23:16:44.959122 - 2026-07-06T23:16:43.704203
+2026-07-06 23:17:11,573 - backend.main - INFO - Новый запрос: что токой CATE...
+2026-07-06 23:17:11,597 - backend.rag_engine - INFO - failure: true...
+2026-07-06 23:17:13,079 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 23:17:13,085 - backend.main - INFO - Ответ отправлен, длина: 1442
+2026-07-06 23:17:13,086 - backend.main - INFO - Обработано за 2026-07-06T23:17:13.085945 - 2026-07-06T23:17:11.574948
+2026-07-06 23:17:38,467 - backend.main - INFO - Новый запрос: кто токой трамп...
+2026-07-06 23:17:38,562 - backend.rag_engine - INFO - failure: true...
+2026-07-06 23:17:41,088 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 23:17:41,093 - backend.main - INFO - Ответ отправлен, длина: 1466
+2026-07-06 23:17:41,094 - backend.main - INFO - Обработано за 2026-07-06T23:17:41.093458 - 2026-07-06T23:17:38.468837
+2026-07-06 23:18:45,140 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:18:47,855 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:18:51,132 - watchfiles.main - INFO - 5 changes detected
+2026-07-06 23:19:02,083 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:19:03,373 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 23:19:08,718 - watchfiles.main - INFO - 3 changes detected
+2026-07-06 23:19:23,863 - backend.main - INFO - Новый запрос: привет...
+2026-07-06 23:19:24,112 - backend.rag_engine - INFO - failure: true...
+2026-07-06 23:19:25,127 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 23:19:25,230 - backend.main - INFO - Ответ отправлен, длина: 569
+2026-07-06 23:19:25,232 - backend.main - INFO - Обработано за 2026-07-06T23:19:25.230350 - 2026-07-06T23:19:23.865241
+2026-07-06 23:19:30,974 - backend.main - INFO - Новый запрос: что токой CATE...
+2026-07-06 23:19:30,999 - backend.rag_engine - INFO - failure: true...
+2026-07-06 23:19:32,520 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 23:19:32,527 - backend.main - INFO - Ответ отправлен, длина: 1517
+2026-07-06 23:19:32,528 - backend.main - INFO - Обработано за 2026-07-06T23:19:32.527552 - 2026-07-06T23:19:30.974458
+2026-07-06 23:19:46,725 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:19:49,055 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:19:51,528 - watchfiles.main - INFO - 5 changes detected
+2026-07-06 23:19:58,913 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:20:00,031 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 23:20:04,871 - watchfiles.main - INFO - 4 changes detected
+2026-07-06 23:20:19,838 - backend.main - INFO - Новый запрос: что токой CATE...
+2026-07-06 23:20:20,093 - backend.rag_engine - INFO - failure: true...
+2026-07-06 23:20:21,657 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 23:20:21,679 - backend.main - INFO - Ответ отправлен, длина: 1505
+2026-07-06 23:20:21,680 - backend.main - INFO - Обработано за 2026-07-06T23:20:21.679130 - 2026-07-06T23:20:19.839154
+2026-07-06 23:20:36,710 - backend.main - INFO - Новый запрос: кто токой трамп...
+2026-07-06 23:20:36,732 - backend.rag_engine - INFO - failure: true...
+2026-07-06 23:20:39,231 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 23:20:39,234 - backend.main - INFO - Ответ отправлен, длина: 1903
+2026-07-06 23:20:39,234 - backend.main - INFO - Обработано за 2026-07-06T23:20:39.232897 - 2026-07-06T23:20:36.711295
+2026-07-06 23:23:55,710 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:23:57,852 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:24:01,080 - watchfiles.main - INFO - 5 changes detected
+2026-07-06 23:24:10,934 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:24:12,119 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 23:24:17,253 - watchfiles.main - INFO - 4 changes detected
+2026-07-06 23:26:32,028 - backend.main - INFO - Новый запрос: hi...
+2026-07-06 23:26:32,104 - backend.rag_engine - INFO - failure: true...
+2026-07-06 23:26:32,980 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 23:26:33,039 - backend.main - INFO - Ответ отправлен, длина: 527
+2026-07-06 23:26:33,040 - backend.main - INFO - Обработано за 2026-07-06T23:26:33.039761 - 2026-07-06T23:26:32.028348
+2026-07-06 23:27:04,047 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 23:27:26,727 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:27:28,079 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 23:27:33,409 - watchfiles.main - INFO - 4 changes detected
+2026-07-06 23:28:21,907 - backend.main - INFO - Новый запрос: hi...
+2026-07-06 23:28:22,289 - backend.rag_engine - INFO - failure: true...
+2026-07-06 23:28:23,303 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 23:28:23,319 - backend.main - INFO - Ответ отправлен, длина: 516
+2026-07-06 23:28:23,320 - backend.main - INFO - Обработано за 2026-07-06T23:28:23.319880 - 2026-07-06T23:28:21.909187
+2026-07-06 23:30:00,850 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 23:30:15,361 - watchfiles.main - INFO - 1 change detected
+2026-07-06 23:30:16,330 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-06 23:30:21,029 - watchfiles.main - INFO - 4 changes detected
+2026-07-06 23:30:39,217 - backend.main - INFO - Новый запрос: привет...
+2026-07-06 23:30:39,566 - backend.rag_engine - INFO - failure: true...
+2026-07-06 23:30:40,502 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 23:30:40,596 - backend.main - INFO - Ответ отправлен, длина: 251
+2026-07-06 23:30:40,596 - backend.main - INFO - Обработано за 2026-07-06T23:30:40.596065 - 2026-07-06T23:30:39.219101
+2026-07-06 23:30:59,331 - backend.main - INFO - Новый запрос: что токой CATE...
+2026-07-06 23:30:59,384 - backend.rag_engine - INFO - failure: true...
+2026-07-06 23:31:01,299 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 23:31:01,300 - backend.main - INFO - Ответ отправлен, длина: 2227
+2026-07-06 23:31:01,301 - backend.main - INFO - Обработано за 2026-07-06T23:31:01.300909 - 2026-07-06T23:30:59.331685
+2026-07-07 10:30:27,149 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 10:30:51,292 - backend.rag_engine - INFO - failure: true...
+2026-07-07 10:31:31,333 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-07 10:31:46,944 - backend.rag_engine - INFO - failure: true...
+2026-07-07 10:31:48,285 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-07 10:32:00,167 - backend.rag_engine - INFO - failure: true...
+2026-07-07 10:32:02,149 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-07 10:32:19,727 - backend.rag_engine - INFO - failure: true...
+2026-07-07 10:32:21,989 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"

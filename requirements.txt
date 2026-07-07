@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+python-dotenv
+chromadb
+llama-index
+llama-index-vector-stores-chroma
+llama-index-embeddings-huggingface
+llama-index-llms-groq
+pypdf
+unstructured
+langchain-text-splitters
+httpx
+pydantic
+python-multipart
+Groq
+sentence-transformers
