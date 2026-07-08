@@ -16,10 +16,8 @@ python -m venv venv
 pip install --upgrade pip
 pip install -r requirements.txt
 python -m scripts.run_ingestion
-
-
-uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
-python -m http  server 3000            
+python test_chat.py
+           
 ```
 
 # Установка chmlib или p7zip
