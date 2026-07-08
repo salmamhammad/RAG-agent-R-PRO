@@ -19,4 +19,3 @@ beautifulsoup4
 lxml
 html2text
 accelerate
-dotenv
