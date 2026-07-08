@@ -14,9 +14,11 @@ pydantic
 python-multipart
 Groq
 sentence-transformers
-pychm
+transformers 
+torch 
+# pychm
 beautifulsoup4 
 lxml
 html2text
-chm
+# chm
 accelerate

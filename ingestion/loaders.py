@@ -9,11 +9,19 @@ import subprocess
 # загрузка PDF
 def load_pdfs(directory: str) -> List[Document]:
     docs = []
-    for file in os.listdir(directory):
-        if file.endswith(".pdf"):
-            reader = PdfReader(os.path.join(directory, file))
-            text = "\n".join([page.extract_text() for page in reader.pages if page.extract_text()])
-            docs.append(Document(text=text, metadata={"source": file}))
+    for root, _, files in os.walk(directory):
+        for file in files:
+            if file.lower().endswith(".pdf"):
+                file_path = os.path.join(root, file)
+                try:
+                    reader = PdfReader(file_path)
+                    text = "\n".join([page.extract_text() for page in reader.pages if page.extract_text()])
+                    if text.strip():
+                        # В метаданные сохраняем относительный путь для удобства
+                        rel_path = os.path.relpath(file_path, start=".")
+                        docs.append(Document(text=text, metadata={"source": rel_path}))
+                except Exception as e:
+                    print(f"Ошибка при чтении {file}: {e}")
     return docs
 
 #загрузка текстовых файлов
