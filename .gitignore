@@ -1,5 +1,10 @@
 /chroma_db
-/data
+/data/chm/*
+!/data/chm/.gitkeep
+/data/docs/*
+!/data/docs/.gitkeep
+/data/jsonl/*
+!/data/jsonl/.gitkeep
 /log
 /venv
 .env
