@@ -1689,3 +1689,4 @@ These minimum requirements are specific to this allocation attempt and may vary.
 2026-07-07 16:58:23,233 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-07 17:01:29,702 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-07 17:02:19,644 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-08 17:42:45,481 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
