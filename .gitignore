@@ -8,7 +8,6 @@
 /log
 /venv
 .env
-test_chat.py
 test.py
 testChm.py
 /models
