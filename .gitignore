@@ -1,6 +1,5 @@
 /chroma_db
 /data
-/storage
 /log
 /venv
 .env
