@@ -18,5 +18,5 @@ pychm
 beautifulsoup4 
 lxml
 html2text
-chm
 accelerate
+dotenv
