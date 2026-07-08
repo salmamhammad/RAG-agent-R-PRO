@@ -15,6 +15,7 @@ python -m venv venv
 .\venv\Scripts\Activate.ps1 // source venv/bin/activate (ubuntu)
 pip install --upgrade pip
 pip install -r requirements.txt
+python check_chroma.py // проверить текущие чанки
 python -m scripts.run_ingestion // для обучения модели
 python test_chat.py
            
