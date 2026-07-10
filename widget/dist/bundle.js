@@ -3394,7 +3394,7 @@
       position: fixed;
       bottom: 90px;
       right: 20px;
-      width: 350px;
+      width: 400px;
       height: 500px;
       background: white;
       border-radius: 12px;
@@ -3431,7 +3431,7 @@
       user-select: none;
       transition: background 0.2s;
     `;
-      this.toggleButton.textContent = "\u{1F4AC}";
+      this.setIcon("open");
       this.toggleButton.title = "\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u0447\u0430\u0442 \u043F\u043E\u0434\u0434\u0435\u0440\u0436\u043A\u0438";
       this.toggleButton.addEventListener("mouseenter", () => {
         this.toggleButton.style.background = "rgb(203, 0, 0)";
@@ -3442,7 +3442,7 @@
     }
     buildUI() {
       const header = document.createElement("div");
-      header.style.cssText = "background: rgb(203, 0, 0); color: white; padding: 12px; font-weight: bold;";
+      header.style.cssText = "background: rgb(203, 0, 0); color: white; padding: 12px; font-weight: bold;display: flex; justify-content: space-between";
       header.textContent = "\u0427\u0430\u0442 \u043F\u043E\u0434\u0434\u0435\u0440\u0436\u043A\u0438";
       const closeBtn = document.createElement("span");
       closeBtn.textContent = "\u2715";
@@ -3480,12 +3480,12 @@
           chatContainer.style.transform = "scale(1)";
           chatContainer.style.pointerEvents = "auto";
         });
-        this.toggleButton.textContent = "\u2715";
+        this.setIcon("closed");
         this.toggleButton.title = "\u0417\u0430\u043A\u0440\u044B\u0442\u044C \u0447\u0430\u0442";
         setTimeout(() => this.input.focus(), 300);
         if (!this.hasGreeted) {
           this.hasGreeted = true;
-          this.addMessage("assistant", "\u0417\u0434\u0440\u0430\u0432\u0441\u0442\u0432\u0443\u0439\u0442\u0435, \u044F \u043F\u043E\u043C\u043E\u0449\u043D\u0438\u043A R-PRO. \u0427\u0435\u043C \u044F \u043C\u043E\u0433\u0443 \u0432\u0430\u043C \u043F\u043E\u043C\u043E\u0447\u044C?");
+          this.addMessage("assistant", "\u0417\u0434\u0440\u0430\u0432\u0441\u0442\u0432\u0443\u0439\u0442\u0435, \u044F \u0418\u0418-\u043F\u043E\u043C\u043E\u0449\u043D\u0438\u043A R-PRO. \u0427\u0435\u043C \u044F \u043C\u043E\u0433\u0443 \u0432\u0430\u043C \u043F\u043E\u043C\u043E\u0447\u044C?");
         }
       } else {
         chatContainer.style.opacity = "0";
@@ -3494,7 +3494,7 @@
         setTimeout(() => {
           chatContainer.style.display = "none";
         }, 300);
-        this.toggleButton.textContent = "\u{1F4AC}";
+        this.setIcon("open");
         this.toggleButton.title = "\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u0447\u0430\u0442 \u043F\u043E\u0434\u0434\u0435\u0440\u0436\u043A\u0438";
       }
     }
@@ -3574,6 +3574,31 @@
       this.chatBox.appendChild(msg);
       this.messages.push({ role, content });
       this.chatBox.scrollTop = this.chatBox.scrollHeight;
+    }
+    setIcon(state) {
+      if (state === "closed") {
+        this.toggleButton.innerHTML = `
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Door frame -->
+          <path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Arrow pointing out -->
+          <path d="M16 17L21 12L16 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Arrow baseline -->
+          <path d="M21 12H9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      `;
+      } else {
+        this.toggleButton.innerHTML = `
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Bubble background -->
+          <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Three dots (typing indicator) -->
+          <circle cx="9" cy="10" r="1.5" fill="currentColor"/>
+          <circle cx="12" cy="10" r="1.5" fill="currentColor"/>
+          <circle cx="15" cy="10" r="1.5" fill="currentColor"/>
+        </svg>
+      `;
+      }
     }
   };
 

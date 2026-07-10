@@ -22,3 +22,4 @@ lxml
 html2text
 # chm
 accelerate
+chardet
