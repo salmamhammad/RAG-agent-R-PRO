@@ -3394,8 +3394,9 @@
       position: fixed;
       bottom: 90px;
       right: 20px;
-      width: 400px;
-      height: 500px;
+      width: 450px;
+      max-height: 80vh;
+      height: auto;
       background: white;
       border-radius: 12px;
       box-shadow: 0 8px 30px rgba(0,0,0,0.2);
@@ -3422,16 +3423,16 @@
       border-radius: 50%;
       background: rgb(203, 0, 0);
       color: white;
-      font-size: 30px;
-      line-height: 60px;
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       z-index: 10000;
       user-select: none;
       transition: background 0.2s;
     `;
-      this.setIcon("open");
+      this.setIcon("closed");
       this.toggleButton.title = "\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u0447\u0430\u0442 \u043F\u043E\u0434\u0434\u0435\u0440\u0436\u043A\u0438";
       this.toggleButton.addEventListener("mouseenter", () => {
         this.toggleButton.style.background = "rgb(203, 0, 0)";
@@ -3442,7 +3443,7 @@
     }
     buildUI() {
       const header = document.createElement("div");
-      header.style.cssText = "background: rgb(203, 0, 0); color: white; padding: 12px; font-weight: bold;display: flex; justify-content: space-between";
+      header.style.cssText = "background: rgb(203, 0, 0); color: white; padding: 12px; font-weight: bold; display: flex; justify-content: space-between; align-items: center;";
       header.textContent = "\u0427\u0430\u0442 \u043F\u043E\u0434\u0434\u0435\u0440\u0436\u043A\u0438";
       const closeBtn = document.createElement("span");
       closeBtn.textContent = "\u2715";
@@ -3451,10 +3452,19 @@
       header.appendChild(closeBtn);
       this.container.appendChild(header);
       this.chatBox = document.createElement("div");
-      this.chatBox.style.cssText = "flex: 1; padding: 12px; overflow-y: auto; background: #f9f9f9;";
+      this.chatBox.style.cssText = `
+      flex: 1 1 auto;
+      padding: 12px;
+      overflow-y: auto;
+      background: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      max-height: calc(80vh - 100px);
+    `;
       this.container.appendChild(this.chatBox);
       const inputRow = document.createElement("div");
-      inputRow.style.cssText = "display: flex; padding: 8px; border-top: 1px solid #ddd; background: white;";
+      inputRow.style.cssText = "display: flex; padding: 8px; border-top: 1px solid #ddd; background: white; flex-shrink: 0;";
       this.input = document.createElement("input");
       this.input.type = "text";
       this.input.placeholder = "\u0417\u0430\u0434\u0430\u0439\u0442\u0435 \u0432\u043E\u043F\u0440\u043E\u0441...";
@@ -3480,7 +3490,7 @@
           chatContainer.style.transform = "scale(1)";
           chatContainer.style.pointerEvents = "auto";
         });
-        this.setIcon("closed");
+        this.setIcon("open");
         this.toggleButton.title = "\u0417\u0430\u043A\u0440\u044B\u0442\u044C \u0447\u0430\u0442";
         setTimeout(() => this.input.focus(), 300);
         if (!this.hasGreeted) {
@@ -3494,7 +3504,7 @@
         setTimeout(() => {
           chatContainer.style.display = "none";
         }, 300);
-        this.setIcon("open");
+        this.setIcon("closed");
         this.toggleButton.title = "\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u0447\u0430\u0442 \u043F\u043E\u0434\u0434\u0435\u0440\u0436\u043A\u0438";
       }
     }
@@ -3510,6 +3520,7 @@
         this.addMessage("assistant", response.answer);
       } catch (err) {
         this.addMessage("assistant", "\u041E\u0448\u0438\u0431\u043A\u0430 \u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u044F \u043E\u0442\u0432\u0435\u0442\u0430. \u041F\u043E\u043F\u0440\u043E\u0431\u0443\u0439\u0442\u0435 \u043F\u043E\u0437\u0436\u0435.");
+        console.error(err);
       } finally {
         this.input.disabled = false;
       }
@@ -3524,11 +3535,12 @@
       return { thought: null, answer: content };
     }
     addMessage(role, content) {
-      const msg = document.createElement("div");
-      msg.style.cssText = `
-      margin: 6px 0; padding: 10px; border-radius: 8px;
-      max-width: 80%;
-      ${role === "user" ? "background: #e1f5fe; align-self: flex-end; margin-left: auto;" : "background: white; align-self: flex-start;"}
+      const msgContainer = document.createElement("div");
+      msgContainer.style.cssText = `
+      margin: 6px 0;
+      max-width: 100%;
+      ${role === "user" ? "align-self: flex-end; margin-left: auto;" : "align-self: flex-start;"}
+      width: 100%;
     `;
       if (role === "assistant") {
         const { thought, answer } = this.parseMessage(content);
@@ -3545,10 +3557,23 @@
           cursor: pointer;
           transition: background 0.2s;
           user-select: none;
+          word-wrap: break-word;
+          white-space: pre-wrap;
+          max-width: 100%;
         `;
-          thoughtDiv.textContent = "\u043F\u0435\u0447\u0430\u0442\u0430\u0435\u0442: " + thought;
+          if (thought.length > 300) {
+            const preview = thought.slice(0, 300) + "... (\u043A\u043B\u0438\u043A\u043D\u0438\u0442\u0435, \u0447\u0442\u043E\u0431\u044B \u0440\u0430\u0437\u0432\u0435\u0440\u043D\u0443\u0442\u044C)";
+            thoughtDiv.textContent = "\u041F\u043E\u0441\u0447\u0438\u0442\u0430\u0442\u044C: " + preview;
+            let expanded = false;
+            thoughtDiv.addEventListener("click", () => {
+              expanded = !expanded;
+              thoughtDiv.textContent = expanded ? "\u041F\u043E\u0441\u0447\u0438\u0442\u0430\u0442\u044C: " + thought : "\u041F\u043E\u0441\u0447\u0438\u0442\u0430\u0442\u044C: " + preview;
+            });
+          } else {
+            thoughtDiv.textContent = "\u041F\u043E\u0441\u0447\u0438\u0442\u0430\u0442\u044C: " + thought;
+          }
           thoughtDiv.title = "\u041A\u043B\u0438\u043A\u043D\u0438\u0442\u0435, \u0447\u0442\u043E\u0431\u044B \u0441\u043A\u0440\u044B\u0442\u044C/\u043F\u043E\u043A\u0430\u0437\u0430\u0442\u044C \u043C\u044B\u0441\u043B\u0438";
-          msg.appendChild(thoughtDiv);
+          msgContainer.appendChild(thoughtDiv);
         }
         const answerDiv = document.createElement("div");
         answerDiv.style.cssText = `
@@ -3557,9 +3582,13 @@
         border-radius: 8px;
         box-shadow: 0 1px 2px rgba(0,0,0,0.1);
         word-wrap: break-word;
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+        max-width: 100%;
+        margin-top: 4px;
       `;
         answerDiv.textContent = answer;
-        msg.appendChild(answerDiv);
+        msgContainer.appendChild(answerDiv);
       } else {
         const userDiv = document.createElement("div");
         userDiv.style.cssText = `
@@ -3567,35 +3596,38 @@
         padding: 10px;
         border-radius: 8px;
         word-wrap: break-word;
+        max-width: 100%;
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+        align-self: flex-end;
       `;
         userDiv.textContent = content;
-        msg.appendChild(userDiv);
+        msgContainer.appendChild(userDiv);
       }
-      this.chatBox.appendChild(msg);
+      this.chatBox.appendChild(msgContainer);
       this.messages.push({ role, content });
       this.chatBox.scrollTop = this.chatBox.scrollHeight;
     }
+    /**
+     * Устанавливает иконку на кнопку-триггер
+     * @param state 'closed' — чат закрыт (показываем иконку сообщения)
+     *               'open'   — чат открыт (показываем иконку закрытия)
+     */
     setIcon(state) {
       if (state === "closed") {
         this.toggleButton.innerHTML = `
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Door frame -->
-          <path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <!-- Arrow pointing out -->
-          <path d="M16 17L21 12L16 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <!-- Arrow baseline -->
-          <path d="M21 12H9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="9" cy="10" r="1.5" fill="white"/>
+          <circle cx="12" cy="10" r="1.5" fill="white"/>
+          <circle cx="15" cy="10" r="1.5" fill="white"/>
         </svg>
       `;
       } else {
         this.toggleButton.innerHTML = `
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Bubble background -->
-          <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <!-- Three dots (typing indicator) -->
-          <circle cx="9" cy="10" r="1.5" fill="currentColor"/>
-          <circle cx="12" cy="10" r="1.5" fill="currentColor"/>
-          <circle cx="15" cy="10" r="1.5" fill="currentColor"/>
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M6 6L18 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       `;
       }

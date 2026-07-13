@@ -59,8 +59,9 @@ class RAGEngine:
             user_content = f"Контекст:\n{context}\n\nВопрос пользователя: {query}"
             messages = [{"role": "system", "content": system_prompt}]
             if history:
-                messages.extend(history[-5:])  # последние 5 сообщений
+                messages.extend(history[-8:])  # последние 8 сообщений
             messages.append({"role": "user", "content": user_content})
+            # logger.info(f"messages:{messages}")
             answer = self.llm.generate(messages)
             return {"answer": answer, "sources": sources}
 
@@ -73,7 +74,7 @@ class RAGEngine:
             )
             messages = [{"role": "system", "content": system_prompt}]
             if history:
-                messages.extend(history[-5:])
+                messages.extend(history[-8:])
             messages.append({"role": "user", "content": query})
             answer = self.llm.generate(messages)
             return {"answer": answer, "sources": []}

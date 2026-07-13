@@ -4,7 +4,7 @@ from groq import Groq
 from backend.llm_provider import LLMProvider
 from typing import List, Dict
 class GroqProvider(LLMProvider):
-    def __init__(self, temperature: float = 0.3, max_tokens: int = 512):
+    def __init__(self, temperature: float = 0.3, max_tokens: int = 2048):
         api_key = os.getenv("GROQ_API_KEY")
         if not api_key:
             raise ValueError("GROQ_API_KEY не задан. Проверьте .env")
