@@ -27,8 +27,7 @@ def get_db_connection():
 def init_db():
     conn = get_db_connection()
     c = conn.cursor()
-    # Таблица feedback уже существует, но добавим поле conversation_id (опционально)
-    # Создаём таблицу tickets
+
      # Создаём таблицу tickets
     c.execute("""
         CREATE TABLE IF NOT EXISTS tickets (

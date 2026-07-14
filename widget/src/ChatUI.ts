@@ -14,15 +14,7 @@ export class ChatUI {
   private lastEngineerAnswer: string = '';
 
   constructor() {
-    // const saved = localStorage.getItem('ticket_id');
-    // if (saved) {
-    //     this.ticketId = parseInt(saved);
-    //     // Если есть активный тикет, начинаем опрос
-    //     if (this.ticketId) {
-    //         console.log(`[ChatUI] Восстановлен тикет #${this.ticketId}, начинаем опрос...`);
-    //         this.startPollingTicket(this.ticketId);
-    //     }
-    // }
+    
     this.buildWidget();
     document.body.appendChild(this.container);
     document.body.appendChild(this.toggleButton);
@@ -274,7 +266,7 @@ export class ChatUI {
       likeBtn.onclick = () => {
         // Меняем фон кнопки, чтобы показать нажатие
         const circle = likeBtn.querySelector('div');
-        if (circle) circle.style.background = '#4caf50'; // зелёный
+        if (circle) circle.style.background = '#4caf50';
         this.sendFeedback(content, answer, 1);
       };
 
@@ -296,7 +288,7 @@ export class ChatUI {
         }else{
            localStorage.setItem('dislikesNum', '0');
         }
-        if (circle) circle.style.background = '#f44336'; // красный
+        if (circle) circle.style.background = '#f44336'; 
         this.sendFeedback(content, answer, -1);
       };
 
