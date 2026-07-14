@@ -1,6 +1,6 @@
 import os
 import logging
-from llama_index.core import VectorStoreIndex, Settings
+from llama_index.core import VectorStoreIndex, Settings, Document
 from llama_index.core.retrievers import VectorIndexRetriever
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from backend.chroma_client import get_vector_store
@@ -78,3 +78,22 @@ class RAGEngine:
             messages.append({"role": "user", "content": query})
             answer = self.llm.generate(messages)
             return {"answer": answer, "sources": []}
+        
+    def add_document(self, text: str, metadata: dict = None):
+        """Добавляет новый документ в векторную базу (для ответов инженера)."""
+        from ingestion.chunker import get_chunker
+        if metadata is None:
+           metadata = {"source": "engineer_response"}
+        for key, value in list(metadata.items()):
+            if isinstance(value, str) and len(value) > 200:
+               metadata[key] = value[:200] + "..."
+
+        doc = Document(text=text, metadata=metadata)
+        chunker = get_chunker()
+        nodes = chunker.get_nodes_from_documents([doc])
+        if nodes:
+           self.index.insert_nodes(nodes)
+           self.index.storage_context.persist(persist_dir="storage")
+           print(f" Добавлен ответ инженера в RAG: {text[:50]}...")
+        else:
+           print(" Не удалось создать узлы для ответа инженера.")

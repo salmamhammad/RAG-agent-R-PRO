@@ -3354,9 +3354,9 @@
 
   // src/api.ts
   var API_URL = "http://localhost:8000";
-  async function sendQuestion(question, history) {
+  async function sendQuestion(question, history, ticketId) {
     try {
-      const response = await axios_default.post(`${API_URL}/chat`, { question, history });
+      const response = await axios_default.post(`${API_URL}/chat`, { question, history, ticketId });
       return response.data;
     } catch (error) {
       console.error("Error in sendQuestion:", error);
@@ -3374,13 +3374,41 @@
       throw error;
     }
   }
+  async function sendFeedback(question, answer, rating, history, comment, ticketId) {
+    try {
+      if (ticketId) {
+        const response2 = await axios_default.post(`${API_URL}/feedback`, { question, answer, rating, comment, history, ticketId });
+        return response2.data;
+      }
+      const response = await axios_default.post(`${API_URL}/feedback`, { question, answer, rating, comment, history });
+      return response.data;
+    } catch (error) {
+      console.error("Error in sendFeedback:", error);
+      if (axios_default.isAxiosError(error)) {
+        const axiosError = error;
+        console.error("Axios error details:", {
+          message: axiosError.message,
+          code: axiosError.code,
+          status: axiosError.response?.status,
+          data: axiosError.response?.data
+        });
+      } else {
+        console.error("Non-Axios error:", error);
+      }
+      throw error;
+    }
+  }
 
   // src/ChatUI.ts
+  var API_BASE = "http://localhost:8000";
   var ChatUI = class {
     constructor() {
       this.messages = [];
       this.isOpen = false;
       this.hasGreeted = false;
+      this.ticketId = null;
+      this.pollingInterval = null;
+      this.lastEngineerAnswer = "";
       this.buildWidget();
       document.body.appendChild(this.container);
       document.body.appendChild(this.toggleButton);
@@ -3516,13 +3544,14 @@
       this.input.disabled = true;
       try {
         const history = this.messages.map((m) => ({ role: m.role, content: m.content }));
-        const response = await sendQuestion(text, history);
+        const response = await sendQuestion(text, history, this.ticketId || void 0);
         this.addMessage("assistant", response.answer);
       } catch (err) {
         this.addMessage("assistant", "\u041E\u0448\u0438\u0431\u043A\u0430 \u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u044F \u043E\u0442\u0432\u0435\u0442\u0430. \u041F\u043E\u043F\u0440\u043E\u0431\u0443\u0439\u0442\u0435 \u043F\u043E\u0437\u0436\u0435.");
         console.error(err);
       } finally {
         this.input.disabled = false;
+        this.input.focus();
       }
     }
     parseMessage(content) {
@@ -3589,6 +3618,45 @@
       `;
         answerDiv.textContent = answer;
         msgContainer.appendChild(answerDiv);
+        const feedbackContainer = document.createElement("div");
+        feedbackContainer.style.cssText = "display: flex; gap: 8px; margin-top: 6px; align-self: flex-start;";
+        const likeBtn = document.createElement("button");
+        likeBtn.style.cssText = "background: transparent; border: none; cursor: pointer; padding: 0;";
+        likeBtn.innerHTML = `
+        <div style="width: 32px; height: 32px; border-radius: 50%; background: #f0f0f0; display: flex; align-items: center; justify-content: center; transition: background 0.2s;">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="color: #555;">
+            <path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/>
+          </svg>
+        </div>
+      `;
+        likeBtn.onclick = () => {
+          const circle = likeBtn.querySelector("div");
+          if (circle) circle.style.background = "#4caf50";
+          this.sendFeedback(content, answer, 1);
+        };
+        const dislikeBtn = document.createElement("button");
+        dislikeBtn.style.cssText = "background: transparent; border: none; cursor: pointer; padding: 0;";
+        dislikeBtn.innerHTML = `
+        <div style="width: 32px; height: 32px; border-radius: 50%; background: #f0f0f0; display: flex; align-items: center; justify-content: center; transition: background 0.2s;">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="color: #555;">
+            <path d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/>
+          </svg>
+        </div>
+      `;
+        dislikeBtn.onclick = () => {
+          const circle = dislikeBtn.querySelector("div");
+          const dislikesNum = localStorage.getItem("dislikesNum");
+          if (dislikesNum) {
+            localStorage.setItem("dislikesNum", dislikesNum + 1);
+          } else {
+            localStorage.setItem("dislikesNum", "0");
+          }
+          if (circle) circle.style.background = "#f44336";
+          this.sendFeedback(content, answer, -1);
+        };
+        feedbackContainer.appendChild(likeBtn);
+        feedbackContainer.appendChild(dislikeBtn);
+        msgContainer.appendChild(feedbackContainer);
       } else {
         const userDiv = document.createElement("div");
         userDiv.style.cssText = `
@@ -3631,6 +3699,79 @@
         </svg>
       `;
       }
+    }
+    async sendFeedback(question, answer, rating) {
+      try {
+        const history = this.messages.map((m) => ({ role: m.role, content: m.content }));
+        const response = await sendFeedback(question, answer, rating, history, void 0, this.ticketId);
+        console.log("[ChatUI] \u041E\u0442\u0432\u0435\u0442 \u0444\u0438\u0434\u0431\u044D\u043A\u0430:", response);
+        const dislikesNum = localStorage.getItem("dislikesNum");
+        if (dislikesNum) {
+          const count = parseInt(dislikesNum, 0);
+          if (count >= 3) {
+            this.ticketId = response.ticket_id;
+            localStorage.setItem("ticket_id", String(response.ticket_id));
+            this.addMessage("assistant", ` \u0418\u043D\u0436\u0435\u043D\u0435\u0440 \u0432\u044B\u0437\u0432\u0430\u043D. \u041D\u043E\u043C\u0435\u0440 \u0437\u0430\u044F\u0432\u043A\u0438 #${response.ticket_id}. \u041E\u0436\u0438\u0434\u0430\u0439\u0442\u0435 \u043E\u0442\u0432\u0435\u0442\u0430.`);
+            this.startPollingTicket(response.ticket_id);
+          } else {
+            console.log("\u0414\u0438\u0437\u043B\u0430\u0439\u043A \u0443\u0447\u0442\u0451\u043D, \u0442\u0438\u043A\u0435\u0442 \u043D\u0435 \u0441\u043E\u0437\u0434\u0430\u043D (\u043C\u0435\u043D\u044C\u0448\u0435 3 \u0434\u0438\u0437\u043B\u0430\u0439\u043A\u043E\u0432 \u0438\u043B\u0438 \u0443\u0436\u0435 \u0435\u0441\u0442\u044C \u0442\u0438\u043A\u0435\u0442)");
+          }
+        } else {
+          console.log("\u0414\u0438\u0437\u043B\u0430\u0439\u043A \u0443\u0447\u0442\u0451\u043D, \u0442\u0438\u043A\u0435\u0442 \u043D\u0435 \u0441\u043E\u0437\u0434\u0430\u043D (\u043C\u0435\u043D\u044C\u0448\u0435 3 \u0434\u0438\u0437\u043B\u0430\u0439\u043A\u043E\u0432 \u0438\u043B\u0438 \u0443\u0436\u0435 \u0435\u0441\u0442\u044C \u0442\u0438\u043A\u0435\u0442)");
+        }
+      } catch (err) {
+        console.error("\u041E\u0448\u0438\u0431\u043A\u0430 \u043E\u0442\u043F\u0440\u0430\u0432\u043A\u0438 \u0444\u0438\u0434\u0431\u044D\u043A\u0430:", err);
+      }
+    }
+    startPollingTicket(ticketId) {
+      if (this.pollingInterval) {
+        clearInterval(this.pollingInterval);
+        this.pollingInterval = null;
+      }
+      console.log(`[ChatUI] \u041D\u0430\u0447\u0438\u043D\u0430\u0435\u043C \u043E\u043F\u0440\u043E\u0441 \u0442\u0438\u043A\u0435\u0442\u0430 #${ticketId}`);
+      this.pollingInterval = setInterval(async () => {
+        try {
+          const url = `${API_BASE}/ticket/${ticketId}`;
+          const resp = await fetch(url);
+          if (!resp.ok) {
+            if (resp.status === 404) {
+              console.warn(`[ChatUI] \u0422\u0438\u043A\u0435\u0442 #${ticketId} \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D, \u043E\u0441\u0442\u0430\u043D\u0430\u0432\u043B\u0438\u0432\u0430\u0435\u043C \u043E\u043F\u0440\u043E\u0441.`);
+              clearInterval(this.pollingInterval);
+              this.pollingInterval = null;
+              localStorage.removeItem("ticket_id");
+              this.ticketId = null;
+              return;
+            }
+            throw new Error(`HTTP ${resp.status}`);
+          }
+          const data = await resp.json();
+          console.log(`[ChatUI] \u0421\u0442\u0430\u0442\u0443\u0441 \u0442\u0438\u043A\u0435\u0442\u0430 #${ticketId}:`, data);
+          if (data.status === "closed") {
+            clearInterval(this.pollingInterval);
+            this.pollingInterval = null;
+            localStorage.removeItem("ticket_id");
+            this.ticketId = null;
+            if (data.answer && data.answer !== this.lastEngineerAnswer) {
+              this.addMessage("assistant", `\u{1F6E0}\uFE0F \u0418\u043D\u0436\u0435\u043D\u0435\u0440 \u043E\u0442\u0432\u0435\u0442\u0438\u043B:
+${data.answer}`);
+              localStorage.setItem("dislikesNum", "0");
+              this.lastEngineerAnswer = data.answer;
+            }
+            this.addMessage("assistant", "\u2705 \u0422\u0438\u043A\u0435\u0442 \u0437\u0430\u043A\u0440\u044B\u0442. \u0415\u0441\u043B\u0438 \u0443 \u0432\u0430\u0441 \u043E\u0441\u0442\u0430\u043B\u0438\u0441\u044C \u0432\u043E\u043F\u0440\u043E\u0441\u044B, \u0437\u0430\u0434\u0430\u0439\u0442\u0435 \u0438\u0445 \u0432 \u043D\u043E\u0432\u043E\u043C \u0434\u0438\u0430\u043B\u043E\u0433\u0435.");
+            return;
+          }
+          if (data.answer && data.answer !== this.lastEngineerAnswer) {
+            this.lastEngineerAnswer = data.answer;
+            this.addMessage("assistant", `\u{1F6E0}\uFE0F \u0418\u043D\u0436\u0435\u043D\u0435\u0440 \u043E\u0442\u0432\u0435\u0442\u0438\u043B:
+${data.answer}`);
+            this.chatBox.scrollTop = this.chatBox.scrollHeight;
+          }
+          if (data.status === "in_progress" && data.answer && data.answer !== this.lastEngineerAnswer) {
+          }
+        } catch (e) {
+          console.error("[ChatUI] \u041E\u0448\u0438\u0431\u043A\u0430 \u043E\u043F\u0440\u043E\u0441\u0430 \u0442\u0438\u043A\u0435\u0442\u0430:", e);
+        }
+      }, 5e3);
     }
   };
 

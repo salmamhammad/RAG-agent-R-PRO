@@ -1,6 +1,6 @@
 // отрисовка UI
 import { sendQuestion, sendFeedback } from './api';
-
+const API_BASE = 'http://localhost:8000'; 
 export class ChatUI {
   private container!: HTMLElement;
   private toggleButton!: HTMLElement;
@@ -9,8 +9,20 @@ export class ChatUI {
   private chatBox!: HTMLElement;
   private isOpen: boolean = false;
   private hasGreeted: boolean = false;
+  private ticketId: number | null = null;
+  private pollingInterval: any = null;
+  private lastEngineerAnswer: string = '';
 
   constructor() {
+    // const saved = localStorage.getItem('ticket_id');
+    // if (saved) {
+    //     this.ticketId = parseInt(saved);
+    //     // Если есть активный тикет, начинаем опрос
+    //     if (this.ticketId) {
+    //         console.log(`[ChatUI] Восстановлен тикет #${this.ticketId}, начинаем опрос...`);
+    //         this.startPollingTicket(this.ticketId);
+    //     }
+    // }
     this.buildWidget();
     document.body.appendChild(this.container);
     document.body.appendChild(this.toggleButton);
@@ -163,13 +175,14 @@ export class ChatUI {
 
     try {
       const history = this.messages.map(m => ({ role: m.role, content: m.content }));
-      const response = await sendQuestion(text, history);
+      const response = await sendQuestion(text, history, this.ticketId || undefined);
       this.addMessage('assistant', response.answer);
     } catch (err) {
       this.addMessage('assistant', 'Ошибка получения ответа. Попробуйте позже.');
       console.error(err);
     } finally {
       this.input.disabled = false;
+      this.input.focus();
     }
   }
 
@@ -244,6 +257,52 @@ export class ChatUI {
       `;
       answerDiv.textContent = answer;
       msgContainer.appendChild(answerDiv);
+      const feedbackContainer = document.createElement('div');
+      feedbackContainer.style.cssText = 'display: flex; gap: 8px; margin-top: 6px; align-self: flex-start;';
+
+      // Кнопка "лайк"
+      const likeBtn = document.createElement('button');
+      likeBtn.style.cssText = 'background: transparent; border: none; cursor: pointer; padding: 0;';
+      likeBtn.innerHTML = `
+        <div style="width: 32px; height: 32px; border-radius: 50%; background: #f0f0f0; display: flex; align-items: center; justify-content: center; transition: background 0.2s;">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="color: #555;">
+            <path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/>
+          </svg>
+        </div>
+      `;
+      // Добавляем обработчик и меняем цвет фона после клика
+      likeBtn.onclick = () => {
+        // Меняем фон кнопки, чтобы показать нажатие
+        const circle = likeBtn.querySelector('div');
+        if (circle) circle.style.background = '#4caf50'; // зелёный
+        this.sendFeedback(content, answer, 1);
+      };
+
+      // Кнопка "дизлайк"
+      const dislikeBtn = document.createElement('button');
+      dislikeBtn.style.cssText = 'background: transparent; border: none; cursor: pointer; padding: 0;';
+      dislikeBtn.innerHTML = `
+        <div style="width: 32px; height: 32px; border-radius: 50%; background: #f0f0f0; display: flex; align-items: center; justify-content: center; transition: background 0.2s;">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="color: #555;">
+            <path d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/>
+          </svg>
+        </div>
+      `;
+      dislikeBtn.onclick = () => {
+        const circle = dislikeBtn.querySelector('div');
+        const dislikesNum=localStorage.getItem('dislikesNum');
+        if(dislikesNum){
+           localStorage.setItem('dislikesNum', dislikesNum+1);
+        }else{
+           localStorage.setItem('dislikesNum', '0');
+        }
+        if (circle) circle.style.background = '#f44336'; // красный
+        this.sendFeedback(content, answer, -1);
+      };
+
+      feedbackContainer.appendChild(likeBtn);
+      feedbackContainer.appendChild(dislikeBtn);
+      msgContainer.appendChild(feedbackContainer);
 
     } else {
       // Сообщение пользователя
@@ -293,5 +352,91 @@ export class ChatUI {
         </svg>
       `;
     }
+  }
+  private async sendFeedback(question: string, answer: string, rating: number) {
+    try {
+        // const ticketId= localStorage.getItem('ticket_id');
+        const history = this.messages.map(m => ({ role: m.role, content: m.content }));
+        const response = await sendFeedback(question, answer, rating, history,undefined, this.ticketId );
+        console.log('[ChatUI] Ответ фидбэка:', response);
+        const dislikesNum=localStorage.getItem('dislikesNum');
+        if (dislikesNum) {
+            const count = parseInt(dislikesNum, 0);
+            if (count >= 3) {
+               // Можно сохранить ticket_id в localStorage для опроса
+               this.ticketId = response.ticket_id;
+               localStorage.setItem('ticket_id', String(response.ticket_id));
+               this.addMessage('assistant', ` Инженер вызван. Номер заявки #${response.ticket_id}. Ожидайте ответа.`);
+               this.startPollingTicket(response.ticket_id);
+               
+        } else {
+            // Если ticket_id нет, значит дизлайк учтён, но инженер не вызван
+            console.log('Дизлайк учтён, тикет не создан (меньше 3 дизлайков или уже есть тикет)');
+        }
+      }else {
+            // Если ticket_id нет, значит дизлайк учтён, но инженер не вызван
+            console.log('Дизлайк учтён, тикет не создан (меньше 3 дизлайков или уже есть тикет)');
+        }
+    } catch (err) {
+        console.error('Ошибка отправки фидбэка:', err);
+    }
+  }
+
+    private startPollingTicket(ticketId: number) {
+    // Останавливаем предыдущий опрос, если был
+    if (this.pollingInterval) {
+      clearInterval(this.pollingInterval);
+      this.pollingInterval = null;
+    }
+    console.log(`[ChatUI] Начинаем опрос тикета #${ticketId}`);
+    this.pollingInterval = setInterval(async () => {
+      try {
+        const url = `${API_BASE}/ticket/${ticketId}`;
+        const resp = await fetch(url);
+        if (!resp.ok) {
+          if (resp.status === 404) {
+            console.warn(`[ChatUI] Тикет #${ticketId} не найден, останавливаем опрос.`);
+            clearInterval(this.pollingInterval);
+            this.pollingInterval = null;
+            localStorage.removeItem('ticket_id');
+            this.ticketId = null;
+            return;
+          }
+          throw new Error(`HTTP ${resp.status}`);
+        }
+        const data = await resp.json();
+        console.log(`[ChatUI] Статус тикета #${ticketId}:`, data);
+
+        // Если тикет закрыт
+        if (data.status === 'closed') {
+          clearInterval(this.pollingInterval);
+          this.pollingInterval = null;
+          localStorage.removeItem('ticket_id');
+          this.ticketId = null;
+          if (data.answer && data.answer !== this.lastEngineerAnswer) {
+            this.addMessage('assistant', `🛠️ Инженер ответил:\n${data.answer}`);
+            localStorage.setItem('dislikesNum', '0');
+            this.lastEngineerAnswer = data.answer;
+          }
+          this.addMessage('assistant', '✅ Тикет закрыт. Если у вас остались вопросы, задайте их в новом диалоге.');
+          return;
+        }
+
+        // Если появился новый ответ от инженера
+        if (data.answer && data.answer !== this.lastEngineerAnswer) {
+          this.lastEngineerAnswer = data.answer;
+          this.addMessage('assistant', `🛠️ Инженер ответил:\n${data.answer}`);
+          // Прокручиваем вниз
+          this.chatBox.scrollTop = this.chatBox.scrollHeight;
+        }
+
+        // Если статус изменился на in_progress и ранее не было ответа
+        if (data.status === 'in_progress' && data.answer && data.answer !== this.lastEngineerAnswer) {
+          // уже обработано выше
+        }
+      } catch (e) {
+        console.error('[ChatUI] Ошибка опроса тикета:', e);
+      }
+    }, 5000); // каждые 5 секунд
   }
 }

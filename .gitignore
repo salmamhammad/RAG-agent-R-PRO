@@ -1,6 +1,7 @@
 /chroma_db
 /data
 /log
+/storage
 /venv
 .env
 test_chat.py
