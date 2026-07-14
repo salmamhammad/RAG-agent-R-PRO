@@ -21,6 +21,11 @@ python check_chroma.py // проверить текущие чанки
 uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
 python -m http.server 3000            
 ```
+страница для чата с ИИ:
+http://localhost:3000/test_widget.html
+
+страница для инженерной поддержки:
+http://localhost:8000/static/engineer.html
 
 # Установка chmlib или p7zip
 Linux (Debian/Ubuntu):
