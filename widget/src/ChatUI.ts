@@ -12,6 +12,7 @@ export class ChatUI {
   private ticketId: number | null = null;
   private pollingInterval: any = null;
   private lastEngineerAnswer: string = '';
+  private dislikesNum: number =0;
 
   constructor() {
     
@@ -169,6 +170,14 @@ export class ChatUI {
       const history = this.messages.map(m => ({ role: m.role, content: m.content }));
       const response = await sendQuestion(text, history, this.ticketId || undefined);
       this.addMessage('assistant', response.answer);
+      console.log('[ChatUI] тикет:', this.ticketId);
+      if (response.ticket_id) {
+            this.ticketId = response.ticket_id;
+            
+            // localStorage.setItem('ticket_id', String(response.ticket_id));
+            this.addMessage('assistant', ` Инженер вызван. Номер заявки #${response.ticket_id}. Ожидайте ответа.`);
+            this.startPollingTicket(response.ticket_id);
+      }
     } catch (err) {
       this.addMessage('assistant', 'Ошибка получения ответа. Попробуйте позже.');
       console.error(err);
@@ -282,12 +291,8 @@ export class ChatUI {
       `;
       dislikeBtn.onclick = () => {
         const circle = dislikeBtn.querySelector('div');
-        const dislikesNum=localStorage.getItem('dislikesNum');
-        if(dislikesNum){
-           localStorage.setItem('dislikesNum', dislikesNum+1);
-        }else{
-           localStorage.setItem('dislikesNum', '0');
-        }
+        this.dislikesNum++;
+      
         if (circle) circle.style.background = '#f44336'; 
         this.sendFeedback(content, answer, -1);
       };
@@ -351,24 +356,18 @@ export class ChatUI {
         const history = this.messages.map(m => ({ role: m.role, content: m.content }));
         const response = await sendFeedback(question, answer, rating, history,undefined, this.ticketId );
         console.log('[ChatUI] Ответ фидбэка:', response);
-        const dislikesNum=localStorage.getItem('dislikesNum');
-        if (dislikesNum) {
-            const count = parseInt(dislikesNum, 0);
-            if (count >= 3) {
+        
+        if (this.dislikesNum>= 3) {
                // Можно сохранить ticket_id в localStorage для опроса
                this.ticketId = response.ticket_id;
-               localStorage.setItem('ticket_id', String(response.ticket_id));
+              //  localStorage.setItem('ticket_id', String(response.ticket_id));
                this.addMessage('assistant', ` Инженер вызван. Номер заявки #${response.ticket_id}. Ожидайте ответа.`);
-               this.startPollingTicket(response.ticket_id);
-               
+               this.startPollingTicket(response.ticket_id);   
         } else {
             // Если ticket_id нет, значит дизлайк учтён, но инженер не вызван
             console.log('Дизлайк учтён, тикет не создан (меньше 3 дизлайков или уже есть тикет)');
         }
-      }else {
-            // Если ticket_id нет, значит дизлайк учтён, но инженер не вызван
-            console.log('Дизлайк учтён, тикет не создан (меньше 3 дизлайков или уже есть тикет)');
-        }
+      
     } catch (err) {
         console.error('Ошибка отправки фидбэка:', err);
     }
@@ -407,7 +406,7 @@ export class ChatUI {
           this.ticketId = null;
           if (data.answer && data.answer !== this.lastEngineerAnswer) {
             this.addMessage('assistant', `🛠️ Инженер ответил:\n${data.answer}`);
-            localStorage.setItem('dislikesNum', '0');
+            this.dislikesNum=0;
             this.lastEngineerAnswer = data.answer;
           }
           this.addMessage('assistant', '✅ Тикет закрыт. Если у вас остались вопросы, задайте их в новом диалоге.');

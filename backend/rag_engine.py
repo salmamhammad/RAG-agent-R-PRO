@@ -52,8 +52,8 @@ class RAGEngine:
             context = "\n\n".join([node.get_content() for node in nodes])
             sources = format_sources(nodes, max_text_len=200)
             system_prompt = (
-                "Ты — ИИ-помощник техподдержки. Отвечай строго на основе предоставленного контекста. "
-                "Если ответа нет в контексте, честно скажи, что не знаешь, и предложи обратиться к инженеру. "
+                "Ты — ИИ-помощник техподдержки. поприветствуй пользователя "
+                "Отвечай строго на основе предоставленного контекста. "
                 "Не выдумывай информацию. Отвечай на русском языке."
             )
             user_content = f"Контекст:\n{context}\n\nВопрос пользователя: {query}"
@@ -63,21 +63,23 @@ class RAGEngine:
             messages.append({"role": "user", "content": user_content})
             # logger.info(f"messages:{messages}")
             answer = self.llm.generate(messages)
-            return {"answer": answer, "sources": sources}
+            return {"answer": answer, "sources": sources, "has_context": True}
 
         # Если нет релевантных чанков
         else:
-            logger.info(f"failure: true...")
+            logger.info(f"node: false")
             # Обычный ответ "не знаю" через LLM 
             system_prompt = (
-              "не нашёл в базе знаний, обратитесь к инженеру "
+              "честно скажи, что не знаешь,"
+              "не нашёл в базе знаний,  обратитесь к инженеру "
+              "Не выдумывай информацию. Отвечай на русском языке."
             )
             messages = [{"role": "system", "content": system_prompt}]
             if history:
                 messages.extend(history[-8:])
             messages.append({"role": "user", "content": query})
             answer = self.llm.generate(messages)
-            return {"answer": answer, "sources": []}
+            return {"answer": answer, "sources": [], "has_context": False}
         
     def add_document(self, text: str, metadata: dict = None):
         """Добавляет новый документ в векторную базу (для ответов инженера)."""

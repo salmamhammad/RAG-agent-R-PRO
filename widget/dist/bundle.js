@@ -3409,6 +3409,7 @@
       this.ticketId = null;
       this.pollingInterval = null;
       this.lastEngineerAnswer = "";
+      this.dislikesNum = 0;
       this.buildWidget();
       document.body.appendChild(this.container);
       document.body.appendChild(this.toggleButton);
@@ -3546,6 +3547,12 @@
         const history = this.messages.map((m) => ({ role: m.role, content: m.content }));
         const response = await sendQuestion(text, history, this.ticketId || void 0);
         this.addMessage("assistant", response.answer);
+        console.log("[ChatUI] \u0442\u0438\u043A\u0435\u0442:", this.ticketId);
+        if (response.ticket_id) {
+          this.ticketId = response.ticket_id;
+          this.addMessage("assistant", ` \u0418\u043D\u0436\u0435\u043D\u0435\u0440 \u0432\u044B\u0437\u0432\u0430\u043D. \u041D\u043E\u043C\u0435\u0440 \u0437\u0430\u044F\u0432\u043A\u0438 #${response.ticket_id}. \u041E\u0436\u0438\u0434\u0430\u0439\u0442\u0435 \u043E\u0442\u0432\u0435\u0442\u0430.`);
+          this.startPollingTicket(response.ticket_id);
+        }
       } catch (err) {
         this.addMessage("assistant", "\u041E\u0448\u0438\u0431\u043A\u0430 \u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u044F \u043E\u0442\u0432\u0435\u0442\u0430. \u041F\u043E\u043F\u0440\u043E\u0431\u0443\u0439\u0442\u0435 \u043F\u043E\u0437\u0436\u0435.");
         console.error(err);
@@ -3645,12 +3652,7 @@
       `;
         dislikeBtn.onclick = () => {
           const circle = dislikeBtn.querySelector("div");
-          const dislikesNum = localStorage.getItem("dislikesNum");
-          if (dislikesNum) {
-            localStorage.setItem("dislikesNum", dislikesNum + 1);
-          } else {
-            localStorage.setItem("dislikesNum", "0");
-          }
+          this.dislikesNum++;
           if (circle) circle.style.background = "#f44336";
           this.sendFeedback(content, answer, -1);
         };
@@ -3705,17 +3707,10 @@
         const history = this.messages.map((m) => ({ role: m.role, content: m.content }));
         const response = await sendFeedback(question, answer, rating, history, void 0, this.ticketId);
         console.log("[ChatUI] \u041E\u0442\u0432\u0435\u0442 \u0444\u0438\u0434\u0431\u044D\u043A\u0430:", response);
-        const dislikesNum = localStorage.getItem("dislikesNum");
-        if (dislikesNum) {
-          const count = parseInt(dislikesNum, 0);
-          if (count >= 3) {
-            this.ticketId = response.ticket_id;
-            localStorage.setItem("ticket_id", String(response.ticket_id));
-            this.addMessage("assistant", ` \u0418\u043D\u0436\u0435\u043D\u0435\u0440 \u0432\u044B\u0437\u0432\u0430\u043D. \u041D\u043E\u043C\u0435\u0440 \u0437\u0430\u044F\u0432\u043A\u0438 #${response.ticket_id}. \u041E\u0436\u0438\u0434\u0430\u0439\u0442\u0435 \u043E\u0442\u0432\u0435\u0442\u0430.`);
-            this.startPollingTicket(response.ticket_id);
-          } else {
-            console.log("\u0414\u0438\u0437\u043B\u0430\u0439\u043A \u0443\u0447\u0442\u0451\u043D, \u0442\u0438\u043A\u0435\u0442 \u043D\u0435 \u0441\u043E\u0437\u0434\u0430\u043D (\u043C\u0435\u043D\u044C\u0448\u0435 3 \u0434\u0438\u0437\u043B\u0430\u0439\u043A\u043E\u0432 \u0438\u043B\u0438 \u0443\u0436\u0435 \u0435\u0441\u0442\u044C \u0442\u0438\u043A\u0435\u0442)");
-          }
+        if (this.dislikesNum >= 3) {
+          this.ticketId = response.ticket_id;
+          this.addMessage("assistant", ` \u0418\u043D\u0436\u0435\u043D\u0435\u0440 \u0432\u044B\u0437\u0432\u0430\u043D. \u041D\u043E\u043C\u0435\u0440 \u0437\u0430\u044F\u0432\u043A\u0438 #${response.ticket_id}. \u041E\u0436\u0438\u0434\u0430\u0439\u0442\u0435 \u043E\u0442\u0432\u0435\u0442\u0430.`);
+          this.startPollingTicket(response.ticket_id);
         } else {
           console.log("\u0414\u0438\u0437\u043B\u0430\u0439\u043A \u0443\u0447\u0442\u0451\u043D, \u0442\u0438\u043A\u0435\u0442 \u043D\u0435 \u0441\u043E\u0437\u0434\u0430\u043D (\u043C\u0435\u043D\u044C\u0448\u0435 3 \u0434\u0438\u0437\u043B\u0430\u0439\u043A\u043E\u0432 \u0438\u043B\u0438 \u0443\u0436\u0435 \u0435\u0441\u0442\u044C \u0442\u0438\u043A\u0435\u0442)");
         }
@@ -3754,7 +3749,7 @@
             if (data.answer && data.answer !== this.lastEngineerAnswer) {
               this.addMessage("assistant", `\u{1F6E0}\uFE0F \u0418\u043D\u0436\u0435\u043D\u0435\u0440 \u043E\u0442\u0432\u0435\u0442\u0438\u043B:
 ${data.answer}`);
-              localStorage.setItem("dislikesNum", "0");
+              this.dislikesNum = 0;
               this.lastEngineerAnswer = data.answer;
             }
             this.addMessage("assistant", "\u2705 \u0422\u0438\u043A\u0435\u0442 \u0437\u0430\u043A\u0440\u044B\u0442. \u0415\u0441\u043B\u0438 \u0443 \u0432\u0430\u0441 \u043E\u0441\u0442\u0430\u043B\u0438\u0441\u044C \u0432\u043E\u043F\u0440\u043E\u0441\u044B, \u0437\u0430\u0434\u0430\u0439\u0442\u0435 \u0438\u0445 \u0432 \u043D\u043E\u0432\u043E\u043C \u0434\u0438\u0430\u043B\u043E\u0433\u0435.");

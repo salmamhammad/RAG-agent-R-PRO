@@ -6,7 +6,7 @@ const API_URL = 'http://localhost:8000';
 export async function sendQuestion(question: string, history: any[], ticketId?: number) {
   try {
     const response = await axios.post(`${API_URL}/chat`, { question, history , ticketId});
-    return response.data; // { answer, sources }
+    return response.data; // { answer, sources, ticket_id }
   } catch (error) {
     console.error('Error in sendQuestion:', error);
     if (axios.isAxiosError(error)) {

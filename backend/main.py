@@ -43,6 +43,7 @@ async def chat(request: ChatRequest):
     logger.info(f"Новый запрос: {request.question[:100]}...")
     try:
         ####1##
+        ticket_id = None
         if request.ticketId:
            ticket = get_ticket(request.ticketId)
            if ticket and ticket["status"] != "closed":
@@ -58,7 +59,19 @@ async def chat(request: ChatRequest):
         end = now_iso()
         logger.info(f"Ответ отправлен, длина: {len(result['answer'])}")
         logger.info(f"Обработано за {end} - {start}")
-        return ChatResponse(**result)
+        logger.info(f"result : {result["has_context"]}")
+        if not result["has_context"]:
+            if request.ticketId:
+                ticket_id = update_ticket(request.ticketId, request.question, request.history)
+                logger.info(f"Создан  тикет #{ticket_id} для вопроса без контекста")
+            else:
+                ticket_id = create_ticket(request.question, request.history)
+                logger.info(f"Использаван  тикет #{ticket_id} для вопроса без контекста")
+        return ChatResponse(
+            answer=result["answer"],
+            sources=result["sources"],
+            ticket_id=ticket_id
+        )
     except Exception as e:
         logger.error(f"Ошибка: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))

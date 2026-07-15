@@ -1,124 +1,328 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Панель инженера</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; height: 100vh; display: flex; flex-direction: column; }
-        /* Шапка */
-        .header { background: #1a1a2e; color: white; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
-        .header h1 { display: flex; align-items: center; gap: 10px; font-size: 20px; }
-        .header .badge { background: #e94560; padding: 4px 12px; border-radius: 20px; font-size: 14px; }
-        /* Основной контейнер */
-        .main { display: flex; flex: 1; overflow: hidden; }
-        /* Левая панель (список) */
-        .sidebar { width: 320px; background: white; border-right: 1px solid #ddd; overflow-y: auto; padding: 12px; }
-        .sidebar .filter { display: flex; gap: 8px; margin-bottom: 12px; }
-        .sidebar .filter button { padding: 4px 12px; border: 1px solid #ccc; background: white; border-radius: 4px; cursor: pointer; }
-        .sidebar .filter button.active { background: #0055aa; color: white; border-color: #0055aa; }
-        .ticket-item { padding: 10px; margin-bottom: 6px; border-radius: 6px; cursor: pointer; transition: background 0.2s; border-left: 4px solid transparent; }
-        .ticket-item:hover { background: #f0f4ff; }
-        .ticket-item.active { background: #e6f0ff; border-left-color: #0055aa; }
-        .ticket-item .id { font-weight: bold; font-size: 13px; color: #555; }
-        .ticket-item .question { font-size: 14px; margin: 4px 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .ticket-item .meta { font-size: 12px; color: #888; display: flex; gap: 12px; }
-        .ticket-item .status { padding: 2px 8px; border-radius: 12px; font-size: 11px; }
-        .status.pending { background: #fff3cd; color: #856404; }
-        .status.answered { background: #d4edda; color: #155724; }
-        /* Правая панель (детали) */
-        .detail { flex: 1; padding: 20px; overflow-y: auto; background: white; margin: 12px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-        .detail .empty { color: #999; text-align: center; margin-top: 40px; }
-        .detail .ticket-header { margin-bottom: 16px; }
-        .detail .ticket-header .q { font-size: 12px; font-weight: 300; }
-        .detail .history { background: #f9f9f9; padding: 12px; border-radius: 6px; max-height: 300px; overflow-y: auto; }
-        .detail .history .msg { margin-bottom: 6px; display: grid; gap: 8px; }
-        .detail .history .msg .role { font-weight: 600; min-width: 80px; }
-        .detail .history .msg .role.user { color: #0288d1; }
-        .detail .history .msg .role.assistant { color: #333; }
-        .detail .history .msg .thought { background: #f0f0f0; padding: 4px 8px; border-radius: 4px; font-style: italic; color: #555; font-size: 0.9em; }
-        .detail .history .msg .answer { background: white; padding: 4px 8px; border-radius: 4px; }
-        .detail .answer-form { margin-top: 16px; }
-        .detail .answer-form textarea { width: 100%; height: 100px; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
-        .detail .answer-form button { margin-top: 8px; background: #0055aa; color: white; border: none; padding: 8px 20px; border-radius: 4px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
-        .detail .answer-form button:hover { background: #003d7a; }
-        .detail .answered-answer { background: #e8f5e9; padding: 12px; border-radius: 6px; margin-top: 12px; }
-        .detail .answered-answer strong { display: block; margin-bottom: 4px; }
-        /* Иконки SVG */
-        .svg-icon { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
-        .flex { display: flex; align-items: center; gap: 6px; }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: #f0f2f5;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      /* Шапка */
+      .header {
+        background: #1a1a2e;
+        color: white;
+        padding: 16px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .header h1 {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 20px;
+      }
+      .header .badge {
+        background: #e94560;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 14px;
+      }
+      /* Основной контейнер */
+      .main {
+        display: flex;
+        flex: 1;
+        overflow: hidden;
+      }
+      /* Левая панель (список) */
+      .sidebar {
+        width: 320px;
+        background: white;
+        border-right: 1px solid #ddd;
+        overflow-y: auto;
+        padding: 12px;
+      }
+      .sidebar .filter {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+      .sidebar .filter button {
+        padding: 4px 12px;
+        border: 1px solid #ccc;
+        background: white;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .sidebar .filter button.active {
+        background: #0055aa;
+        color: white;
+        border-color: #0055aa;
+      }
+      .ticket-item {
+        padding: 10px;
+        margin-bottom: 6px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.2s;
+        border-left: 4px solid transparent;
+      }
+      .ticket-item:hover {
+        background: #f0f4ff;
+      }
+      .ticket-item.active {
+        background: #e6f0ff;
+        border-left-color: #0055aa;
+      }
+      .ticket-item .id {
+        font-weight: bold;
+        font-size: 13px;
+        color: #555;
+      }
+      .ticket-item .question {
+        font-size: 14px;
+        margin: 4px 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .ticket-item .meta {
+        font-size: 12px;
+        color: #888;
+        display: flex;
+        gap: 12px;
+      }
+      .ticket-item .status {
+        padding: 2px 8px;
+        border-radius: 12px;
+        font-size: 11px;
+      }
+      .status.pending {
+        background: #fff3cd;
+        color: #856404;
+      }
+      .status.answered {
+        background: #d4edda;
+        color: #155724;
+      }
+      /* Правая панель (детали) */
+      .detail {
+        flex: 1;
+        padding: 20px;
+        overflow-y: auto;
+        background: white;
+        margin: 12px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      }
+      .detail .empty {
+        color: #999;
+        text-align: center;
+        margin-top: 40px;
+      }
+      .detail .ticket-header {
+        margin-bottom: 16px;
+      }
+      .detail .ticket-header .q {
+        font-size: 12px;
+        font-weight: 300;
+      }
+      .detail .history {
+        background: #f9f9f9;
+        padding: 12px;
+        border-radius: 6px;
+        max-height: 300px;
+        overflow-y: auto;
+      }
+      .detail .history .msg {
+        margin-bottom: 6px;
+        display: grid;
+        gap: 8px;
+      }
+      .detail .history .msg .role {
+        font-weight: 600;
+        min-width: 80px;
+      }
+      .detail .history .msg .role.user {
+        color: #0288d1;
+      }
+      .detail .history .msg .role.assistant {
+        color: #333;
+      }
+      .detail .history .msg .thought {
+        background: #f0f0f0;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-style: italic;
+        color: #555;
+        font-size: 0.9em;
+      }
+      .detail .history .msg .answer {
+        background: white;
+        padding: 4px 8px;
+        border-radius: 4px;
+      }
+      .detail .answer-form {
+        margin-top: 16px;
+      }
+      .detail .answer-form textarea {
+        width: 100%;
+        height: 100px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      .detail .answer-form button {
+        margin-top: 8px;
+        background: #0055aa;
+        color: white;
+        border: none;
+        padding: 8px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .detail .answer-form button:hover {
+        background: #003d7a;
+      }
+      .detail .answered-answer {
+        background: #e8f5e9;
+        padding: 12px;
+        border-radius: 6px;
+        margin-top: 12px;
+      }
+      .detail .answered-answer strong {
+        display: block;
+        margin-bottom: 4px;
+      }
+      /* Иконки SVG */
+      .svg-icon {
+        width: 18px;
+        height: 18px;
+        fill: currentColor;
+        flex-shrink: 0;
+      }
+      .flex {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="header">
-        <h1>
-            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm0 12c-2.33 0-4.31-1.46-5.11-3.5h10.22c-.8 2.04-2.78 3.5-5.11 3.5z"/></svg>
-            Панель инженера
-        </h1>
-        <div>
-            <span class="badge" id="pendingBadge">0</span>
-            <button onclick="loadTickets()" style="margin-left:12px;background:#0055aa;color:#fff;border:none;padding:6px 12px;border-radius:4px;cursor:pointer;">Обновить</button>
-        </div>
+      <h1>
+        <svg class="svg-icon" viewBox="0 0 24 24">
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm0 12c-2.33 0-4.31-1.46-5.11-3.5h10.22c-.8 2.04-2.78 3.5-5.11 3.5z"
+          />
+        </svg>
+        Панель инженера
+      </h1>
+      <div>
+        <span class="badge" id="pendingBadge">0</span>
+        <button
+          onclick="loadTickets()"
+          style="
+            margin-left: 12px;
+            background: #0055aa;
+            color: #fff;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+          "
+        >
+          Обновить
+        </button>
+      </div>
     </div>
     <div class="main">
-        <!-- Левая панель -->
-        <div class="sidebar">
-            <div class="filter">
-                <button class="active" data-filter="all" onclick="setFilter('all')">Все</button>
-                <button data-filter="pending" onclick="setFilter('pending')">Ожидают</button>
-                <button data-filter="answered" onclick="setFilter('answered')">Отвечены</button>
-            </div>
-            <div id="ticketList"></div>
+      <!-- Левая панель -->
+      <div class="sidebar">
+        <div class="filter">
+          <button class="active" data-filter="all" onclick="setFilter('all')">
+            Все
+          </button>
+          <button data-filter="pending" onclick="setFilter('pending')">
+            Ожидают
+          </button>
+          <button data-filter="answered" onclick="setFilter('answered')">
+            Отвечены
+          </button>
         </div>
-        <!-- Правая панель -->
-        <div class="detail" id="detailPanel">
-            <div class="empty">Выберите тикет для просмотра</div>
-        </div>
+        <div id="ticketList"></div>
+      </div>
+      <!-- Правая панель -->
+      <div class="detail" id="detailPanel">
+        <div class="empty">Выберите тикет для просмотра</div>
+      </div>
     </div>
 
     <script>
-        // SVG иконки (можно использовать те же, что и ранее)
-        const ICONS = {
-            user: `<svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>`,
-            agent: `<svg class="svg-icon" viewBox="0 0 24 24"><path d="M21 9h-2V7c0-1.1-.9-2-2-2H7c-1.1 0-2 .9-2 2v2H3c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2v-6c0-1.1-.9-2-2-2zm-8 3c0 .55-.45 1-1 1s-1-.45-1-1v-3c0-.55.45-1 1-1s1 .45 1 1v3zM7 9V7h10v2H7zm12 2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1z"/></svg>`,
-            history: `<svg class="svg-icon" viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm4 12H8v-2h8v2zm0-4H8V9h8v2z"/></svg>`,
-            send: `<svg class="svg-icon" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>`,
-            question: `<svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2-7.18c-.31.33-.7.6-1.17.82-.37.18-.83.34-1.16.59-.32.24-.58.55-.76.91-.18.36-.27.76-.27 1.18h-2c0-.61.15-1.18.45-1.68.3-.5.73-.88 1.19-1.14.55-.32 1.07-.63 1.42-1.01.36-.37.54-.83.54-1.38 0-.55-.18-1.01-.54-1.38-.36-.37-.82-.55-1.38-.55-.55 0-1.01.18-1.38.55-.36.37-.54.83-.54 1.38h-2c0-1.1.39-2.05 1.17-2.83.78-.78 1.73-1.17 2.83-1.17 1.1 0 2.05.39 2.83 1.17.78.78 1.17 1.73 1.17 2.83 0 .82-.29 1.54-.83 2.14z"/></svg>`,
-            thought: `<svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2-7.18c-.31.33-.7.6-1.17.82-.37.18-.83.34-1.16.59-.32.24-.58.55-.76.91-.18.36-.27.76-.27 1.18h-2c0-.61.15-1.18.45-1.68.3-.5.73-.88 1.19-1.14.55-.32 1.07-.63 1.42-1.01.36-.37.54-.83.54-1.38 0-.55-.18-1.01-.54-1.38-.36-.37-.82-.55-1.38-.55-.55 0-1.01.18-1.38.55-.36.37-.54.83-.54 1.38h-2c0-1.1.39-2.05 1.17-2.83.78-.78 1.73-1.17 2.83-1.17 1.1 0 2.05.39 2.83 1.17.78.78 1.17 1.73 1.17 2.83 0 .82-.29 1.54-.83 2.14z"/></svg>`,
-            list:`<svg class="svg-icon" viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm4 12H8v-2h8v2zm0-4H8V9h8v2z"/></svg>`,
-            currect:`<svg class="svg-icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>`,
-            waiting:`<svg class="svg-icon" viewBox="0 0 24 24"><path d="M6 2v6h.01L6 8.01 10 12l-4 4 .01.01H6V22h12v-6h-.01L18 16l-4-4 4-3.99-.01-.01H18V2H6zm10 14.5V20H8v-3.5l4-4 4 4zm-4-5l-4-4V4h8v3.5l-4 4z"/></svg>`
-          
-        };
+      // SVG иконки (можно использовать те же, что и ранее)
+      const ICONS = {
+        user: `<svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>`,
+        agent: `<svg class="svg-icon" viewBox="0 0 24 24"><path d="M21 9h-2V7c0-1.1-.9-2-2-2H7c-1.1 0-2 .9-2 2v2H3c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2v-6c0-1.1-.9-2-2-2zm-8 3c0 .55-.45 1-1 1s-1-.45-1-1v-3c0-.55.45-1 1-1s1 .45 1 1v3zM7 9V7h10v2H7zm12 2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1z"/></svg>`,
+        history: `<svg class="svg-icon" viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm4 12H8v-2h8v2zm0-4H8V9h8v2z"/></svg>`,
+        send: `<svg class="svg-icon" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>`,
+        question: `<svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2-7.18c-.31.33-.7.6-1.17.82-.37.18-.83.34-1.16.59-.32.24-.58.55-.76.91-.18.36-.27.76-.27 1.18h-2c0-.61.15-1.18.45-1.68.3-.5.73-.88 1.19-1.14.55-.32 1.07-.63 1.42-1.01.36-.37.54-.83.54-1.38 0-.55-.18-1.01-.54-1.38-.36-.37-.82-.55-1.38-.55-.55 0-1.01.18-1.38.55-.36.37-.54.83-.54 1.38h-2c0-1.1.39-2.05 1.17-2.83.78-.78 1.73-1.17 2.83-1.17 1.1 0 2.05.39 2.83 1.17.78.78 1.17 1.73 1.17 2.83 0 .82-.29 1.54-.83 2.14z"/></svg>`,
+        thought: `<svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2-7.18c-.31.33-.7.6-1.17.82-.37.18-.83.34-1.16.59-.32.24-.58.55-.76.91-.18.36-.27.76-.27 1.18h-2c0-.61.15-1.18.45-1.68.3-.5.73-.88 1.19-1.14.55-.32 1.07-.63 1.42-1.01.36-.37.54-.83.54-1.38 0-.55-.18-1.01-.54-1.38-.36-.37-.82-.55-1.38-.55-.55 0-1.01.18-1.38.55-.36.37-.54.83-.54 1.38h-2c0-1.1.39-2.05 1.17-2.83.78-.78 1.73-1.17 2.83-1.17 1.1 0 2.05.39 2.83 1.17.78.78 1.17 1.73 1.17 2.83 0 .82-.29 1.54-.83 2.14z"/></svg>`,
+        list: `<svg class="svg-icon" viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm4 12H8v-2h8v2zm0-4H8V9h8v2z"/></svg>`,
+        currect: `<svg class="svg-icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>`,
+        waiting: `<svg class="svg-icon" viewBox="0 0 24 24"><path d="M6 2v6h.01L6 8.01 10 12l-4 4 .01.01H6V22h12v-6h-.01L18 16l-4-4 4-3.99-.01-.01H18V2H6zm10 14.5V20H8v-3.5l4-4 4 4zm-4-5l-4-4V4h8v3.5l-4 4z"/></svg>`,
+      };
 
-        let allTickets = [];
-        let currentFilter = 'all';
-        let selectedTicketId = null;
-        let detailPollInterval = null;
-        function setFilter(filter) {
-            currentFilter = filter;
-            document.querySelectorAll('.filter button').forEach(b => b.classList.remove('active'));
-            document.querySelector(`.filter button[data-filter="${filter}"]`).classList.add('active');
-            renderList();
+      let allTickets = [];
+      let currentFilter = "all";
+      let selectedTicketId = null;
+      let detailPollInterval = null;
+      function setFilter(filter) {
+        currentFilter = filter;
+        document
+          .querySelectorAll(".filter button")
+          .forEach((b) => b.classList.remove("active"));
+        document
+          .querySelector(`.filter button[data-filter="${filter}"]`)
+          .classList.add("active");
+        renderList();
+      }
+
+      function renderList() {
+        const container = document.getElementById("ticketList");
+        const filtered = allTickets.filter((t) => {
+          if (currentFilter === "all") return true;
+          return t.status === currentFilter;
+        });
+        if (filtered.length === 0) {
+          container.innerHTML =
+            '<div style="color:#999;text-align:center;padding:20px;">Нет тикетов</div>';
+          return;
         }
-
-        function renderList() {
-            const container = document.getElementById('ticketList');
-            const filtered = allTickets.filter(t => {
-                if (currentFilter === 'all') return true;
-                return t.status === currentFilter;
-            });
-            if (filtered.length === 0) {
-                container.innerHTML = '<div style="color:#999;text-align:center;padding:20px;">Нет тикетов</div>';
-                return;
-            }
-            let html = '';
-            filtered.forEach(t => {
-                const active = t.id === selectedTicketId ? 'active' : '';
-                const statusText = t.status === 'pending' || 'in_progress' ? `${ICONS.waiting} Ожидает` : `${ICONS.currect} Отвечен`;
-                const statusClass = t.status;
-                const questionShort = t.question.length > 60 ? t.question.slice(0,60)+'...' : t.question;
-                html += `
+        let html = "";
+        filtered.forEach((t) => {
+          const active = t.id === selectedTicketId ? "active" : "";
+          const statusText =
+            t.status === "pending" || "in_progress"
+              ? `${ICONS.waiting} Ожидает`
+              : `${ICONS.currect} Отвечен`;
+          const statusClass = t.status;
+          const questionShort =
+            t.question.length > 60
+              ? t.question.slice(0, 60) + "..."
+              : t.question;
+          html += `
                     <div class="ticket-item ${active}" onclick="selectTicket(${t.id})">
                         <div class="id">#${t.id}</div>
                         <div class="question">${questionShort}</div>
@@ -128,193 +332,223 @@
                         </div>
                     </div>
                 `;
-            });
-            container.innerHTML = html;
-            // Обновляем бейдж с количеством ожидающих
-            const pendingCount = allTickets.filter(t => t.status === 'pending').length;
-            document.getElementById('pendingBadge').textContent = pendingCount;
-        }
+        });
+        container.innerHTML = html;
+        // Обновляем бейдж с количеством ожидающих
+        const pendingCount = allTickets.filter(
+          (t) => t.status === "pending",
+        ).length;
+        document.getElementById("pendingBadge").textContent = pendingCount;
+      }
 
-        function selectTicket(id) {
-            selectedTicketId = id;
-            // Подсвечиваем в списке
-            renderList();
-            // Загружаем детали
-            loadTicketDetail(id);
-            // Останавливаем предыдущий опрос, если был
-            if (detailPollInterval) {
-              clearInterval(detailPollInterval);
-              detailPollInterval = null;
-            }
-            // Запускаем опрос деталей каждые 5 секунд
-            detailPollInterval = setInterval(() => {
-               fetch(`/ticket/${id}`)
-                   .then(res => res.json())
-                   .then(ticket => {
-                      // Если тикет закрыт, останавливаем опрос
-                      if (ticket.status === 'closed') {
-                          clearInterval(detailPollInterval);
-                          detailPollInterval = null;
-                       }
-                      // Обновляем детали
-                      showDetail(ticket);
-                  })
-                  .catch(err => console.error('Ошибка обновления деталей:', err));
-            }, 5000);
+      function selectTicket(id) {
+        selectedTicketId = id;
+        renderList();
+        loadTicketDetail(id);
+        // Останавливаем предыдущий интервал, если он есть
+        if (detailPollInterval) {
+          clearInterval(detailPollInterval);
+          detailPollInterval = null;
         }
-        function loadTicketDetail(id) {
-           fetch(`/ticket/${id}`)
-            .then(res => res.json())
-            .then(ticket => showDetail(ticket))
-            .catch(err => {
-                document.getElementById('detailPanel').innerHTML = '<div class="empty">Ошибка загрузки тикета</div>';
-            });
-        }
-        function formatAssistantMessage(content) {
-            const thinkMatch = content.match(/<think>([\s\S]*?)<\/think>/);
-            if (thinkMatch) {
-                const thought = thinkMatch[1].trim();
-                const answer = content.replace(/<think>[\s\S]*?<\/think>/, '').trim();
-                return `
+        // Запускаем новый опрос каждые 5 секунд
+        detailPollInterval = setInterval(() => {
+          fetch(`/ticket/${id}`)
+            .then((res) => res.json())
+            .then((ticket) => {
+              // Если тикет закрыт, останавливаем опрос
+              if (ticket.status === "closed") {
+                console.log(
+                  `[Engineer] Тикет #${id} закрыт, останавливаем опрос`,
+                );
+                clearInterval(detailPollInterval);
+                detailPollInterval = null;
+              }
+              // Обновляем детали (перерисовываем панель)
+              showDetail(ticket);
+            })
+            .catch((err) => console.error("Ошибка обновления деталей:", err));
+        }, 5000);
+      }
+      function loadTicketDetail(id) {
+        fetch(`/ticket/${id}`)
+          .then((res) => res.json())
+          .then((ticket) => showDetail(ticket))
+          .catch((err) => {
+            document.getElementById("detailPanel").innerHTML =
+              '<div class="empty">Ошибка загрузки тикета</div>';
+          });
+      }
+      function formatAssistantMessage(content) {
+        const thinkMatch = content.match(/<think>([\s\S]*?)<\/think>/);
+        if (thinkMatch) {
+          const thought = thinkMatch[1].trim();
+          const answer = content.replace(/<think>[\s\S]*?<\/think>/, "").trim();
+          return `
                     <div class="thought">${ICONS.thought} ${thought}</div>
                     <div class="answer">${ICONS.agent} ${answer}</div>
                 `;
+        }
+        return `<div class="answer">${ICONS.agent} ${content}</div>`;
+      }
+
+      function showDetail(ticket) {
+        const panel = document.getElementById("detailPanel");
+        let historyHtml = "";
+        if (ticket.history) {
+          try {
+            const history = JSON.parse(ticket.history);
+            if (Array.isArray(history) && history.length) {
+              historyHtml =
+                '<div class="history"><strong>📜 История диалога</strong>';
+              history.forEach((msg) => {
+                const role = msg.role;
+                const content = msg.content;
+                if (role === "user") {
+                  historyHtml += `<div class="msg"><span class="role user">${ICONS.user} Пользователь:</span> ${content}</div>`;
+                } else if (role === "assistant") {
+                  historyHtml += `<div class="msg"><span class="role assistant">${ICONS.agent} Агент:</span> ${formatAssistantMessage(content)}</div>`;
+                }
+              });
+              historyHtml += "</div>";
             }
-            return `<div class="answer">${ICONS.agent} ${content}</div>`;
+          } catch (e) {
+            console.warn(e);
+          }
         }
 
-        function showDetail(ticket) {
-            const panel = document.getElementById('detailPanel');
-            let historyHtml = '';
-            if (ticket.history) {
-                try {
-                    const history = JSON.parse(ticket.history);
-                    if (Array.isArray(history) && history.length) {
-                        historyHtml = '<div class="history"><strong>📜 История диалога</strong>';
-                        history.forEach(msg => {
-                            const role = msg.role;
-                            const content = msg.content;
-                            if (role === 'user') {
-                                historyHtml += `<div class="msg"><span class="role user">${ICONS.user} Пользователь:</span> ${content}</div>`;
-                            } else if (role === 'assistant') {
-                                historyHtml += `<div class="msg"><span class="role assistant">${ICONS.agent} Агент:</span> ${formatAssistantMessage(content)}</div>`;
-                            }
-                        });
-                        historyHtml += '</div>';
-                    }
-                } catch(e) { console.warn(e); }
-            }
-
-            let answerForm = '';
-            if (ticket.status === 'in_progress' || ticket.status === 'pending') {
-               answerForm = `
+        let answerForm = "";
+        if (ticket.status === "in_progress" || ticket.status === "pending") {
+          answerForm = `
                     <div class="answer-form">
                     <textarea id="engineerAnswer" placeholder="Введите ответ инженера..."></textarea>
                      <button onclick="sendResponse(${ticket.id})">${ICONS.send} Ответить</button>
-                     ${ticket.status !== 'pending' ? `<button onclick="closeTicket(${ticket.id})" style="background:#dc3545;color:white;border:none;padding:6px 12px;border-radius:4px;margin-left:8px;cursor:pointer;">Закрыть тикет</button>` : ''}
+                     ${ticket.status !== "pending" ? `<button onclick="closeTicket(${ticket.id})" style="background:#dc3545;color:white;border:none;padding:6px 12px;border-radius:4px;margin-left:8px;cursor:pointer;">Закрыть тикет</button>` : ""}
                    </div>
                 `;
-            } else if (ticket.status === 'closed') {
-            answerForm = `
+        } else if (ticket.status === "closed") {
+          answerForm = `
                 <div class="answered-answer">
                 <strong>${ICONS.waiting} Тикет закрыт</strong>
-                ${ticket.answer ? `<div><strong>Ответ инженера:</strong> ${ticket.answer}</div>` : ''}
+                ${ticket.answer ? `<div><strong>Ответ инженера:</strong> ${ticket.answer}</div>` : ""}
                 </div>
                 `;
-            }
+        }
 
-            panel.innerHTML = `
+        panel.innerHTML = `
                 <div class="ticket-header">
                     
                     <div style="color:#888;font-size:14px;margin-top:4px;">
-                        Статус: ${ticket.status === 'pending' ? '⏳ Ожидает ответа' : ' Отвечен'}
+                        Статус: ${ticket.status === "pending" ? "⏳ Ожидает ответа" : " Отвечен"}
                         &nbsp;|&nbsp; Создан: ${new Date(ticket.created_at).toLocaleString()}
                     </div>
                 </div>
                 ${historyHtml}
                 ${answerForm}
             `;
+        panel.scrollTop = panel.scrollHeight;
+        const historyDiv = panel.querySelector(".history");
+        if (historyDiv) {
+          historyDiv.scrollTop = historyDiv.scrollHeight;
         }
+      }
 
-        function sendResponse(ticketId) {
-            const textarea = document.getElementById('engineerAnswer');
-            const answer = textarea.value.trim();
-            if (!answer) {
-                alert('Введите ответ');
-                return;
-            }
-            fetch('/engineer/respond', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ ticket_id: ticketId, answer: answer })
-            })
-            .then(res => {
-                if (!res.ok) {
-                    return res.text().then(text => { throw new Error(text) });
-                }
-                return res.json();
-            })
-            .then(data => {
-               if (data.status === 'ok') {
-                   alert(' Ответ отправлен и добавлен в базу знаний!');
-                   loadTickets();
-                   // Обновляем детали текущего тикета
-                   if (selectedTicketId) {
-                      loadTicketDetail(selectedTicketId);
-                   }
-                }
-            })
-            .catch(err => {
-                alert(' Ошибка: ' + err.message);
-            });
+      function sendResponse(ticketId) {
+        const textarea = document.getElementById("engineerAnswer");
+        const answer = textarea.value.trim();
+        if (!answer) {
+          alert("Введите ответ");
+          return;
         }
-
-        function loadTickets() {
-            fetch('/engineer/all-tickets')
-                .then(res => res.json())
-                .then(data => {
-                    allTickets = data;
-                    renderList();
-                    // Если выбранный тикет ещё существует, оставляем его; иначе очищаем детали
-                    if (selectedTicketId && !allTickets.some(t => t.id === selectedTicketId)) {
-                        selectedTicketId = null;
-                        document.getElementById('detailPanel').innerHTML = '<div class="empty">Выберите тикет для просмотра</div>';
-                    }
-                    // Если есть выбранный, но список обновился, перезагружаем детали
-                    if (selectedTicketId) {
-                        fetch(`/ticket/${selectedTicketId}`)
-                            .then(res => res.json())
-                            .then(ticket => showDetail(ticket))
-                            .catch(() => {});
-                    }
-                })
-                .catch(err => console.error('Ошибка загрузки тикетов:', err));
-        }
-        function closeTicket(id) {
-           if (!confirm('Закрыть тикет? Все последующие сообщения пользователя будут создавать новый тикет.')) return;
-           fetch('/engineer/close-ticket', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ ticket_id: id })
-          })
-        .then(res => res.json())
-        .then(data => {
-            if (data.status === 'ok') {
-                alert('Тикет закрыт');
-                loadTickets();
-                // Обновляем детали 
-                if (selectedTicketId) {
-                    loadTicketDetail(selectedTicketId);
-                }
-            }
+        fetch("/engineer/respond", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ticket_id: ticketId, answer: answer }),
         })
-        .catch(err => alert('Ошибка: ' + err));
-        }    
-        // Первая загрузка
-        loadTickets();
-        // Автообновление каждые 30 секунд
-        setInterval(loadTickets, 30000);
-        
+          .then((res) => {
+            if (!res.ok) {
+              return res.text().then((text) => {
+                throw new Error(text);
+              });
+            }
+            return res.json();
+          })
+          .then((data) => {
+            if (data.status === "ok") {
+              alert(" Ответ отправлен и добавлен в базу знаний!");
+              loadTickets();
+              // Обновляем детали текущего тикета
+              if (selectedTicketId) {
+                loadTicketDetail(selectedTicketId);
+              }
+            }
+          })
+          .catch((err) => {
+            alert(" Ошибка: " + err.message);
+          });
+      }
+
+      function loadTickets() {
+        fetch("/engineer/all-tickets")
+          .then((res) => res.json())
+          .then((data) => {
+            allTickets = data;
+            renderList();
+            // Если выбранный тикет ещё существует, оставляем его; иначе очищаем детали
+            if (
+              selectedTicketId &&
+              !allTickets.some((t) => t.id === selectedTicketId)
+            ) {
+              selectedTicketId = null;
+              document.getElementById("detailPanel").innerHTML =
+                '<div class="empty">Выберите тикет для просмотра</div>';
+            }
+            // Если есть выбранный, но список обновился, перезагружаем детали
+            if (selectedTicketId) {
+              fetch(`/ticket/${selectedTicketId}`)
+                .then((res) => res.json())
+                .then((ticket) => showDetail(ticket))
+                .catch(() => {});
+            }
+          })
+          .catch((err) => console.error("Ошибка загрузки тикетов:", err));
+      }
+      function closeTicket(id) {
+        if (
+          !confirm(
+            "Закрыть тикет? Все последующие сообщения пользователя будут создавать новый тикет.",
+          )
+        )
+          return;
+        fetch("/engineer/close-ticket", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ticket_id: id }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.status === "ok") {
+              alert("Тикет закрыт");
+              loadTickets();
+              // Обновляем детали
+              if (selectedTicketId) {
+                loadTicketDetail(selectedTicketId);
+              }
+            }
+          })
+          .catch((err) => alert("Ошибка: " + err));
+      }
+      // Первая загрузка
+      loadTickets();
+      // Автообновление каждые 30 секунд
+      setInterval(loadTickets, 3000000);
+      // Очищаем интервал при закрытии/перезагрузке страницы
+      window.addEventListener("beforeunload", function () {
+        if (detailPollInterval) {
+          clearInterval(detailPollInterval);
+          detailPollInterval = null;
+          console.log("[Engineer] Polling stopped on page unload");
+        }
+      });
     </script>
-</body>
+  </body>
 </html>

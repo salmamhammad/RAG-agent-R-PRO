@@ -10,6 +10,7 @@ class ChatRequest(BaseModel):
 class ChatResponse(BaseModel):
     answer: str
     sources: List[dict]
+    ticket_id: Optional[int] = None
 
 class FeedbackRequest(BaseModel):
     question: str
