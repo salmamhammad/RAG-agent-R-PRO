@@ -367,7 +367,7 @@
               showDetail(ticket);
             })
             .catch((err) => console.error("Ошибка обновления деталей:", err));
-        }, 5000);
+        }, 5000000000);
       }
       function loadTicketDetail(id) {
         fetch(`/ticket/${id}`)
@@ -540,7 +540,7 @@
       // Первая загрузка
       loadTickets();
       // Автообновление каждые 30 секунд
-      setInterval(loadTickets, 3000000);
+      //setInterval(loadTickets, 3000000);
       // Очищаем интервал при закрытии/перезагрузке страницы
       window.addEventListener("beforeunload", function () {
         if (detailPollInterval) {

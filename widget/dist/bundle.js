@@ -3708,9 +3708,13 @@
         const response = await sendFeedback(question, answer, rating, history, void 0, this.ticketId);
         console.log("[ChatUI] \u041E\u0442\u0432\u0435\u0442 \u0444\u0438\u0434\u0431\u044D\u043A\u0430:", response);
         if (this.dislikesNum >= 3) {
-          this.ticketId = response.ticket_id;
-          this.addMessage("assistant", ` \u0418\u043D\u0436\u0435\u043D\u0435\u0440 \u0432\u044B\u0437\u0432\u0430\u043D. \u041D\u043E\u043C\u0435\u0440 \u0437\u0430\u044F\u0432\u043A\u0438 #${response.ticket_id}. \u041E\u0436\u0438\u0434\u0430\u0439\u0442\u0435 \u043E\u0442\u0432\u0435\u0442\u0430.`);
-          this.startPollingTicket(response.ticket_id);
+          if (response.ticket_id)
+            this.ticketId = response.ticket_id;
+          if (this.ticketId) {
+            this.addMessage("assistant", ` \u0418\u043D\u0436\u0435\u043D\u0435\u0440 \u0432\u044B\u0437\u0432\u0430\u043D. \u041D\u043E\u043C\u0435\u0440 \u0437\u0430\u044F\u0432\u043A\u0438 #${this.ticketId}. \u041E\u0436\u0438\u0434\u0430\u0439\u0442\u0435 \u043E\u0442\u0432\u0435\u0442\u0430.`);
+            this.startPollingTicket(this.ticketId);
+            this.dislikesNum = 0;
+          }
         } else {
           console.log("\u0414\u0438\u0437\u043B\u0430\u0439\u043A \u0443\u0447\u0442\u0451\u043D, \u0442\u0438\u043A\u0435\u0442 \u043D\u0435 \u0441\u043E\u0437\u0434\u0430\u043D (\u043C\u0435\u043D\u044C\u0448\u0435 3 \u0434\u0438\u0437\u043B\u0430\u0439\u043A\u043E\u0432 \u0438\u043B\u0438 \u0443\u0436\u0435 \u0435\u0441\u0442\u044C \u0442\u0438\u043A\u0435\u0442)");
         }

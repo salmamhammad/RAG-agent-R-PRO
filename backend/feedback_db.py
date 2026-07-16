@@ -155,6 +155,19 @@ def add_user_message_to_ticket(ticket_id: int, message: str):
     conn.commit()
     conn.close()
 
+def add_assistant_message_to_ticket(ticket_id: int, message: str):
+    conn = get_db_connection()
+    c = conn.cursor()
+    ticket = get_ticket(ticket_id)
+    if not ticket:
+        return
+    history = json.loads(ticket['history']) if ticket['history'] else []
+    history.append({"role": "assistant", "content": message})
+    c.execute("UPDATE tickets SET history = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?",
+              (json.dumps(history), ticket_id))
+    conn.commit()
+    conn.close()
+    
 def get_ticket(ticket_id: int):
     """Возвращает тикет по ID."""
     conn = get_db_connection()

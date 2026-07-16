@@ -8,7 +8,7 @@ from backend.utils import setup_logging, get_logger, now_iso
 from backend.feedback_db import (
     init_db, count_dislikes, get_pending_ticket, get_answered_ticket,
     create_ticket,update_ticket, get_pending_tickets, answer_ticket, get_ticket,get_all_tickets,
-    close_ticket, add_user_message_to_ticket
+    close_ticket, add_user_message_to_ticket, add_assistant_message_to_ticket
 )
 import sqlite3
 from datetime import datetime
@@ -67,6 +67,7 @@ async def chat(request: ChatRequest):
             else:
                 ticket_id = create_ticket(request.question, request.history)
                 logger.info(f"Использаван  тикет #{ticket_id} для вопроса без контекста")
+        add_assistant_message_to_ticket(request.ticketId, result["answer"])
         return ChatResponse(
             answer=result["answer"],
             sources=result["sources"],
@@ -98,9 +99,11 @@ async def feedback(fb: FeedbackRequest):
             # Создаём тикет
             if fb.ticketId:
                 ticket_id=update_ticket(fb.ticketId, fb.question, fb.history)
+                logger.info(f"обновление тикет #{ticket_id} для вопроса: {fb.question[:50]}...")
             else:
                 ticket_id = create_ticket(fb.question, fb.history)
-            logger.info(f"Создан тикет #{ticket_id} для вопроса: {fb.question[:50]}...")
+                logger.info(f"Создан тикет #{ticket_id} для вопроса: {fb.question[:50]}...")
+            
             ####3## WebSocket -  отправить уведомление инженеру 
         else:
             if pending:

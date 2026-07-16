@@ -359,10 +359,14 @@ export class ChatUI {
         
         if (this.dislikesNum>= 3) {
                // Можно сохранить ticket_id в localStorage для опроса
-               this.ticketId = response.ticket_id;
+              if(response.ticket_id)
+                  this.ticketId = response.ticket_id;
               //  localStorage.setItem('ticket_id', String(response.ticket_id));
-               this.addMessage('assistant', ` Инженер вызван. Номер заявки #${response.ticket_id}. Ожидайте ответа.`);
-               this.startPollingTicket(response.ticket_id);   
+              if(this.ticketId){
+                  this.addMessage('assistant', ` Инженер вызван. Номер заявки #${this.ticketId}. Ожидайте ответа.`);
+                  this.startPollingTicket(this.ticketId);  
+                  this.dislikesNum=0; 
+              }
         } else {
             // Если ticket_id нет, значит дизлайк учтён, но инженер не вызван
             console.log('Дизлайк учтён, тикет не создан (меньше 3 дизлайков или уже есть тикет)');
