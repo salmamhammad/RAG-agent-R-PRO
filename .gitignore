@@ -1,10 +1,15 @@
 /chroma_db
-/data
+/data/attachments/*
+/data/chm/*
+!/data/chm/.gitkeep
+/data/docs/*
+!/data/docs/.gitkeep
+/data/jsonl/*
+!/data/jsonl/.gitkeep
 /log
 /storage
 /venv
 .env
-test_chat.py
 test.py
 testChm.py
 /models
