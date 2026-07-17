@@ -1,4 +1,5 @@
 /chroma_db
+/data/attachments/*
 /data/chm/*
 !/data/chm/.gitkeep
 /data/docs/*

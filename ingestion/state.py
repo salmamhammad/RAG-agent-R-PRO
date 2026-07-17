@@ -3,7 +3,7 @@ import os
 import json
 import hashlib
 
-STATE_FILE = "ingestion_state.json"
+STATE_FILE = "storage/ingestion_state.json"
 
 def get_file_hash(file_path: str) -> str:
     hasher = hashlib.sha256()
@@ -18,7 +18,7 @@ def get_files_state(root_dirs: list) -> dict:
     Ключом словаря является относительный путь от корня проекта.
     """
     state = {}
-    extensions = (".pdf", ".txt",".chm")
+    extensions = (".pdf", ".txt",".chm","jsonl")
     
     for root_dir in root_dirs:
         if not os.path.exists(root_dir):
