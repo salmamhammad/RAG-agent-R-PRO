@@ -4,7 +4,7 @@ from llama_index.core import Settings
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from llama_index.vector_stores.chroma import ChromaVectorStore
 import chromadb
-from ingestion.loaders import load_pdfs, load_text_files, load_chm_files, load_jsonl_files
+from ingestion.loaders import load_pdfs, load_text_files, load_chm_files, load_jsonl_files,load_faq_json_files
 from ingestion.chunker import get_chunker
 from ingestion.state import get_files_state, load_state, save_state
 
@@ -48,7 +48,7 @@ def build_index():
       
     # # Загрузка документов
     print("Загрузка документов...")
-    all_docs =load_pdfs("data/docs") + load_text_files("data/docs")+ load_chm_files("data/chm") + load_jsonl_files("data/jsonl")
+    all_docs =load_pdfs("data/docs") + load_text_files("data/docs")+ load_chm_files("data/chm") + load_jsonl_files("data/jsonl")+load_faq_json_files('data/faq')
     print(f"Загружено all_docs {len(all_docs)} документов для индексации")
 
     filtered_docs = []

@@ -277,3 +277,67 @@ def load_jsonl_files(
                 print(f"Нет текста в строке {line_num} файла {file}")
 
     return docs
+
+def load_faq_json_files(directory: str) -> List[Document]:
+    """
+    Загружает JSON-файлы с FAQ из указанной папки.
+    Ожидает структуру: { "faq": [ { "category": "...", "question": "...", "answer": "..." } ] }
+    Каждый FAQ-элемент становится отдельным Document.
+    """
+    docs = []
+    for file in os.listdir(directory):
+        file_path = os.path.join(directory, file)
+        if not (os.path.isfile(file_path) and file.lower().endswith(".json")):
+            continue
+
+        rel_path = os.path.relpath(file_path, start=".")
+
+        try:
+            with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
+                data = json.load(f)
+        except json.JSONDecodeError as e:
+            print(f"Ошибка парсинга JSON в {file}: {e}")
+            continue
+        except Exception as e:
+            print(f"Ошибка чтения {file}: {e}")
+            continue
+
+        # Проверяем, есть ли ключ "faq" и является ли он списком
+        faq_items = data.get("faq")
+        if not isinstance(faq_items, list):
+            print(f"Файл {file} не содержит ключ 'faq' со списком. Пропускаем.")
+            continue
+
+        for idx, item in enumerate(faq_items):
+            if not isinstance(item, dict):
+                print(f"Пропущен не-словарь в {file}, индекс {idx}")
+                continue
+
+            question = item.get("question", "").strip()
+            answer = item.get("answer", "").strip()
+            category = item.get("category", "").strip()
+
+            if not question or not answer:
+                print(f"Пропущен FAQ без вопроса или ответа в {file}, индекс {idx}")
+                continue
+
+            # Объединяем вопрос и ответ в один текст
+            full_text = f"Вопрос: {question}\nОтвет: {answer}"
+
+            # Очищаем текст
+            cleaned = clean_text(full_text)
+            if not cleaned or not is_readable(cleaned):
+                print(f"Пропущен нечитаемый FAQ в {file}, индекс {idx}")
+                continue
+
+            metadata = {
+                "source": rel_path,
+                "category": category,
+                "question": question,
+                "faq_index": idx
+            }
+
+            docs.append(Document(text=cleaned, metadata=metadata))
+
+    print(f"Загружено {len(docs)} FAQ-записей из JSON-файлов в {directory}")
+    return docs
