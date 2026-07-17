@@ -15,11 +15,18 @@ python -m venv venv
 .\venv\Scripts\Activate.ps1 // source venv/bin/activate (ubuntu)
 pip install --upgrade pip
 pip install -r requirements.txt
+<<<<<<< HEAD
 python -m scripts.run_ingestion
 python check_chroma.py // проверить текущие чанки
 
 uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
 python -m http.server 3000            
+=======
+python check_chroma.py // проверить текущие чанки
+python -m scripts.run_ingestion // для обучения модели
+python test_chat.py
+           
+>>>>>>> main
 ```
 страница для чата с ИИ:
 http://localhost:3000/test_widget.html
@@ -28,6 +35,9 @@ http://localhost:3000/test_widget.html
 http://localhost:8000/static/engineer.html
 
 # Установка chmlib или p7zip
+Для работы pychm в некоторых системах требуется библиотека chmlib.
+Или используйте p7zip вместо pychm.
+Код проверит наличие библиотеки и воспользуется доступной автоматической библиотекой.
 Linux (Debian/Ubuntu):
 ```
 bash
