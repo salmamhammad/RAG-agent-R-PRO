@@ -53,7 +53,7 @@ def is_readable(text):
 
 def load_pdfs(directory: str) -> List[Document]:
     docs = []
-<<<<<<< HEAD
+
 
     for file in os.listdir(directory):
         file_path = os.path.join(directory, file)
@@ -104,21 +104,6 @@ def load_pdfs(directory: str) -> List[Document]:
         except Exception as e:
             print(f"Error reading {file}: {e}")
 
-=======
-    for root, _, files in os.walk(directory):
-        for file in files:
-            if file.lower().endswith(".pdf"):
-                file_path = os.path.join(root, file)
-                try:
-                    reader = PdfReader(file_path)
-                    text = "\n".join([page.extract_text() for page in reader.pages if page.extract_text()])
-                    if text.strip():
-                        # В метаданные сохраняем относительный путь для удобства
-                        rel_path = os.path.relpath(file_path, start=".")
-                        docs.append(Document(text=text, metadata={"source": rel_path}))
-                except Exception as e:
-                    print(f"Ошибка при чтении {file}: {e}")
->>>>>>> main
     return docs
 
 def load_text_files(directory: str) -> List[Document]:
