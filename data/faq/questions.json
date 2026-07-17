@@ -1,0 +1,545 @@
+{
+  "faq": [
+    {
+      "category": "license",
+      "question": "How do I update my R-Pro license?",
+      "answer": "You can update your license by opening the License Wizard at C:\\Program Files (x86)\\RProv216\\License Setting and following the update instructions. If you need assistance, the support team can help with license activation."
+    },
+    {
+      "category": "license",
+      "question": "Why does my R-Pro say 'License not found'?",
+      "answer": "This typically occurs when your license has expired or needs to be updated. Check if you have a valid license by opening the License Wizard. If your license has expired, contact your license provider or our support team for assistance. For network licenses, ensure the server IP address is correctly configured in the network_ip.cfg file."
+    },
+    {
+      "category": "license",
+      "question": "Can I use the same license on multiple computers?",
+      "answer": "Network licenses allow multiple users to connect to a license server. For single-user licenses, the license is typically tied to one computer. If you need to transfer a license to another computer, you may need to deactivate it first and then activate it on the new machine."
+    },
+    {
+      "category": "license",
+      "question": "How do I activate a trial license?",
+      "answer": "Trial licenses are typically provided as a key that you enter during installation or through the License Wizard. If you receive a 'license expired' message, you may need to request a new trial key from your contact or from our support team."
+    },
+    {
+      "category": "installation",
+      "question": "Where can I download the latest version of R-Pro?",
+      "answer": "You can download the latest version of R-Pro from the official website at https://r-pro.digital/. For version 2.1.6, you can also use the direct link: https://disk.yandex.ru/d/CMSRrhjMX0z80A"
+    },
+    {
+      "category": "installation",
+      "question": "The download link from the website doesn't work. What should I do?",
+      "answer": "The link from the website works only once. Please fill out the download form again to receive a new valid link. Alternatively, contact support for an alternative download link."
+    },
+    {
+      "category": "installation",
+      "question": "What are the system requirements for R-Pro?",
+      "answer": "Minimum requirements: Intel i5-3xxx equivalent processor, 8+ GB RAM, 3 GB free disk space, Intel HD Graphics 4400 integrated graphics, 1280x1024 resolution, 3-button mouse, Windows 8.1 or Windows 10 (64-bit). Recommended: Intel i7-8xxx equivalent processor, 8+ GB RAM, 3 GB free disk space, Nvidia GPU with 4+ GB memory (e.g., GeForce GTX 1080 or higher), 1920x1080 resolution, 3-button mouse, Windows 10 (64-bit)."
+    },
+    {
+      "category": "modeling",
+      "question": "Does R-Pro support importing 3D models during simulation?",
+      "answer": "Yes, you can import new geometry during a running simulation, but you cannot fine-tune the component's position when importing; you must do that immediately after. To use the component in operations, add it before running the simulation and configure the process settings in the 'Process' tab."
+    },
+    {
+      "category": "modeling",
+      "question": "How do I create a custom robot in R-Pro?",
+      "answer": "You can create a custom robot by defining its kinematic structure and geometry. There is a presentation available on this topic that covers the process of creating a 6-axis robot in R-Pro."
+    },
+    {
+      "category": "modeling",
+      "question": "How do I attach a product to a component in a process?",
+      "answer": "You need to write a script to handle the attachment. Here's an example: \n\n```python\nfrom vcScript import *\n\ndef OnRun():\n  comp = getComponent()\n  # Get the product from the signal or process\n  # Attach it to the desired geometry\n  # Use setParent() or similar methods for attachment\n```\n\nThere are demo projects available showing this functionality."
+    },
+    {
+      "category": "simulation",
+      "question": "Why do products fly apart in VR mode?",
+      "answer": "This can happen due to physics simulation issues. Try using the provided test planning layout to see if the problem persists. If the issue continues, contact support with your specific layout for debugging."
+    },
+    {
+      "category": "simulation",
+      "question": "How can I reduce the animation time for product pickup/placement?",
+      "answer": "You can adjust the PickTime and PlaceTime properties in the transport link properties, or set them in the transport controller to apply to all links."
+    },
+    {
+      "category": "robot_programming",
+      "question": "Does R-Pro support importing Fanuc, ABB, or KUKA robot programs?",
+      "answer": "Importing programs from Fanuc, ABB, and KUKA robots is possible, but not in the full scope of their programming languages. For full compatibility, custom development may be required."
+    },
+    {
+      "category": "robot_programming",
+      "question": "How do I export welding programs with the OLP module?",
+      "answer": "For the welding OLP module, use the post-processor export function. Make sure to name the program consistently with the R-Pro project name to avoid exporting empty files. If you encounter issues with Via/Departure points or FUT values, update to the latest OLP version."
+    },
+    {
+      "category": "connections",
+      "question": "Does R-Pro support Modbus TCP communication?",
+      "answer": "R-Pro does not directly support Modbus TCP. However, you can use an OPC UA gateway to convert Modbus TCP data to OPC UA, allowing R-Pro to communicate with devices via the standard OPC UA interface."
+    },
+    {
+      "category": "connections",
+      "question": "How do I connect R-Pro to a Siemens PLC?",
+      "answer": "You can use the Siemens S7 connection add-on. Configure the IP address, rack, and slot settings. Ensure that port 102 is not blocked by a firewall and that the correct tags are defined. You may also need NetToPLCSim or PLC Sim Advanced for simulation."
+    },
+    {
+      "category": "welding_module",
+      "question": "The welding module functions are missing in R-Pro 2.1.6. What should I do?",
+      "answer": "This is typically a licensing issue. Update your license using the License Wizard and ensure you have the correct module license. For R-Pro 2.1.6, you need the OLP welding module version 1.3.9 or higher."
+    },
+    {
+      "category": "welding_module",
+      "question": "How do I configure welding parameters in the OLP module?",
+      "answer": "Welding parameters can be configured in the welding settings window. Each parameter (wire speed, voltage, current, speed, movement type) should be added as a new line. These are typically set per weld path."
+    },
+    {
+      "category": "welding_module",
+      "question": "Why does the welding path detach from the part after simulation?",
+      "answer": "This happens because the welding path is attached to the part, which disappears after reset. Use the Advanced → Workpiece setting to attach the weld seam to the process node (which stays on the positioner) instead of the disappearing part."
+    },
+    {
+      "category": "AGV",
+      "question": "How do I set up an AGV path?",
+      "answer": "You can set up AGV paths using 'Passage Zones'. Connect these zones to the mobile robot controller. The controller automatically calculates the path. You can view the navigation grid by selecting the controller and clicking 'Show Navigation Grid' in the properties."
+    },
+    {
+      "category": "VR",
+      "question": "How do I enable VR mode in R-Pro?",
+      "answer": "Enable VR streaming in the settings. Download the VR viewer from the same link as the R-Pro installation. Launch the VR viewer, select VR, then choose 'Stream – 127.0.0.1:7000' from the list while in virtual reality, and run the simulation."
+    },
+    {
+      "category": "troubleshooting",
+      "question": "The application crashes during simulation. What should I do?",
+      "answer": "Check the system requirements, update your graphics drivers, and ensure .NET Framework 4.8 is installed. Update to the latest version of R-Pro. If the issue persists, send the logs (C:\\Users\\<user>\\AppData\\Local\\R-Pro\\R-Про version X.X.X\\Logs) and your planning file (.rpro) to support."
+    },
+    {
+      "category": "troubleshooting",
+      "question": "Models cannot be inserted into the planning area. What's wrong?",
+      "answer": "If you cannot insert models (double-click, open button, or drag-and-drop not working), try restarting R-Pro. If the issue persists, reinstall the software following the proper uninstall procedure (using Uninstaller from C:\\Program Files (x86)\\RProv216) and then reinstall."
+    },
+    {
+      "category": "troubleshooting",
+      "question": "Graphical artifacts appear when moving models (ghost trails).",
+      "answer": "This is likely a graphics driver issue. Update your graphics drivers to the latest version. Also ensure your system meets the recommended requirements. If you have both integrated and discrete graphics, try forcing R-Pro to use the discrete GPU."
+    },
+    {
+      "category": "troubleshooting",
+      "question": "The application hangs on splash screen and doesn't start.",
+      "answer": "Try creating a new Windows user account with administrator rights and run R-Pro from that account. If the issue persists, check logs and contact support with screenshots of your license status."
+    },
+    {
+      "category": "troubleshooting",
+      "question": "A planned layout doesn't open and shows 'Manifest file missing' error.",
+      "answer": "This typically happens when the layout was saved without the 'Include Components' option enabled. The layout references external components that may not exist. Try restoring the library version used when the layout was created. Contact support for recovery options."
+    },
+    {
+      "category": "export",
+      "question": "Why are my exported welding programs empty?",
+      "answer": "Make sure the program name in the export dialog matches the program name in R-Pro. If the names differ, the export may produce an empty file. Use the same name or update to the latest OLP version which fixes this issue."
+    },
+    {
+      "category": "export",
+      "question": "How can I save layouts for sharing with others?",
+      "answer": "When saving a layout, make sure to check the 'Include Components' option to save all referenced components within the file. This makes the .rpro file self-contained and shareable."
+    },
+    {
+      "category": "support",
+      "question": "What information should I provide when reporting a bug?",
+      "answer": "Please provide: 1) R-Pro version number, 2) Description of the issue with steps to reproduce, 3) Screenshots if applicable, 4) Logs from C:\\Users\\<user>\\AppData\\Local\\R-Pro\\R-Про version X.X.X\\Logs, 5) The planning file (.rpro) if relevant, 6) System specifications."
+    },
+    {
+      "category": "support",
+      "question": "Why do I get a 'Format differs from expected' error when opening a file?",
+      "answer": "This error occurs when the file structure is corrupted or incompatible. The file may have been saved with a newer version, or the manifest file may be missing. Try opening the file with the same version it was created with. If the issue persists, contact support."
+    },
+    {
+      "category": "licensing",
+      "question": "Can I borrow a license from the Education Network Version?",
+      "answer": "No, the Education Network Version does not support borrowing licenses. Licenses in educational versions are typically tied to the network and cannot be checked out for offline use."
+    },
+    {
+      "category": "licensing",
+      "question": "My license shows 'No updates available' but still says it's expired.",
+      "answer": "This may indicate the license has been reconfigured. Try performing a full license update. If the issue persists, contact support with your activation key and logs from the License Wizard."
+    },
+    {
+      "category": "api",
+      "question": "Does R-Pro have an API for custom development?",
+      "answer": "Yes, R-Pro supports Python scripting and plugin development. The API documentation is available in C:\\Program Files (x86)\\RProv217\\Help. You can also find examples of Python scripts and plugin development instructions."
+    },
+    {
+      "category": "api",
+      "question": "How can I create a plugin for R-Pro?",
+      "answer": "You can create plugins using Python scripts that are added to the plugins folder. The plugin development instructions are available in the documentation. Contact support for the plugin development guide."
+    },
+ 
+  {
+    "category": "license",
+    "question": "My license stopped working after a BIOS/firmware update. How can I reactivate it?",
+    "answer": "A BIOS update can change hardware identifiers, causing the license to become invalid. Please contact support with your license key. We will add an additional activation to your license so you can reactivate it. After that, try to obtain the license again through the License Wizard."
+  },
+  {
+    "category": "license",
+    "question": "Some computers on the network can connect to the license server, but others cannot. What could be wrong?",
+    "answer": "This could be due to firewall settings blocking port 102 or incorrect IP configuration. Try updating to the latest version (2.1.6) and check the network_ip.cfg file. Also use the LicChecker tool to test connectivity. If the issue persists, check if the client computers have the necessary network permissions."
+  },
+  {
+    "category": "VR",
+    "question": "When using VR, products explode or fly away instead of stacking correctly. How can I fix this?",
+    "answer": "This is often a physics simulation issue in VR. Try using a simple test layout to isolate the problem. Ensure that the products have proper collision properties and that the simulation step size is appropriate. If the problem persists, contact support with your layout and video of the issue."
+  },
+  {
+    "category": "AGV",
+    "question": "Can I create a curved path for an AGV?",
+    "answer": "R-Pro does not have a single 'curved' zone type, but you can create a curved path by placing multiple Passage Zones in sequence. Use the 'Pattern' tool (Angular layout) to position them accurately. The AGV controller will navigate through these zones automatically."
+  },
+  {
+    "category": "conveyor",
+    "question": "How can I implement a step conveyor where products move synchronously between processes?",
+    "answer": "You can use boolean signals on process nodes to coordinate movement. Create signals in the Modeling tab for each component, then within the process logic use these signals to wait for conditions. This allows you to control when products advance to the next station. See the example layout provided in the support response."
+  },
+    {
+    "category": "welding",
+    "question": "Why are Via and Departure points exported with zero coordinates in the OLP module?",
+    "answer": "This was a bug in earlier versions of the OLP module. The issue has been fixed in the latest version (R-Про ОЛП Сварка 1.4.2 and later). Please update to the newest OLP installer and try again. If the problem persists, contact support."
+  },
+  {
+    "category": "welding",
+    "question": "Why do all trajectory points export with FUT,0,0,0 instead of FUT,0,0,1?",
+    "answer": "This was a known issue that affected export consistency. The newer OLP module (version 1.4.2 and above) corrects this behavior. Update your OLP module to resolve this."
+  },
+  {
+    "category": "welding",
+    "question": "Exporting a welding program gives an empty file if I change the program name. What am I doing wrong?",
+    "answer": "The export dialog requires that the program name matches the one defined in R-Pro. If you change it, the export may produce an empty file. This issue has been fixed in the latest OLP update (1.4.2 and later). Always use the same name or update the module to allow name changes."
+  },
+  {
+    "category": "modeling",
+    "question": "How can I create a custom robot from scratch in R-Pro?",
+    "answer": "You need to build the kinematic structure using links and joints, then define the robot properties. There is a presentation available that guides you through creating a 6-axis robot. Start by creating a component, adding links and joints, then assign behaviors and a robot controller. For detailed steps, refer to the provided guide."
+  },
+  {
+    "category": "connections",
+    "question": "Can R-Pro communicate via OPC UA with a Modbus device?",
+    "answer": "R-Pro does not directly support Modbus TCP, but you can use a software or hardware gateway that converts Modbus TCP to OPC UA. R-Pro supports OPC UA, so the gateway will allow communication. Configure the gateway to expose Modbus data as OPC UA tags, then connect R-Pro via the OPC UA add-on."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "R-Pro hangs on the splash screen on Windows 11 and never starts. How do I fix this?",
+    "answer": "Try creating a new Windows user account with administrator rights and run R-Pro from that account. If that doesn't work, check the logs in C:\\Users\\<user>\\AppData\\Local\\R-Pro\\R-Про version X.X.X\\Logs. Also ensure that .NET Framework 4.8 is installed. Contact support with logs and license status if the problem continues."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "I see many VCID not found errors when opening a layout. What does this mean?",
+    "answer": "VCID errors indicate that the layout references components or geometry from a local library that is no longer available. This often happens when you open a layout that was saved without the 'Include Components' option, and the original library files have been moved or deleted. To fix, you need to either restore the original library version or repack the layout with all dependencies. Contact support for recovery procedures."
+  },
+  {
+    "category": "mobile_robots",
+    "question": "How can I make an AGV lift a platform and keep the product at the same height during transport?",
+    "answer": "You need to modify the AGV's script to maintain the platform level while carrying a product. In the robot's resource script, when picking up a product, you can set a variable to track the platform height and prevent it from lowering. Alternatively, you can adjust the pick and place logic to keep the product attached and at the correct height."
+  },
+  {
+    "category": "human_animation",
+    "question": "How can I customize human pick and place animations so the product doesn't just fly into the hands?",
+    "answer": "The default human animations are simple; to improve them you need to create custom programs for the human controller. Add specific walking animations for each product type. You can set the position of the product relative to the human's hands in the Transport tab of the human properties. However, fine motor control requires script changes and is not straightforward."
+  },
+  {
+    "category": "library",
+    "question": "Can I add custom components to the R-Pro library?",
+    "answer": "Yes, you can create your own components and save them as .rpro files. You can then add them to the catalog by setting up an additional source folder in the Library settings. You can also ask R-Pro support to add components to the official library, which may be done in future updates. For urgent needs, you can contract engineering services."
+  },
+  {
+    "category": "statistics",
+    "question": "How can I view statistics and charts after a simulation?",
+    "answer": "Go to the Home tab → Statistics → Statistics button. Choose the type of chart window and click Create. You can then select a component on the layout and choose a chart template, or create custom charts by adding data series (components and their properties) in the Data Series section."
+  },
+  {
+    "category": "human_animation",
+    "question": "Can I reduce the time it takes for a human to pick or place a product?",
+    "answer": "Yes. In the transport link properties, you can adjust the 'PickTime' and 'PlaceTime' values. Alternatively, set these values globally in the transport controller. Setting these times to zero will make the product appear instantly, but you may want to set them to a small value for more realistic simulation."
+  },
+  {
+    "category": "licensing",
+    "question": "I received a message 'License not found' even though I have a permanent license. What should I do?",
+    "answer": "Check if your license needs to be updated. Open the License Wizard (C:\\Program Files (x86)\\RProv216\\License Setting) and perform an update. Sometimes the license expires and needs renewal. If you have a permanent license but it still shows expired, contact support with your license key and logs to check the license status."
+  },
+   {
+    "category": "license",
+    "question": "Can I use my R-Pro license on macOS?",
+    "answer": "Yes, there is a macOS version available. Please request the macOS distribution from support. The license can be transferred from Windows to macOS following the provided instructions. There are no additional steps beyond the standard license activation process."
+  },
+  {
+    "category": "licensing",
+    "question": "I have a permanent license but it shows expired. Do I need to pay to renew it?",
+    "answer": "Permanent licenses typically do not expire, but they may require periodic updates. If you have active technical support, your license can be renewed without additional cost. If your support has expired, you may need to purchase a renewal. Contact your sales representative or support to check your support status."
+  },
+  {
+    "category": "licensing",
+    "question": "Can I use a license from a third-party company (e.g., an IT service provider) to get support?",
+    "answer": "Our support policy requires that support requests come from the licensed company's corporate email addresses. If a third-party IT company represents you, we require an official letter from your company's general director authorizing that company to act on your behalf, specifying the email addresses that will be used. This is to ensure compliance with the End User License Agreement."
+  },
+  {
+    "category": "platforms",
+    "question": "Is there a version of R-Pro for Linux or macOS?",
+    "answer": "A macOS version is available upon request. Please contact support for the distribution package. There is no Linux version currently. For macOS, the installation and license activation process is similar to Windows."
+  },
+  {
+    "category": "robot_trajectories",
+    "question": "What robot trajectory formats does R-Pro support for import?",
+    "answer": "Currently, R-Pro does not support formats like aptsource, cls, nc, afply, or robpath. However, we can develop custom solutions to import specific formats. Contact support for further discussion about your specific needs."
+  },
+  {
+    "category": "robot_programming",
+    "question": "How can I record a robot trajectory and export it for an AGV robot?",
+    "answer": "You can record trajectories during simulation and export them as .xlsx files. There is also an ongoing development to export directly to robot programs. For details on the mechanism (wire or Wi-Fi), programming language (Python, .as format), and folder structure for multiple programs, please contact the project coordinator (e.g., Alyana) for specific project inquiries."
+  },
+  {
+    "category": "addons",
+    "question": "After upgrading to R-Pro 2.1.6, all add-ons and the 'Settings' tab for robots are missing. Why?",
+    "answer": "This is typically due to a license issue for the specific module (e.g., OLP Welding). The base R-Pro 2.1.6 does not include those features unless you have a valid license for the module. Update your license through the License Wizard and ensure the module is correctly installed. If the problem persists, contact support with your license key."
+  },
+  {
+    "category": "addons",
+    "question": "Where can I find the 'Discovery of trajectory' function that was in previous versions?",
+    "answer": "In version 2.1.6, the discovery of trajectory (trajectory detection) function is part of the OLP module. If it is missing, it may indicate that the OLP module is not properly installed or licensed. Reinstall the OLP module and ensure your license includes it. The function should appear in the Programming tab."
+  },
+  {
+    "category": "components",
+    "question": "Can I request a specific robot model to be added to the R-Pro catalog?",
+    "answer": "Yes, you can request models. Provide the 3D model (e.g., STEP or SLD) and technical documentation. The support team will review the request. If you have active support, it may be added in a future update. For urgent needs, custom development services are available."
+  },
+  {
+    "category": "components",
+    "question": "What new components were added to the catalog in the last year?",
+    "answer": "Approximately 70 components were added in 2025. A list is available upon request. These include various robots, conveyors, and other equipment. For specific additions, contact support or refer to the latest version documentation."
+  },
+  {
+    "category": "VR",
+    "question": "What is the 'Virtual Production' viewer and how can I use it?",
+    "answer": "It is a new tool for viewing layouts without the full R-Pro software. It runs on Windows and Android (with an installer). You can share layouts with customers who can view the 3D model without simulation. Request the distribution and a trial key from support. It supports VR streaming and can be used for presentations."
+  },
+  {
+    "category": "simulation",
+    "question": "Can I set up a weekly or monthly production plan in R-Pro?",
+    "answer": "Yes, you can define production schedules using Feeders to generate products over time. Each product can have different cycle times based on its properties. You can also simulate equipment failures and changeover times by adding delays in process scripts. Check the example layouts 'MP Buffer with parts' and 'MP Machine with failures' for reference."
+  },
+  {
+    "category": "simulation",
+    "question": "How can I model random distribution of products to the first available machine?",
+    "answer": "Use the 'Flow Node Process' or similar routing components. They can distribute products to the next available process node based on availability. You can also customize the logic with scripts to implement specific routing rules. The example 'MP Buffer of parts' demonstrates similar behavior."
+  },
+  {
+    "category": "process_modeling",
+    "question": "How can I specify different processing times for different product types inside the same process?",
+    "answer": "You can use Python scripts within the process to check product properties (e.g., using getComponent() and findBehaviour) and then branch to different delays or operations. Alternatively, you can use the 'If' block in the process flow to conditionally execute different steps based on product attributes."
+  },
+  {
+    "category": "human_animation",
+    "question": "Is it possible to make a human worker pick up an assembly (multiple parts) as one unit?",
+    "answer": "Yes, you can create an assembly as a single product component. In the human properties, under the Transport tab, you can add the assembly and define its position. The human controller will then treat the assembly as a single unit. Make sure the assembly is created as a component with all parts grouped."
+  },
+  {
+    "category": "robots",
+    "question": "Are there examples of using a 3-axis robot positioner with a welding robot?",
+    "answer": "Yes, you can find positioner components in the catalog under 'Robots (positioners)' and 'Workpiece positioners'. They can be integrated with robot systems. The example layout for welding cells often includes such positioners. If you need specific customizations, consider using the component's behavior scripts."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "When I open a layout, some components disappear and the simulation fails. How can I recover it?",
+    "answer": "This happens when the layout references components from a local library that no longer exists. To recover, you need to install the same library version used when the layout was created. Then open the layout and save it with the 'Include Components' option to embed all dependencies. If you cannot find the old library, contact support for assistance."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "Why does R-Pro crash with a clr.dll exception during simulation?",
+    "answer": "This typically indicates a .NET Framework issue. Ensure you have .NET Framework 4.8 or later installed. Update Windows and all .NET components. If the problem persists, try reinstalling R-Pro and check for any missing VCID resources in the logs. Also verify that your graphics drivers are up to date."
+  },
+  {
+    "category": "export",
+    "question": "How can I export simulation statistics for a production plan?",
+    "answer": "Use the Statistics window to create charts. You can export data by selecting the chart, right-clicking, and choosing 'Export Data' or by using the 'Save as' option in the chart. The data can be saved as CSV or text for further analysis in Excel or other tools."
+  },
+  {
+    "category": "import",
+    "question": "Can I import 3D models from SolidWorks or STEP formats directly?",
+    "answer": "Yes, R-Pro supports importing STEP and STL formats. However, large models can significantly slow down the layout. It is recommended to save components as .rpro files first, then insert them into the layout to improve performance. You can also simplify geometry to reduce file size."
+  },
+  {
+    "category": "robot_values",
+    "question": "How can I send robot TCP values to a PLC during simulation?",
+    "answer": "You can use the 'Connection' add-on to send data via OPC UA or Siemens S7. Create tags on the PLC with appropriate data types (e.g., array or vector) and map them to the robot's TCP properties in the simulation. Alternatively, you can use a Python script to read the TCP values and write them to custom properties that are then mapped to PLC tags."
+  },
+  {
+    "category": "python",
+    "question": "Is there a demo project for reading robot TCP values from a Python script?",
+    "answer": "Yes, there is a demo project called 'TCP_position.rpro' that demonstrates how to read TCP values and output them. You can request this from support. The script shows how to access the robot component and retrieve position data programmatically."
+  },
+  {
+    "category": "robot_simulation",
+    "question": "Can I simulate a mobile robot with a trailer attached behind it?",
+    "answer": "Currently, R-Pro does not have a built-in function for a robot pulling a trailer. However, this can be implemented via scripting. You would need to model the trailer as a separate component and control its movement relative to the AGV using custom kinematic constraints. This requires advanced scripting and is not a standard feature."
+  },
+  {
+    "category": "database",
+    "question": "The online resource library shows models in Russian even though I use the English interface. How can I fix this?",
+    "answer": "This was a known issue that has been fixed. Please update your R-Pro to the latest version and refresh the online library. If the issue persists, clear your cache or re-download the library sources. The English interface should display English names."
+  },
+  {
+    "category": "post_processor",
+    "question": "Can I add custom post-processors for other robot brands (e.g., Fanuc, ABB, KUKA)?",
+    "answer": "R-Pro supports custom post-processors. You can develop your own using Python scripts and add them to the post-processor folder. For supported brands, there are pre-configured post-processors. If you need a new one, contact support to discuss development options."
+  },
+  {
+    "category": "support",
+    "question": "What is the standard response time for support tickets?",
+    "answer": "We aim to respond to all inquiries within 24 business hours. For critical issues, we prioritize and may escalate to developers. Response times may vary depending on the complexity of the issue and the volume of requests."
+  },
+  {
+    "category": "training",
+    "question": "Are there video tutorials or online courses for R-Pro similar to Visual Components Academy?",
+    "answer": "Currently, we do not have an online academy. However, we offer on-site training and customized courses. You can request training sessions for specific topics. We are planning to develop more online resources in the future. For now, the user manual and example layouts serve as primary learning materials."
+  },
+  {
+    "category": "post_processor",
+    "question": "The Fanuc post-processor in the OLP module cannot export programs. How is this fixed?",
+    "answer": "This was a bug in earlier OLP versions. The latest version (1.4.2 and above) fixes the export issue. Download the new installer from the provided link and reinstall the OLP module. Ensure your license is updated as well."
+  },
+  {
+    "category": "licensing",
+    "question": "How do I generate a license update request file (.update.request)?",
+    "answer": "Open the License Wizard, select the license, and choose 'Update license'. The wizard will create a request file. Send this file to support, and we will generate an update file for you to apply. This is the standard procedure for extending license validity."
+  },
+  {
+    "category": "components",
+    "question": "Can I use components from a pre-layout library (e.g., eCatalog/Current Layout) in a new layout?",
+    "answer": "Yes, but these components are external references. To avoid dependencies, save your layout with the 'Include Components' option. This embeds the components in the .rpro file, making it portable. If you rely on external paths, ensure that the library path is accessible to all users."
+  },
+  {
+    "category": "simulation",
+    "question": "Can I simulate a palletizer or stacker system in R-Pro?",
+    "answer": "Yes, R-Pro has components for palletizers and stacking operations. You can use the 'Place in Pattern' function in robot scripts to stack products. There are example layouts for palletizing that demonstrate the process. You can also create custom stacker logic using scripts."
+  },
+   {
+    "category": "connections",
+    "question": "Does R-Pro support connectivity with ABB RobotStudio?",
+    "answer": "R-Pro does not have a direct connection to ABB RobotStudio. However, R-Pro supports OPC UA and Siemens S7 connections, which can be used to exchange data with external systems. If you need to integrate with ABB RobotStudio specifically, custom development might be required. The connection options available in R-Pro are listed in the Connections panel."
+  },
+  {
+    "category": "welding",
+    "question": "How can I create a mobile welding installation that moves along rails?",
+    "answer": "You can use a robot positioner from the catalog under 'Robots (positioners)'. These components can be placed on rails to provide linear motion. Alternatively, you can create a custom component with a translational joint to simulate movement along a track. Use the 'Pattern' tool to place multiple positioners or use scripting to control the movement."
+  },
+  {
+    "category": "conveyor",
+    "question": "How can I add an external signal to control the rotation of a conveyor (e.g., for z-axis rotation)?",
+    "answer": "To control rotation via an external signal, you need to modify the conveyor's logic. Remove the default routing, add a boolean signal to the component, and create a Python script that triggers the rotation based on the signal value. You can use the existing conveyor's start/stop signal as a reference for implementing custom signal-based behavior."
+  },
+  {
+    "category": "modeling",
+    "question": "Can I add a specific robot model like FaiRino to R-Pro?",
+    "answer": "Yes, you can request to have a new robot model added. Provide the 3D model (e.g., SolidWorks or STEP files) and technical documentation. The support team will evaluate the request. If you have active support, the model may be added in a future update. Alternatively, you can create the model yourself using the component creation guide."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "When I save a layout, the previous layout data is lost and only new components are saved. What is wrong?",
+    "answer": "This can happen if the layout was not saved with the 'Include Components' option enabled. The layout may be referencing external components that are not embedded. Always ensure the 'Include Components' checkbox is selected when saving to preserve all dependencies. If the issue persists, update to the latest version (2.1.6 or higher) as earlier versions had bugs in this area."
+  },
+  {
+    "category": "licensing",
+    "question": "How do I set up a network license server for R-Pro?",
+    "answer": "Install the Guardant License Manager on a server machine. The installation guide for the network version is provided in the support documentation. You need to configure the server IP address in the network_ip.cfg file on client machines. After setup, clients can connect to the server to obtain licenses. Ensure that port 443 (or configured port) is open for communication."
+  },
+  {
+    "category": "installation",
+    "question": "Can I get a distribution package for macOS?",
+    "answer": "Yes, a macOS version is available. Contact support with your request, and we will provide the distribution package. The installation on macOS is similar to Windows, but there may be specific requirements. License transfer between Windows and macOS is possible following the standard activation instructions."
+  },
+  {
+    "category": "download",
+    "question": "The download link from the website says 'The link is no longer valid' even though I used it for the first time. What should I do?",
+    "answer": "This can happen due to a temporary issue with the download server. Please request a new link by filling out the download form again. If the problem persists, contact support directly and we will provide you with an alternative download link (e.g., DropMeFiles or Yandex Disk)."
+  },
+  {
+    "category": "AGV",
+    "question": "How can I record a simulated AGV trajectory and export it as a robot program?",
+    "answer": "The feature to export trajectories as robot programs is under development. Currently, you can record trajectories and export them as .xlsx files. For future updates, the mechanism will support direct export to robot-specific formats. Questions about the implementation (e.g., Wi-Fi vs. wired, Python vs. .as format, file structure) should be directed to the project coordinator for specific project inquiries."
+  },
+  {
+    "category": "viewer",
+    "question": "What is 'Virtual Production' viewer and how can I use it to show layouts to customers?",
+    "answer": "Virtual Production is a lightweight viewer for R-Pro layouts. You can install it on Windows or Android. Request the distribution and trial keys from support. You can share the layout file (.rpro) with customers; they can open it in the viewer to see the 3D model even without simulation capabilities. This is ideal for presentations and reviews."
+  },
+  {
+    "category": "library",
+    "question": "Can I add my own components to the R-Pro catalog, and if so, how?",
+    "answer": "Yes, you can create your own components (.rpro files) and add them to the catalog by adding a new source folder in the Library settings. You can either place files in a network folder and point to it, or add a local folder. After adding, the components will appear in the catalog under the new source. You can also create smart collections to organize them."
+  },
+  {
+    "category": "licensing",
+    "question": "How can I test if my network license is working correctly from a client machine?",
+    "answer": "You can use the LicChecker tool (provided by support) to test connectivity to the license server. Run it from the command line and it will show connection status. Alternatively, check the License Wizard logs for any errors. If the connection fails, verify the network_ip.cfg file, firewall settings, and that the license server is running."
+  },
+  {
+    "category": "components",
+    "question": "Where can I find a component like a 'tilting positioner' (кантователь) in the catalog?",
+    "answer": "The catalog does not have a specific component named 'кантователь'. However, you can use positioners from the 'Robots (positioners)' or 'Workpiece positioners' sections. If you need a specific tilting mechanism, you can create a custom component using links and joints, or request a custom development."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "When I open a layout, some components are missing and I get errors about VCID not found. How can I fix this?",
+    "answer": "This occurs because the layout references external components from a local library that is no longer available. The solution is to either restore the same library version that was used when the layout was created, or to repack the layout with all components embedded. To avoid this, always save layouts with the 'Include Components' option. If recovery is needed, contact support for assistance."
+  },
+  {
+    "category": "post_processor",
+    "question": "Can I create my own post-processor for a custom robot controller?",
+    "answer": "Yes, R-Pro allows custom post-processors to be developed using Python scripts. You can add your script to the post-processor folder and it will appear in the export options. The API documentation for post-processors is available in the Help files. For guidance, contact support for the plugin development instructions."
+  },
+  {
+    "category": "human_animation",
+    "question": "How can I make a human worker pick a product without the product flying into their hands (instant teleport)?",
+    "answer": "To avoid the 'flying' effect, you need to adjust the PickTime and PlaceTime properties in the transport link or controller. Setting a positive value (e.g., 0.5 seconds) will animate the product movement from source to hands. However, to fully control the animation, you may need to customize the human's walking program using the controller's script."
+  },
+  {
+    "category": "modeling",
+    "question": "Can I model a custom assembly (e.g., a pallet with multiple products) and have it moved as a single unit?",
+    "answer": "Yes, you can create an assembly component that groups several products. This assembly can be treated as a single product in the simulation. In process nodes, you can move the entire assembly. The human or robot will pick up the whole assembly at once. Define the assembly's geometry and properties, and use it like any other product."
+  },
+  {
+    "category": "simulation",
+    "question": "How can I account for machine breakdowns or changeover times in my simulation?",
+    "answer": "You can add delays in the process logic using scripts or by inserting 'Wait' blocks. For breakdowns, you can use a random trigger that occasionally adds a longer delay. The example layout 'MP Machine with failures' demonstrates this. For changeovers, you can add a process step that executes a delay when switching between product types."
+  },
+  {
+    "category": "robot_trajectories",
+    "question": "Can I export a robot trajectory to an Excel file (xlsx)?",
+    "answer": "Yes, the trajectory recording feature allows you to export recorded paths as .xlsx files. This functionality will be retained even when new export features (like direct robot programs) are added. The .xlsx export is useful for data analysis and offline review of trajectories."
+  },
+  {
+    "category": "library",
+    "question": "What is the process for requesting a new component to be added to the official catalog?",
+    "answer": "Contact support with the 3D model (preferably in STEP or SolidWorks format) and technical specifications, including kinematic data if applicable. Our engineering team will evaluate the request. If your request is aligned with our development roadmap, it may be included in a future release. For expedited addition, custom engineering services are available."
+  },
+  {
+    "category": "installation",
+    "question": "I receive an error 'Формат отличается от ожидаемого: Файл манифеста отсутствует' when opening a file. What does it mean?",
+    "answer": "This error indicates that the .rpro file is missing the manifest.xml file, which is required for R-Pro to recognize the layout structure. This often happens when the file was saved with an older version or was corrupted. Try opening the file with the same version it was created with. If that doesn't work, contact support; there may be a way to repair the file by restoring missing components."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "The application shows an 'Unsupported format' error when trying to open a layout. What should I do?",
+    "answer": "This usually means the layout was saved with a newer version of R-Pro that is not compatible with the current version. Install the same version that was used to create the layout, or update to the latest version. If the problem persists, check if the layout file is valid by testing with a fresh installation of the latest version."
+  },
+  {
+    "category": "addons",
+    "question": "How do I install an add-on for surface processing or other specialized modules?",
+    "answer": "Add-ons are installed via separate installers. Download the appropriate installer from the provided link (e.g., for surface processing). Run the installer, which will add the module to R-Pro. Ensure you have a valid license that includes that module. If you encounter errors after installation, check compatibility with your R-Pro version and update both if necessary."
+  },
+  {
+    "category": "training",
+    "question": "Are there any specific courses available for modeling human ergonomics in R-Pro?",
+    "answer": "Currently, we do not offer a dedicated course for human ergonomics. However, the basic human modeling and animation are covered in the standard R-Pro training. For advanced ergonomic analysis similar to Tecnomatix Process Simulate, this functionality is not yet fully available in R-Pro. We are continuously developing features, so future versions may include more ergonomic tools."
+  },
+  {
+    "category": "post_processor",
+    "question": "Can I export a welding program directly to a Fanuc robot with the OLP module?",
+    "answer": "Yes, the OLP module includes a Fanuc post-processor. After creating the welding path, you can use the export function to generate a program for Fanuc robots. If you encounter issues (e.g., empty files or incorrect coordinates), ensure you have the latest OLP version (1.4.2 or higher), which fixes many common export bugs."
+  }
+]
+}

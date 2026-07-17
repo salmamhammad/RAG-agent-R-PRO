@@ -1,6 +1,6 @@
 import os
 import logging
-from llama_index.core import VectorStoreIndex, Settings
+from llama_index.core import VectorStoreIndex, Settings, Document
 from llama_index.core.retrievers import VectorIndexRetriever
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from backend.chroma_client import get_vector_store
@@ -52,28 +52,50 @@ class RAGEngine:
             context = "\n\n".join([node.get_content() for node in nodes])
             sources = format_sources(nodes, max_text_len=200)
             system_prompt = (
-                "Ты — ИИ-помощник техподдержки. Отвечай строго на основе предоставленного контекста. "
-                "Если ответа нет в контексте, честно скажи, что не знаешь, и предложи обратиться к инженеру. "
+                "Ты — ИИ-помощник техподдержки. поприветствуй пользователя "
+                "Отвечай строго на основе предоставленного контекста. "
                 "Не выдумывай информацию. Отвечай на русском языке."
             )
             user_content = f"Контекст:\n{context}\n\nВопрос пользователя: {query}"
             messages = [{"role": "system", "content": system_prompt}]
             if history:
-                messages.extend(history[-5:])  # последние 5 сообщений
+                messages.extend(history[-8:])  # последние 8 сообщений
             messages.append({"role": "user", "content": user_content})
+            # logger.info(f"messages:{messages}")
             answer = self.llm.generate(messages)
-            return {"answer": answer, "sources": sources}
+            return {"answer": answer, "sources": sources, "has_context": True}
 
         # Если нет релевантных чанков
         else:
-            logger.info(f"failure: true...")
+            logger.info(f"node: false")
             # Обычный ответ "не знаю" через LLM 
             system_prompt = (
-              "не нашёл в базе знаний, обратитесь к инженеру "
+              "честно скажи, что не знаешь,"
+              "не нашёл в базе знаний,  обратитесь к инженеру "
+              "Не выдумывай информацию. Отвечай на русском языке."
             )
             messages = [{"role": "system", "content": system_prompt}]
             if history:
-                messages.extend(history[-5:])
+                messages.extend(history[-8:])
             messages.append({"role": "user", "content": query})
             answer = self.llm.generate(messages)
-            return {"answer": answer, "sources": []}
+            return {"answer": answer, "sources": [], "has_context": False}
+        
+    def add_document(self, text: str, metadata: dict = None):
+        """Добавляет новый документ в векторную базу (для ответов инженера)."""
+        from ingestion.chunker import get_chunker
+        if metadata is None:
+           metadata = {"source": "engineer_response"}
+        for key, value in list(metadata.items()):
+            if isinstance(value, str) and len(value) > 200:
+               metadata[key] = value[:200] + "..."
+
+        doc = Document(text=text, metadata=metadata)
+        chunker = get_chunker()
+        nodes = chunker.get_nodes_from_documents([doc])
+        if nodes:
+           self.index.insert_nodes(nodes)
+           self.index.storage_context.persist(persist_dir="storage")
+           print(f" Добавлен ответ инженера в RAG: {text[:50]}...")
+        else:
+           print(" Не удалось создать узлы для ответа инженера.")
