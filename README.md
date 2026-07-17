@@ -15,18 +15,13 @@ python -m venv venv
 .\venv\Scripts\Activate.ps1 // source venv/bin/activate (ubuntu)
 pip install --upgrade pip
 pip install -r requirements.txt
-<<<<<<< HEAD
+
 python -m scripts.run_ingestion
 python check_chroma.py // проверить текущие чанки
 
 uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
 python -m http.server 3000            
-=======
-python check_chroma.py // проверить текущие чанки
-python -m scripts.run_ingestion // для обучения модели
-python test_chat.py
-           
->>>>>>> main
+
 ```
 страница для чата с ИИ:
 http://localhost:3000/test_widget.html
@@ -68,20 +63,46 @@ pacman -S mingw-w64-ucrt-x86_64-chmlib
 # .env
 ```
 bash
-GROQ_API_KEY= "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"
-# GROQ_MODEL= "openai/gpt-oss-120b"
+GROQ_API_KEY= "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"
+# GROQ_MODEL= "openai/gpt-oss-120b"  "qwen/qwen3-32b" "mixtral-8x7b-32768"
 GROQ_MODEL= "qwen/qwen3-32b"
 LLM_PROVIDER=groq            # groq or ollama
 OLLAMA_MODEL= "dengcao/Qwen3-32B:Q5_K_M"
+OLLAMA_BASE_URL="http://localhost:8000"
 
-
-TOP_K=10                    # количество чанков, возвращаемых поиском
-EMBEDDING_MODEL=d0rj/e5-small-en-ru   # модель эмбеддингов
+TOP_K=8                    # количество чанков, возвращаемых поиском
+EMBEDDING_MODEL=d0rj/e5-small-en-ru   # модель эмбеддингов d0rj/e5-small-en-ru 
 
 LOCAL_MODEL_PATH=F:\rag-support-agent\models\Qwen3-8B
-USE_API=true   
+USE_API=true    
 
 ```
+# тестирования
+```
+bash
+# 1. Провести полную оценку
+python tests/evaluate_full.py
+
+# 2. запустить диагностику
+python tests/diagnose.py
+
+# 3. Проведение исследования абляции (трудоемкий процесс)
+python tests/ablation.py
+
+# 4.Просмотреть результаты
+cat tests/detailed_results.json
+
+```
+## Интерпретация метрик
+
+| Metric | Good Score | Okay Score | Poor Score |
+|--------|------------|------------|------------|
+| ROUGE-L | > 0.6 | 0.4 - 0.6 | < 0.4 |
+| Hit Rate | > 80% | 50% - 80% | < 50% |
+| Semantic Similarity | > 0.8 | 0.6 - 0.8 | < 0.6 |
+| Faithfulness | > 0.8 | 0.6 - 0.8 | < 0.6 |
+| Latency | < 2000 ms | 2000 - 5000 ms | > 5000 ms |
+| Success Rate | > 95% | 90% - 95% | < 90% |
 
 # Подготовка данных
 Поместите файлы знаний (PDF, TXT, CHM, JSONL) в папки:
