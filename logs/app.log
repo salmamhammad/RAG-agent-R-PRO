@@ -1,0 +1,481 @@
+2026-07-18 01:08:22,128 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-18 01:11:36,090 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-18 01:11:48,829 - backend.main - INFO - Новый запрос: hi...
+2026-07-18 01:11:52,121 - backend.main - ERROR - Ошибка: HTTPConnectionPool(host='ollama', port=11434): Max retries exceeded with url: /api/chat (Caused by NameResolutionError("HTTPConnection(host='ollama', port=11434): Failed to resolve 'ollama' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "F:\rag-support-agent\venv\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Salma\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 976, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\rag-support-agent\venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\urllib3\connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "F:\rag-support-agent\venv\Lib\site-packages\urllib3\connection.py", line 500, in request
+    self.endheaders()
+  File "C:\Users\Salma\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1331, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\Salma\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1091, in _send_output
+    self.send(msg)
+  File "C:\Users\Salma\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1035, in send
+    self.connect()
+  File "F:\rag-support-agent\venv\Lib\site-packages\urllib3\connection.py", line 331, in connect
+    self.sock = self._new_conn()
+                ^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPConnection(host='ollama', port=11434): Failed to resolve 'ollama' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\rag-support-agent\venv\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\urllib3\util\retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='ollama', port=11434): Max retries exceeded with url: /api/chat (Caused by NameResolutionError("HTTPConnection(host='ollama', port=11434): Failed to resolve 'ollama' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\rag-support-agent\backend\main.py", line 77, in chat
+    result = rag.answer(request.question, history=request.history)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\rag_engine.py", line 65, in answer
+    answer = self.llm.generate(messages)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\ollama_provider.py", line 24, in generate
+    response = requests.post(url, json=payload, timeout=120)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\requests\api.py", line 134, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\requests\api.py", line 71, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\requests\adapters.py", line 729, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='ollama', port=11434): Max retries exceeded with url: /api/chat (Caused by NameResolutionError("HTTPConnection(host='ollama', port=11434): Failed to resolve 'ollama' ([Errno 11001] getaddrinfo failed)"))
+2026-07-18 01:12:54,171 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-18 01:13:13,015 - backend.main - INFO - Новый запрос: hi...
+2026-07-18 01:13:14,007 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-07-18 01:13:14,012 - backend.main - ERROR - Ошибка: Error code: 403 - {'error': {'message': 'Access denied. Please check your network settings.'}}
+Traceback (most recent call last):
+  File "F:\rag-support-agent\backend\main.py", line 77, in chat
+    result = rag.answer(request.question, history=request.history)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\rag_engine.py", line 65, in answer
+    answer = self.llm.generate(messages)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\groq_provider.py", line 17, in generate
+    response = self.client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\resources\chat\completions.py", line 462, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1284, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1071, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.PermissionDeniedError: Error code: 403 - {'error': {'message': 'Access denied. Please check your network settings.'}}
+2026-07-18 11:51:50,537 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-18 11:52:43,457 - backend.main - INFO - Новый запрос: hi...
+2026-07-18 11:52:44,793 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-07-18 11:52:44,795 - backend.main - ERROR - Ошибка: Error code: 403 - {'error': {'message': 'Access denied. Please check your network settings.'}}
+Traceback (most recent call last):
+  File "F:\rag-support-agent\backend\main.py", line 77, in chat
+    result = rag.answer(request.question, history=request.history)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\rag_engine.py", line 65, in answer
+    answer = self.llm.generate(messages)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\groq_provider.py", line 17, in generate
+    response = self.client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\resources\chat\completions.py", line 462, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1284, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1071, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.PermissionDeniedError: Error code: 403 - {'error': {'message': 'Access denied. Please check your network settings.'}}
+2026-07-18 12:01:27,961 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-18 12:02:04,583 - backend.main - INFO - Новый запрос: hi...
+2026-07-18 12:02:05,629 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-07-18 12:02:05,660 - backend.main - ERROR - Ошибка: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-32b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+Traceback (most recent call last):
+  File "F:\rag-support-agent\backend\main.py", line 77, in chat
+    result = rag.answer(request.question, history=request.history)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\rag_engine.py", line 65, in answer
+    answer = self.llm.generate(messages)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\backend\groq_provider.py", line 17, in generate
+    response = self.client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\resources\chat\completions.py", line 462, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1284, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\rag-support-agent\venv\Lib\site-packages\groq\_base_client.py", line 1071, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.NotFoundError: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-32b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-07-18 12:05:00,562 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from d0rj/e5-small-en-ru.
+2026-07-18 12:05:48,071 - backend.main - INFO - Новый запрос: hi...
+2026-07-18 12:05:50,328 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:05:50,380 - backend.main - INFO - Ответ отправлен, длина: 2798
+2026-07-18 12:05:50,380 - backend.main - INFO - Обработано за 2026-07-18T12:05:50.379207 - 2026-07-18T12:05:48.076243
+2026-07-18 12:05:50,381 - backend.main - INFO - result : True
+2026-07-18 12:06:45,037 - backend.main - WARNING - Invalid input from 127.0.0.1: Введенные данные содержат недопустимый контент.
+2026-07-18 12:07:44,590 - backend.main - INFO - Новый запрос: Можно ли использовать R‑Pro на планшетах или сенсорных экранах?...
+2026-07-18 12:07:46,692 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:07:46,704 - backend.main - INFO - Ответ отправлен, длина: 2270
+2026-07-18 12:07:46,705 - backend.main - INFO - Обработано за 2026-07-18T12:07:46.704760 - 2026-07-18T12:07:44.596803
+2026-07-18 12:07:46,706 - backend.main - INFO - result : True
+2026-07-18 12:14:52,912 - backend.main - INFO - Новый запрос: Тестовый вопрос #1...
+2026-07-18 12:14:56,450 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:14:56,458 - backend.main - INFO - Ответ отправлен, длина: 4225
+2026-07-18 12:14:56,460 - backend.main - INFO - Обработано за 2026-07-18T12:14:56.458129 - 2026-07-18T12:14:52.921019
+2026-07-18 12:14:56,461 - backend.main - INFO - result : True
+2026-07-18 12:14:58,556 - backend.main - INFO - Новый запрос: Тестовый вопрос #2...
+2026-07-18 12:15:00,452 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:15:00,454 - backend.main - INFO - Ответ отправлен, длина: 3322
+2026-07-18 12:15:00,454 - backend.main - INFO - Обработано за 2026-07-18T12:15:00.454425 - 2026-07-18T12:14:58.557521
+2026-07-18 12:15:00,455 - backend.main - INFO - result : True
+2026-07-18 12:15:02,552 - backend.main - INFO - Новый запрос: Тестовый вопрос #3...
+2026-07-18 12:15:07,595 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:15:07,596 - backend.main - INFO - Ответ отправлен, длина: 7668
+2026-07-18 12:15:07,596 - backend.main - INFO - Обработано за 2026-07-18T12:15:07.596326 - 2026-07-18T12:15:02.554252
+2026-07-18 12:15:07,597 - backend.main - INFO - result : True
+2026-07-18 12:15:09,609 - backend.main - INFO - Новый запрос: Тестовый вопрос #4...
+2026-07-18 12:15:09,810 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:15:09,810 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 7.000000 seconds
+2026-07-18 12:15:17,275 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:15:17,278 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 7.000000 seconds
+2026-07-18 12:15:26,770 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:15:26,771 - backend.main - INFO - Ответ отправлен, длина: 4195
+2026-07-18 12:15:26,771 - backend.main - INFO - Обработано за 2026-07-18T12:15:26.771517 - 2026-07-18T12:15:09.613007
+2026-07-18 12:15:26,772 - backend.main - INFO - result : True
+2026-07-18 12:15:26,775 - backend.main - INFO - Новый запрос: Тестовый вопрос #5...
+2026-07-18 12:15:26,937 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:15:26,940 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 1.000000 seconds
+2026-07-18 12:15:28,029 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:15:28,032 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 7.000000 seconds
+2026-07-18 12:15:39,623 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:15:39,625 - backend.main - INFO - Ответ отправлен, длина: 8116
+2026-07-18 12:15:39,626 - backend.main - INFO - Обработано за 2026-07-18T12:15:39.625374 - 2026-07-18T12:15:26.775516
+2026-07-18 12:15:39,626 - backend.main - INFO - result : True
+2026-07-18 12:15:39,627 - backend.main - INFO - Новый запрос: Тестовый вопрос #6...
+2026-07-18 12:15:39,807 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:15:39,807 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 14.000000 seconds
+2026-07-18 12:15:56,060 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:15:56,067 - backend.main - INFO - Ответ отправлен, длина: 3552
+2026-07-18 12:15:56,068 - backend.main - INFO - Обработано за 2026-07-18T12:15:56.067901 - 2026-07-18T12:15:39.628961
+2026-07-18 12:15:56,070 - backend.main - INFO - result : True
+2026-07-18 12:15:56,085 - backend.main - INFO - Новый запрос: Тестовый вопрос #7...
+2026-07-18 12:15:56,278 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:15:56,278 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 7.000000 seconds
+2026-07-18 12:16:06,077 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:16:06,080 - backend.main - INFO - Ответ отправлен, длина: 2789
+2026-07-18 12:16:06,080 - backend.main - INFO - Обработано за 2026-07-18T12:16:06.080733 - 2026-07-18T12:15:56.090799
+2026-07-18 12:16:06,082 - backend.main - INFO - result : True
+2026-07-18 12:16:06,087 - backend.main - INFO - Новый запрос: Тестовый вопрос #8...
+2026-07-18 12:16:06,221 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:16:06,221 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 9.000000 seconds
+2026-07-18 12:16:17,616 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:16:17,617 - backend.main - INFO - Ответ отправлен, длина: 3742
+2026-07-18 12:16:17,618 - backend.main - INFO - Обработано за 2026-07-18T12:16:17.617270 - 2026-07-18T12:16:06.088264
+2026-07-18 12:16:17,618 - backend.main - INFO - result : True
+2026-07-18 12:18:00,994 - backend.main - INFO - Новый запрос: Как обновить лицензию R‑Pro?...
+2026-07-18 12:18:03,718 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:18:03,720 - backend.main - INFO - Ответ отправлен, длина: 3904
+2026-07-18 12:18:03,720 - backend.main - INFO - Обработано за 2026-07-18T12:18:03.719818 - 2026-07-18T12:18:01.000451
+2026-07-18 12:18:03,720 - backend.main - INFO - result : True
+2026-07-18 12:18:05,790 - backend.main - INFO - Новый запрос: R‑Pro пишет «Лицензия не найдена». Что делать?...
+2026-07-18 12:18:08,565 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:18:08,572 - backend.main - INFO - Ответ отправлен, длина: 4345
+2026-07-18 12:18:08,574 - backend.main - INFO - Обработано за 2026-07-18T12:18:08.572685 - 2026-07-18T12:18:05.791024
+2026-07-18 12:18:08,575 - backend.main - INFO - result : True
+2026-07-18 12:18:10,663 - backend.main - INFO - Новый запрос: Можно ли использовать одну лицензию на нескольких компьютерах?...
+2026-07-18 12:18:13,887 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:18:13,892 - backend.main - INFO - Ответ отправлен, длина: 5505
+2026-07-18 12:18:13,895 - backend.main - INFO - Обработано за 2026-07-18T12:18:13.892621 - 2026-07-18T12:18:10.665145
+2026-07-18 12:18:13,896 - backend.main - INFO - result : True
+2026-07-18 12:18:15,959 - backend.main - INFO - Новый запрос: Как активировать пробную лицензию?...
+2026-07-18 12:18:18,943 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:18:18,950 - backend.main - INFO - Ответ отправлен, длина: 5711
+2026-07-18 12:18:18,951 - backend.main - INFO - Обработано за 2026-07-18T12:18:18.950634 - 2026-07-18T12:18:15.962609
+2026-07-18 12:18:18,953 - backend.main - INFO - result : True
+2026-07-18 12:18:21,043 - backend.main - INFO - Новый запрос: После обновления BIOS лицензия перестала работать. Как восстановить?...
+2026-07-18 12:18:21,254 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:18:21,255 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 6.000000 seconds
+2026-07-18 12:18:29,872 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:18:29,880 - backend.main - INFO - Ответ отправлен, длина: 4593
+2026-07-18 12:18:29,882 - backend.main - INFO - Обработано за 2026-07-18T12:18:29.880207 - 2026-07-18T12:18:21.047051
+2026-07-18 12:18:29,883 - backend.main - INFO - result : True
+2026-07-18 12:18:29,905 - backend.main - INFO - Новый запрос: Некоторые компьютеры подключаются к серверу лицензий, а другие нет. В чём причина?...
+2026-07-18 12:18:30,122 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:18:30,123 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 13.000000 seconds
+2026-07-18 12:18:45,389 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:18:45,395 - backend.main - INFO - Ответ отправлен, длина: 3624
+2026-07-18 12:18:45,396 - backend.main - INFO - Обработано за 2026-07-18T12:18:45.395685 - 2026-07-18T12:18:29.907197
+2026-07-18 12:18:45,399 - backend.main - INFO - result : True
+2026-07-18 12:18:45,413 - backend.main - INFO - Новый запрос: Можно ли взять лицензию «напрокат» из сетевой образовательной версии?...
+2026-07-18 12:18:45,633 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:18:45,633 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 12.000000 seconds
+2026-07-18 12:19:02,224 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:19:02,232 - backend.main - INFO - Ответ отправлен, длина: 8210
+2026-07-18 12:19:02,233 - backend.main - INFO - Обработано за 2026-07-18T12:19:02.232424 - 2026-07-18T12:18:45.416307
+2026-07-18 12:19:02,235 - backend.main - INFO - result : True
+2026-07-18 12:19:02,246 - backend.main - INFO - Новый запрос: Лицензия пишет «Нет доступных обновлений», но срок истёк. Что делать?...
+2026-07-18 12:19:02,450 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:19:02,451 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 18.000000 seconds
+2026-07-18 12:19:23,349 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:19:23,361 - backend.main - INFO - Ответ отправлен, длина: 5032
+2026-07-18 12:19:23,362 - backend.main - INFO - Обработано за 2026-07-18T12:19:23.361245 - 2026-07-18T12:19:02.250578
+2026-07-18 12:19:23,363 - backend.main - INFO - result : True
+2026-07-18 12:19:23,380 - backend.main - INFO - Новый запрос: Может ли сторонняя ИТ‑компания обращаться в поддержку от нашего имени?...
+2026-07-18 12:19:23,656 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:19:23,656 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 20.000000 seconds
+2026-07-18 12:19:47,013 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:19:47,020 - backend.main - INFO - Ответ отправлен, длина: 6132
+2026-07-18 12:19:47,022 - backend.main - INFO - Обработано за 2026-07-18T12:19:47.020728 - 2026-07-18T12:19:23.385619
+2026-07-18 12:19:47,024 - backend.main - INFO - result : True
+2026-07-18 12:19:47,032 - backend.main - INFO - Новый запрос: Как создать файл запроса на обновление лицензии (.update.request)?...
+2026-07-18 12:19:47,265 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:19:47,266 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 15.000000 seconds
+2026-07-18 12:20:04,052 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:20:04,057 - backend.main - INFO - Ответ отправлен, длина: 2555
+2026-07-18 12:20:04,060 - backend.main - INFO - Обработано за 2026-07-18T12:20:04.057734 - 2026-07-18T12:19:47.033460
+2026-07-18 12:20:04,062 - backend.main - INFO - result : True
+2026-07-18 12:20:04,080 - backend.main - INFO - Новый запрос: У меня бессрочная лицензия, но она показывает истекшую. Нужно ли платить за продление?...
+2026-07-18 12:20:04,303 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:20:04,303 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 6.000000 seconds
+2026-07-18 12:20:14,879 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:20:14,891 - backend.main - INFO - Ответ отправлен, длина: 8764
+2026-07-18 12:20:14,892 - backend.main - INFO - Обработано за 2026-07-18T12:20:14.890053 - 2026-07-18T12:20:04.083664
+2026-07-18 12:20:14,893 - backend.main - INFO - result : True
+2026-07-18 12:20:14,904 - backend.main - INFO - Новый запрос: Как настроить сетевой сервер лицензий для R‑Pro?...
+2026-07-18 12:20:15,098 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:20:15,098 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 18.000000 seconds
+2026-07-18 12:20:36,127 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:20:36,133 - backend.main - INFO - Ответ отправлен, длина: 4153
+2026-07-18 12:20:36,135 - backend.main - INFO - Обработано за 2026-07-18T12:20:36.133834 - 2026-07-18T12:20:14.908863
+2026-07-18 12:20:36,136 - backend.main - INFO - result : True
+2026-07-18 12:20:36,149 - backend.main - INFO - Новый запрос: Как проверить работоспособность сетевой лицензии с клиентской машины?...
+2026-07-18 12:20:36,370 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:20:36,370 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 7.000000 seconds
+2026-07-18 12:20:43,888 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:20:43,889 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 7.000000 seconds
+2026-07-18 12:20:53,279 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:20:53,287 - backend.main - INFO - Ответ отправлен, длина: 3221
+2026-07-18 12:20:53,289 - backend.main - INFO - Обработано за 2026-07-18T12:20:53.287160 - 2026-07-18T12:20:36.155034
+2026-07-18 12:20:53,290 - backend.main - INFO - result : True
+2026-07-18 12:20:53,305 - backend.main - INFO - Новый запрос: Можно ли использовать R‑Pro на macOS?...
+2026-07-18 12:20:53,494 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:20:53,495 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 5.000000 seconds
+2026-07-18 12:20:58,584 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:20:58,586 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 6.000000 seconds
+2026-07-18 12:21:06,694 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:21:06,697 - backend.main - INFO - Ответ отправлен, длина: 2990
+2026-07-18 12:21:06,698 - backend.main - INFO - Обработано за 2026-07-18T12:21:06.697727 - 2026-07-18T12:20:53.309754
+2026-07-18 12:21:06,698 - backend.main - INFO - result : True
+2026-07-18 12:21:06,710 - backend.main - INFO - Новый запрос: Где скачать последнюю версию R‑Pro?...
+2026-07-18 12:21:06,964 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:21:06,966 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 5.000000 seconds
+2026-07-18 12:21:12,481 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:21:12,485 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 6.000000 seconds
+2026-07-18 12:21:21,631 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:21:21,640 - backend.main - INFO - Ответ отправлен, длина: 4828
+2026-07-18 12:21:21,641 - backend.main - INFO - Обработано за 2026-07-18T12:21:21.639625 - 2026-07-18T12:21:06.713432
+2026-07-18 12:21:21,642 - backend.main - INFO - result : True
+2026-07-18 12:21:21,653 - backend.main - INFO - Новый запрос: Ссылка для скачивания с сайта выдаёт ошибку. Что делать?...
+2026-07-18 12:21:21,895 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:21:21,895 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 7.000000 seconds
+2026-07-18 12:21:29,325 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:21:29,326 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 6.000000 seconds
+2026-07-18 12:21:38,181 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:21:38,186 - backend.main - INFO - Ответ отправлен, длина: 4389
+2026-07-18 12:21:38,187 - backend.main - INFO - Обработано за 2026-07-18T12:21:38.186278 - 2026-07-18T12:21:21.659416
+2026-07-18 12:21:38,187 - backend.main - INFO - result : True
+2026-07-18 12:21:38,195 - backend.main - INFO - Новый запрос: Каковы системные требования для R‑Pro?...
+2026-07-18 12:21:38,413 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:21:38,414 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 13.000000 seconds
+2026-07-18 12:21:53,623 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:21:53,629 - backend.main - INFO - Ответ отправлен, длина: 2850
+2026-07-18 12:21:53,630 - backend.main - INFO - Обработано за 2026-07-18T12:21:53.629031 - 2026-07-18T12:21:38.199344
+2026-07-18 12:21:53,631 - backend.main - INFO - result : True
+2026-07-18 12:21:53,638 - backend.main - INFO - Новый запрос: Существует ли версия R‑Pro для macOS?...
+2026-07-18 12:21:53,868 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:21:53,868 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 12.000000 seconds
+2026-07-18 12:22:07,792 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:22:07,798 - backend.main - INFO - Ответ отправлен, длина: 2890
+2026-07-18 12:22:07,799 - backend.main - INFO - Обработано за 2026-07-18T12:22:07.798607 - 2026-07-18T12:21:53.643149
+2026-07-18 12:22:07,800 - backend.main - INFO - result : True
+2026-07-18 12:22:07,812 - backend.main - INFO - Новый запрос: При открытии файла появляется ошибка «Формат отличается от ожидаемого: Файл манифеста отсутствует». ...
+2026-07-18 12:22:08,058 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:22:08,059 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 10.000000 seconds
+2026-07-18 12:22:22,730 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:22:22,739 - backend.main - INFO - Ответ отправлен, длина: 8632
+2026-07-18 12:22:22,740 - backend.main - INFO - Обработано за 2026-07-18T12:22:22.738738 - 2026-07-18T12:22:07.817089
+2026-07-18 12:22:22,741 - backend.main - INFO - result : True
+2026-07-18 12:22:22,752 - backend.main - INFO - Новый запрос: При попытке открыть планировку приложение пишет «Неподдерживаемый формат». Что делать?...
+2026-07-18 12:22:22,999 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:22:23,000 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 9.000000 seconds
+2026-07-18 12:22:36,304 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:22:36,306 - backend.main - INFO - Ответ отправлен, длина: 7423
+2026-07-18 12:22:36,306 - backend.main - INFO - Обработано за 2026-07-18T12:22:36.306430 - 2026-07-18T12:22:22.756770
+2026-07-18 12:22:36,306 - backend.main - INFO - result : True
+2026-07-18 12:22:36,308 - backend.main - INFO - Новый запрос: Как установить надстройку, например, для обработки поверхностей?...
+2026-07-18 12:22:36,431 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:22:36,431 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 16.000000 seconds
+2026-07-18 12:22:52,877 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:22:52,880 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 6.000000 seconds
+2026-07-18 12:23:01,247 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:23:01,249 - backend.main - INFO - Ответ отправлен, длина: 4093
+2026-07-18 12:23:01,249 - backend.main - INFO - Обработано за 2026-07-18T12:23:01.249912 - 2026-07-18T12:22:36.308435
+2026-07-18 12:23:01,250 - backend.main - INFO - result : True
+2026-07-18 12:23:01,253 - backend.main - INFO - Новый запрос: Можно ли импортировать 3D‑модели во время симуляции?...
+2026-07-18 12:23:01,441 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:23:01,443 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 12.000000 seconds
+2026-07-18 12:23:13,717 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:23:13,718 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 1.000000 seconds
+2026-07-18 12:23:17,499 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:23:17,501 - backend.main - INFO - Ответ отправлен, длина: 4562
+2026-07-18 12:23:17,501 - backend.main - INFO - Обработано за 2026-07-18T12:23:17.501487 - 2026-07-18T12:23:01.257040
+2026-07-18 12:23:17,501 - backend.main - INFO - result : True
+2026-07-18 12:23:17,504 - backend.main - INFO - Новый запрос: Как создать собственного робота в R‑Pro?...
+2026-07-18 12:23:17,676 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:23:17,678 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 15.000000 seconds
+2026-07-18 12:23:37,418 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:23:37,420 - backend.main - INFO - Ответ отправлен, длина: 8706
+2026-07-18 12:23:37,421 - backend.main - INFO - Обработано за 2026-07-18T12:23:37.420475 - 2026-07-18T12:23:17.505714
+2026-07-18 12:23:37,421 - backend.main - INFO - result : True
+2026-07-18 12:23:37,424 - backend.main - INFO - Новый запрос: Как привязать продукт к компоненту в процессе?...
+2026-07-18 12:23:37,597 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:23:37,597 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 18.000000 seconds
+2026-07-18 12:23:57,735 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:23:57,742 - backend.main - INFO - Ответ отправлен, длина: 3235
+2026-07-18 12:23:57,745 - backend.main - INFO - Обработано за 2026-07-18T12:23:57.742319 - 2026-07-18T12:23:37.425614
+2026-07-18 12:23:57,747 - backend.main - INFO - result : True
+2026-07-18 12:23:57,766 - backend.main - INFO - Новый запрос: Можно ли создать сборку, которая перемещается как одно целое?...
+2026-07-18 12:23:58,017 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:23:58,017 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 8.000000 seconds
+2026-07-18 12:24:09,348 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:24:09,350 - backend.main - INFO - Ответ отправлен, длина: 5768
+2026-07-18 12:24:09,350 - backend.main - INFO - Обработано за 2026-07-18T12:24:09.350087 - 2026-07-18T12:23:57.776261
+2026-07-18 12:24:09,350 - backend.main - INFO - result : True
+2026-07-18 12:24:09,359 - backend.main - INFO - Новый запрос: Можно ли запросить добавление конкретной модели робота (например, FaiRino)?...
+2026-07-18 12:24:09,572 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:24:09,575 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 17.000000 seconds
+2026-07-18 12:24:28,567 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:24:28,573 - backend.main - INFO - Ответ отправлен, длина: 2991
+2026-07-18 12:24:28,574 - backend.main - INFO - Обработано за 2026-07-18T12:24:28.572559 - 2026-07-18T12:24:09.360053
+2026-07-18 12:24:28,576 - backend.main - INFO - result : True
+2026-07-18 12:24:28,581 - backend.main - INFO - Новый запрос: Почему в VR‑режиме продукты разлетаются в стороны?...
+2026-07-18 12:24:28,798 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:24:28,800 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 9.000000 seconds
+2026-07-18 12:24:40,093 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:24:40,101 - backend.main - INFO - Ответ отправлен, длина: 3688
+2026-07-18 12:24:40,103 - backend.main - INFO - Обработано за 2026-07-18T12:24:40.101788 - 2026-07-18T12:24:28.583186
+2026-07-18 12:24:40,104 - backend.main - INFO - result : True
+2026-07-18 12:24:40,115 - backend.main - INFO - Новый запрос: Как уменьшить время анимации захвата/укладки продукта?...
+2026-07-18 12:24:40,362 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:24:40,363 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 10.000000 seconds
+2026-07-18 12:24:54,253 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:24:54,254 - backend.main - INFO - Ответ отправлен, длина: 6633
+2026-07-18 12:24:54,255 - backend.main - INFO - Обработано за 2026-07-18T12:24:54.254909 - 2026-07-18T12:24:40.118972
+2026-07-18 12:24:54,255 - backend.main - INFO - result : True
+2026-07-18 12:24:54,258 - backend.main - INFO - Новый запрос: Можно ли в R‑Pro задать недельный план производства?...
+2026-07-18 12:24:54,510 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:24:54,511 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 16.000000 seconds
+2026-07-18 12:25:12,608 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:25:12,609 - backend.main - INFO - Ответ отправлен, длина: 3010
+2026-07-18 12:25:12,610 - backend.main - INFO - Обработано за 2026-07-18T12:25:12.609202 - 2026-07-18T12:24:54.261690
+2026-07-18 12:25:12,610 - backend.main - INFO - result : True
+2026-07-18 12:25:12,611 - backend.main - INFO - Новый запрос: Как организовать случайное распределение продуктов на первый свободный станок?...
+2026-07-18 12:25:12,742 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:25:12,744 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 11.000000 seconds
+2026-07-18 12:25:26,176 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:25:26,186 - backend.main - INFO - Ответ отправлен, длина: 4243
+2026-07-18 12:25:26,187 - backend.main - INFO - Обработано за 2026-07-18T12:25:26.185409 - 2026-07-18T12:25:12.612185
+2026-07-18 12:25:26,190 - backend.main - INFO - result : True
+2026-07-18 12:25:26,204 - backend.main - INFO - Новый запрос: Можно ли моделировать отказы станков и время переналадки?...
+2026-07-18 12:25:26,447 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:25:26,448 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 12.000000 seconds
+2026-07-18 12:25:41,640 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:25:41,642 - backend.main - INFO - Ответ отправлен, длина: 5812
+2026-07-18 12:25:41,643 - backend.main - INFO - Обработано за 2026-07-18T12:25:41.642236 - 2026-07-18T12:25:26.208536
+2026-07-18 12:25:41,643 - backend.main - INFO - result : True
+2026-07-18 12:25:41,644 - backend.main - INFO - Новый запрос: Поддерживает ли R‑Pro импорт программ роботов Fanuc, ABB или KUKA?...
+2026-07-18 12:25:41,822 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-18 12:25:41,823 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 15.000000 seconds
+2026-07-18 12:25:59,389 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-18 12:25:59,392 - backend.main - INFO - Ответ отправлен, длина: 3747
+2026-07-18 12:25:59,393 - backend.main - INFO - Обработано за 2026-07-18T12:25:59.392495 - 2026-07-18T12:25:41.647572
+2026-07-18 12:25:59,394 - backend.main - INFO - result : True
+2026-07-18 12:25:59,401 - asyncio - ERROR - Exception in callback BaseProactorEventLoop._start_serving.<locals>.loop(<_OverlappedF...0.1', 60816))>) at C:\Users\Salma\AppData\Local\Programs\Python\Python312\Lib\asyncio\proactor_events.py:843
+handle: <Handle BaseProactorEventLoop._start_serving.<locals>.loop(<_OverlappedF...0.1', 60816))>) at C:\Users\Salma\AppData\Local\Programs\Python\Python312\Lib\asyncio\proactor_events.py:843>
+Traceback (most recent call last):
+  File "C:\Users\Salma\AppData\Local\Programs\Python\Python312\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Salma\AppData\Local\Programs\Python\Python312\Lib\asyncio\proactor_events.py", line 858, in loop
+    self._make_socket_transport(
+  File "C:\Users\Salma\AppData\Local\Programs\Python\Python312\Lib\asyncio\proactor_events.py", line 647, in _make_socket_transport
+    return _ProactorSocketTransport(self, sock, protocol, waiter,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Salma\AppData\Local\Programs\Python\Python312\Lib\asyncio\proactor_events.py", line 613, in __init__
+    super().__init__(loop, sock, protocol, waiter, extra, server)
+  File "C:\Users\Salma\AppData\Local\Programs\Python\Python312\Lib\asyncio\proactor_events.py", line 189, in __init__
+    super().__init__(loop, sock, protocol, waiter, extra, server)
+  File "C:\Users\Salma\AppData\Local\Programs\Python\Python312\Lib\asyncio\proactor_events.py", line 335, in __init__
+    super().__init__(*args, **kw)
+  File "C:\Users\Salma\AppData\Local\Programs\Python\Python312\Lib\asyncio\proactor_events.py", line 66, in __init__
+    self._server._attach()
+  File "C:\Users\Salma\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 295, in _attach
+    assert self._sockets is not None
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+2026-07-18 12:25:59,482 - asyncio - ERROR - Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+Traceback (most recent call last):
+  File "C:\Users\Salma\AppData\Local\Programs\Python\Python312\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Salma\AppData\Local\Programs\Python\Python312\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2026-07-18 12:25:59,483 - asyncio - ERROR - Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+Traceback (most recent call last):
+  File "C:\Users\Salma\AppData\Local\Programs\Python\Python312\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Salma\AppData\Local\Programs\Python\Python312\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
