@@ -74,8 +74,11 @@ TOP_K=8                    # количество чанков, возвраща
 EMBEDDING_MODEL=d0rj/e5-small-en-ru   # модель эмбеддингов d0rj/e5-small-en-ru 
 
 LOCAL_MODEL_PATH=F:\rag-support-agent\models\Qwen3-8B
-USE_API=true    
-
+USE_API=true  
+  
+# Security settings
+RATE_LIMIT_PER_MINUTE=30
+MAX_INPUT_LENGTH=500
 ```
 # тестирования
 ```
