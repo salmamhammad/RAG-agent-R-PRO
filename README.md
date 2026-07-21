@@ -102,7 +102,7 @@ cat tests/detailed_results.json
 
 | Metric | Good Score | Okay Score | Poor Score | current Score|
 |--------|------------|------------|------------|------------|
-| ROUGE-L | > 0.6 | 0.4 - 0.6 | < 0.4 | < 0.274 |
+| ROUGE-L | > 0.6 | 0.4 - 0.6 | < 0.4 |  0.274 |
 | Hit Rate | > 80% | 50% - 80% | < 50% |0.78|
 | Semantic Similarity | > 0.8 | 0.6 - 0.8 | < 0.6 | 0.88 |
 | Faithfulness | > 0.8 | 0.6 - 0.8 | < 0.6 | 0.38 |
