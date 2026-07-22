@@ -6,6 +6,8 @@
 !/data/docs/.gitkeep
 /data/jsonl/*
 !/data/jsonl/.gitkeep
+/data/faq/*
+!/data/faq/.gitkeep
 /log
 /storage
 /venv
@@ -14,4 +16,4 @@ test.py
 testChm.py
 /models
 /ollama_data
-/data/images
+/data/images/*
