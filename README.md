@@ -63,22 +63,30 @@ pacman -S mingw-w64-ucrt-x86_64-chmlib
 # .env
 ```
 bash
-GROQ_API_KEY= "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"
+GROQ_API_KEY= "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"
 # GROQ_MODEL= "openai/gpt-oss-120b"  "qwen/qwen3-32b" "mixtral-8x7b-32768"
-GROQ_MODEL= "qwen/qwen3-32b"
-LLM_PROVIDER=groq            # groq or ollama
-OLLAMA_MODEL= "dengcao/Qwen3-32B:Q5_K_M"
-OLLAMA_BASE_URL="http://localhost:8000"
+GROQ_MODEL= "qwen/qwen3.6-27b"
+LLM_PROVIDER=ollama            # groq or ollama
+OLLAMA_BASE_URL=http://localhost:11434  # docker: http://ollama:11434
+OLLAMA_MODEL=llava  # llava:13b
+PROCESS_IMAGES=false
 
 TOP_K=8                    # количество чанков, возвращаемых поиском
-EMBEDDING_MODEL=d0rj/e5-small-en-ru   # модель эмбеддингов d0rj/e5-small-en-ru 
+EMBEDDING_MODEL=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2  # модель эмбеддингов d0rj/e5-small-en-ru 
 
 LOCAL_MODEL_PATH=F:\rag-support-agent\models\Qwen3-8B
-USE_API=true  
-  
-# Security settings
+USE_API=true   
+
+# Настройки безопасности
 RATE_LIMIT_PER_MINUTE=30
 MAX_INPUT_LENGTH=500
+
+#папки данных
+DATA_DOCS="data/docs"
+DATA_CHM="data/chm"
+DATA_JSONL="data/jsonl"
+DATA_FAQ='data/faq'
+DATA_IMAGE="data/images" 
 ```
 # тестирования
 ```
@@ -113,3 +121,39 @@ cat tests/detailed_results.json
 - data/docs/ – для основных документов
 - data/chm/ – для файлов справки CHM 
 - data/jsonl/ – для файлов справки JSONL 
+
+# работа с Docker
+
+## запустить все контейнеры
+```
+bash
+docker-compose up -d
+```
+## посмотреть, что оба контейнера работают:
+```
+bash
+docker-compose ps
+```
+## скачать модель  в контейнер Ollama
+```
+bash
+docker-compose exec ollama ollama pull llava
+```
+## посмотреть, что модель появилась
+```
+bash
+docker-compose exec ollama ollama list
+```
+
+## Проверить доступность Ollama изнутри контейнера backend
+```
+bash
+docker-compose exec backend curl http://ollama:11434/api/tags
+```
+## запустить индексацию внутри контейнера backend
+
+```
+bash
+docker-compose exec backend python -m scripts.run_ingestion
+
+```

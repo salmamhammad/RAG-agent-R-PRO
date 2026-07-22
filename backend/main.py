@@ -25,6 +25,8 @@ logger = get_logger(__name__)
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/widget", StaticFiles(directory="widget/dist"), name="widget")
+app.mount("/images", StaticFiles(directory="data/images"), name="images")
 
 # CORS для виджета
 app.add_middleware(
@@ -78,7 +80,7 @@ async def chat(request: ChatRequest, req: Request):
         end = now_iso()
         logger.info(f"Ответ отправлен, длина: {len(result['answer'])}")
         logger.info(f"Обработано за {end} - {start}")
-        logger.info(f"result : {result["has_context"]}")
+        logger.info(f"result : {result['has_context']}")
         if not result["has_context"]:
             if request.ticketId:
                 ticket_id = update_ticket(request.ticketId, request.question, request.history)

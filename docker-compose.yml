@@ -1,0 +1,60 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rag-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - GROQ_MODEL=${GROQ_MODEL}
+      - EMBEDDING_MODEL=${EMBEDDING_MODEL}
+      - LLM_PROVIDER=${LLM_PROVIDER}
+      - USE_API=${USE_API}
+      - LOCAL_MODEL_PATH=${LOCAL_MODEL_PATH}
+      - OLLAMA_BASE_URL=${OLLAMA_BASE_URL}
+      - OLLAMA_MODEL=${OLLAMA_MODEL}
+      - TOP_K=${TOP_K}
+      - MAX_TOKENS=${MAX_TOKENS:-2048}
+      - TEMPERATURE=${TEMPERATURE:-0.3}
+    volumes:
+      - ./data:/app/data
+      - ./chroma_db:/app/chroma_db
+      - ./logs:/app/logs
+      - ./models:/app/models
+      - ./storage:/app/storage
+      - ./.env:/app/.env:ro
+      - ./static:/app/static
+      - ./widget/dist:/app/widget/dist
+      - ./backend:/app/backend
+      - ./ingestion:/app/ingestion
+      - ./scripts:/app/scripts
+      - ./tests:/app/tests
+      - ./entrypoint.sh:/entrypoint.sh:ro   # монтируем entrypoint для быстрых изменений (опционально)
+    restart: unless-stopped
+    depends_on:
+      - ollama
+    networks:
+      - rag-network
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: rag-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ./ollama_data:/root/.ollama
+    environment:
+      - OLLAMA_HOST=0.0.0.0
+      - OLLAMA_KEEP_ALIVE=5m
+    restart: unless-stopped
+    networks:
+      - rag-network
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+
+networks:
+  rag-network:
+    driver: bridge

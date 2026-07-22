@@ -9,6 +9,8 @@ from typing import List, Optional
 from pypdf import PdfReader
 from llama_index.core import Document
 import fitz
+from PIL import Image
+import io
 def clean_text(text: str) -> str:
     """Удаляет URL, email, управляющие символы и бинарный мусор."""
     if not text:
@@ -96,7 +98,7 @@ def load_pdfs(directory: str) -> List[Document]:
                 Document(
                     text=full_text,
                     metadata={
-                        "source": os.path.relpath(file_path, start=".")
+                        "source": os.path.abspath(file_path)
                     },
                 )
             )
@@ -342,3 +344,28 @@ def load_faq_json_files(directory: str) -> List[Document]:
 
     print(f"Загружено {len(docs)} FAQ-записей из JSON-файлов в {directory}")
     return docs
+
+
+def extract_images_from_pdf(pdf_path: str, output_dir: str = "data/images") -> List[str]:
+    """Извлекает все изображения из PDF и сохраняет их в output_dir.
+       Возвращает список путей к сохранённым файлам."""
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+    doc = fitz.open(pdf_path)
+    image_paths = []
+    for page_num in range(len(doc)):
+        page = doc.load_page(page_num)
+        images = page.get_images(full=True)
+        for img_index, img in enumerate(images):
+            xref = img[0]
+            base_image = doc.extract_image(xref)
+            image_bytes = base_image["image"]
+            ext = base_image["ext"]
+            # Генерируем имя файла
+            image_filename = f"{os.path.basename(pdf_path)}_page{page_num+1}_img{img_index+1}.{ext}"
+            image_path = os.path.join(output_dir, image_filename)
+            with open(image_path, "wb") as f:
+                f.write(image_bytes)
+            image_paths.append(image_path)
+    doc.close()
+    return image_paths

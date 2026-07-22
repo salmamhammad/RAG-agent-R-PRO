@@ -21,7 +21,7 @@ class OllamaProvider(LLMProvider):
                 "num_predict": kwargs.get("max_tokens", self.max_tokens)
             }
         }
-        response = requests.post(url, json=payload, timeout=120)
+        response = requests.post(url, json=payload, timeout=300)
         response.raise_for_status()
         data = response.json()
         return data["message"]["content"]

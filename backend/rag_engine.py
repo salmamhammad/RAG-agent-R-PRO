@@ -7,7 +7,7 @@ from backend.chroma_client import get_vector_store
 from backend.llm_provider import LLMProvider,  get_llm_provider 
 from backend.groq_provider import GroqProvider
 from backend.utils import format_sources, setup_logging, get_logger
-
+from llama_index.core.schema import NodeWithScore, TextNode
 # Настраиваем логирование
 setup_logging(log_file="logs/app.log", level=logging.INFO)
 logger = get_logger(__name__)  
@@ -38,10 +38,34 @@ class RAGEngine:
 
     def retrieve(self, query: str):
         print(f" Запрос: {query[:100]}...")
-        nodes = self.retriever.retrieve(query)
-        print(f" Найдено чанков: {len(nodes)}")
-        if nodes:
-            print(f" Первый чанк: {nodes[0].get_content()[:100]}...")
+        # nodes = self.retriever.retrieve(query)
+        # print(f" Найдено чанков: {len(nodes)}")
+        # if nodes:
+        #     print(f" Первый чанк: {nodes[0].get_content()[:100]}...")
+        # return nodes
+        from llama_index.core import Settings
+        query_embedding = Settings.embed_model.get_query_embedding(query)
+    
+        # Выполняем поиск напрямую через ChromaDB (без where)
+        results = self.vector_store._collection.query(
+            query_embeddings=[query_embedding],
+            n_results=self.retriever.similarity_top_k,
+            where=None  # явно передаём None вместо {}
+        )
+    
+        # Преобразуем результаты в Nodes       
+        nodes = []
+        if results['documents'] and results['documents'][0]:
+            for i, doc in enumerate(results['documents'][0]):
+                # TextNode
+                node = TextNode(text=doc)
+                if results['metadatas'] and results['metadatas'][0]:
+                    node.metadata = results['metadatas'][0][i]
+        
+                #  Оборачиваем его в NodeWithScore и присваиваем score
+                score = results['distances'][0][i] if 'distances' in results else 1.0
+                nodes.append(NodeWithScore(node=node, score=score))
+        
         return nodes
 
     def answer(self, query: str, history: list = None) -> dict:
@@ -63,7 +87,12 @@ class RAGEngine:
             messages.append({"role": "user", "content": user_content})
             # logger.info(f"messages:{messages}")
             answer = self.llm.generate(messages)
-            return {"answer": answer, "sources": sources, "has_context": True}
+            images = []
+            for node in nodes:
+                img_path = node.metadata.get("image_path")
+                if img_path and img_path not in images:
+                    images.append(img_path)
+            return {"answer": answer, "sources": sources, "has_context": True, "images": images}
 
         # Если нет релевантных чанков
         else:
