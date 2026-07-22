@@ -13,3 +13,5 @@
 test.py
 testChm.py
 /models
+/ollama_data
+/data/images
