@@ -41,5 +41,5 @@ rouge-score==0.1.2
 numpy==1.26.4
 locust==2.24.1
 
-# Optional (if you use CHM with 7z)
-# pychm is not available on PyPI for Windows e
+
+# for linux

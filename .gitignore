@@ -17,3 +17,5 @@ testChm.py
 /models
 /ollama_data
 /data/images/*
+/data/chm_html/*
+!/data/chm_html/.gitkeep

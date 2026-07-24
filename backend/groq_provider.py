@@ -1,8 +1,14 @@
 # реализация Groq
 import os
+from dotenv import load_dotenv
+
 from groq import Groq
 from backend.llm_provider import LLMProvider
 from typing import List, Dict
+# Загружаем переменные окружения 
+load_dotenv()
+
+
 class GroqProvider(LLMProvider):
     def __init__(self, temperature: float = 0.3, max_tokens: int = 2048):
         api_key = os.getenv("GROQ_API_KEY")

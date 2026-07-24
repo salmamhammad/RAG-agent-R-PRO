@@ -1,7 +1,11 @@
 import os
+from dotenv import load_dotenv
+
 import requests
 from typing import List, Dict
 from backend.llm_provider import LLMProvider
+# Загружаем переменные окружения 
+load_dotenv()
 
 class OllamaProvider(LLMProvider):
     def __init__(self, model: str = None, temperature: float = 0.3, max_tokens: int = 2048):

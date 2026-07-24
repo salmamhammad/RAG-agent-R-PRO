@@ -66,14 +66,15 @@ bash
 GROQ_API_KEY= "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"
 # GROQ_MODEL= "openai/gpt-oss-120b"  "qwen/qwen3-32b" "mixtral-8x7b-32768"
 GROQ_MODEL= "qwen/qwen3.6-27b"
-LLM_PROVIDER=ollama            # groq or ollama
-OLLAMA_BASE_URL=http://localhost:11434  # docker: http://ollama:11434
-OLLAMA_MODEL=llava  # llava:13b
-PROCESS_IMAGES=false
+LLM_PROVIDER=groq            # groq or ollama
+OLLAMA_BASE_URL= http://ollama:11434  #http://localhost:11434  # docker: http://ollama:11434
+OLLAMA_MODEL=qwen3.6  # llava:13b
 
-TOP_K=8                    # количество чанков, возвращаемых поиском
-EMBEDDING_MODEL=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2  # модель эмбеддингов d0rj/e5-small-en-ru 
-
+TOP_K=3                    # количество чанков, возвращаемых поиском
+EMBEDDING_MODEL=intfloat/multilingual-e5-small  # модель эмбеддингов d0rj/e5-small-en-ru 
+IMAGES_OLLAMA_BASE_URL= http://localhost:11434  #http://localhost:11434  # docker: http://ollama:11434
+IMAGES_OLLAMA_MODEL=llava  # llava:13b
+PROCESS_IMAGES=true
 LOCAL_MODEL_PATH=F:\rag-support-agent\models\Qwen3-8B
 USE_API=true   
 
@@ -87,6 +88,10 @@ DATA_CHM="data/chm"
 DATA_JSONL="data/jsonl"
 DATA_FAQ='data/faq'
 DATA_IMAGE="data/images" 
+DATA_HTML="data/chm_html"
+
+
+ANONYMIZED_TELEMETRY=false
 ```
 # тестирования
 ```

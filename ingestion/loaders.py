@@ -6,6 +6,8 @@ import shutil
 import tempfile
 import subprocess
 from typing import List, Optional
+from bs4 import BeautifulSoup
+
 from pypdf import PdfReader
 from llama_index.core import Document
 import fitz
@@ -221,6 +223,78 @@ def load_chm_files(directory: str) -> List[Document]:
 
     return docs
 
+def extract_images_from_chm(chm_path: str, output_dir: str) -> List[str]:
+    """
+  Извлекает все файлы изображений из CHM-файла и сохраняет их в выходную директорию (output_dir).
+Возвращает список абсолютных путей к извлеченным изображениям.
+    """
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
+    image_extensions = {'.png', '.jpg', '.jpeg', '.gif', '.bmp', '.tiff', '.tif', '.webp', '.ico'}
+    image_paths = []
+
+    #  pychm 
+    try:
+        import chm
+        chm_file = chm.CHMFile()
+        chm_file.LoadCHM(chm_path)
+        files = chm_file.GetFileList()
+        for file_info in files:
+            file_path = file_info[0]  
+            ext = os.path.splitext(file_path)[1].lower()
+            if ext not in image_extensions:
+                continue
+            content = chm_file.ReadFile(file_path)
+            if not content:
+                continue
+            # для создания безопасного имени файла из внутреннего пути
+            safe_name = file_path.replace('/', '_').replace('\\', '_')
+            if not safe_name:
+                safe_name = f"chm_image_{len(image_paths)}.{ext[1:]}"
+            save_path = os.path.join(output_dir, safe_name)
+            with open(save_path, 'wb') as f:
+                f.write(content)
+            image_paths.append(os.path.abspath(save_path))
+        chm_file.CloseCHM()
+        if image_paths:
+            return image_paths
+    except Exception as e:
+        print(f"pychm image extraction failed for {chm_path}: {e}")
+
+    # Fallback: использовать 7z
+    seven_zip = shutil.which("7z") or shutil.which("7za")
+    if not seven_zip:
+        print("7z не найден. Не удается извлечь изображения из CHM.")
+        return []
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        try:
+            cmd = [seven_zip, "x", chm_path, f"-o{tmpdir}", "-y"]
+            subprocess.run(cmd, capture_output=True, timeout=60, check=True)
+
+            for root, _, files in os.walk(tmpdir):
+                for f in files:
+                    ext = os.path.splitext(f)[1].lower()
+                    if ext not in image_extensions:
+                        continue
+                    src_path = os.path.join(root, f)
+                    # сохранять относительный путь внутри CHM
+                    rel_path = os.path.relpath(src_path, tmpdir)
+                    safe_name = rel_path.replace('/', '_').replace('\\', '_')
+                    save_path = os.path.join(output_dir, safe_name)
+                    # избежать коллизий имен
+                    if os.path.exists(save_path):
+                        base, ext2 = os.path.splitext(safe_name)
+                        counter = 1
+                        while os.path.exists(os.path.join(output_dir, f"{base}_{counter}{ext2}")):
+                            counter += 1
+                        save_path = os.path.join(output_dir, f"{base}_{counter}{ext2}")
+                    shutil.copy2(src_path, save_path)
+                    image_paths.append(os.path.abspath(save_path))
+        except Exception as e:
+            print(f"извлечение 7z не удалось из-за {chm_path}: {e}")
+    return image_paths
 
 def load_jsonl_files(
     directory: str,
@@ -369,3 +443,73 @@ def extract_images_from_pdf(pdf_path: str, output_dir: str = "data/images") -> L
             image_paths.append(image_path)
     doc.close()
     return image_paths
+
+
+
+def load_html_directories(directory: str) -> List[Document]:
+    """
+    Рекурсивно обходит все папки в directory, ищет внутри HTML-файлы (.htm, .html),
+    извлекает из них текст, очищает от скриптов и стилей, и создаёт один Document
+    для каждой корневой папки (т.е. для каждого распакованного CHM).
+    """
+    docs = []
+    # Проходим по папкам первого уровня (каждая — отдельный CHM)
+    for root_dir in os.listdir(directory):
+        root_path = os.path.join(directory, root_dir)
+        if not os.path.isdir(root_path):
+            continue
+
+        all_text = []
+
+        # Рекурсивно обходим все подпапки и файлы
+        for dirpath, _, filenames in os.walk(root_path):
+            for file in filenames:
+                if file.lower().endswith(('.htm', '.html')):
+                    file_path = os.path.join(dirpath, file)
+                    try:
+                        # Пробуем разные кодировки
+                        content = None
+                        for enc in ['utf-8', 'cp1251', 'latin-1']:
+                            try:
+                                with open(file_path, 'r', encoding=enc, errors='ignore') as f:
+                                    html_content = f.read()
+                                content = html_content
+                                break
+                            except:
+                                continue
+                        if content is None:
+                            continue
+
+                        soup = BeautifulSoup(content, 'lxml')
+                        # Удаляем скрипты и стили
+                        for script in soup(["script", "style"]):
+                            script.decompose()
+                        text = soup.get_text(separator="\n")
+                        # Очищаем текст 
+                        cleaned = clean_text(text) if 'clean_text' in globals() else text.strip()
+                        if cleaned:
+                            all_text.append(cleaned)
+                    except Exception as e:
+                        print(f"Ошибка чтения {file_path}: {e}")
+
+        if all_text:
+            combined = "\n\n".join(all_text)
+            # Создаём документ с метаданными: имя папки как источник
+            metadata = {"source": root_dir, "type": "chm_html"}
+            docs.append(Document(text=combined, metadata=metadata))
+        else:
+            print(f"Не найдено текста в папке {root_dir}")
+
+    return docs
+
+def collect_images_from_html_folder(root_path: str) -> List[str]:
+    """
+    Рекурсивно обходит папку и возвращает полные пути ко всем файлам изображений.
+    """
+    image_exts = {'.png', '.jpg', '.jpeg', '.gif', '.bmp', '.tiff'}
+    images = []
+    for dirpath, _, filenames in os.walk(root_path):
+        for file in filenames:
+            if os.path.splitext(file)[1].lower() in image_exts:
+                images.append(os.path.join(dirpath, file))
+    return images

@@ -1,7 +1,11 @@
 # backend/llm_provider.py
 import os
+from dotenv import load_dotenv
+
 from abc import ABC, abstractmethod
 from typing import List, Dict
+# Загружаем переменные окружения 
+load_dotenv()
 
 class LLMProvider(ABC):
     @abstractmethod

@@ -18,6 +18,18 @@ services:
       - TOP_K=${TOP_K}
       - MAX_TOKENS=${MAX_TOKENS:-2048}
       - TEMPERATURE=${TEMPERATURE:-0.3}
+      - IMAGES_OLLAMA_BASE_URL=${IMAGES_OLLAMA_BASE_URL}
+      - IMAGES_OLLAMA_MODEL=${IMAGES_OLLAMA_MODEL}
+      - PROCESS_IMAGES=${PROCESS_IMAGES}
+      - RATE_LIMIT_PER_MINUTE=${RATE_LIMIT_PER_MINUTE}
+      - MAX_INPUT_LENGTH=${MAX_INPUT_LENGTH}
+      - DATA_DOCS=${DATA_DOCS}
+      - DATA_CHM=${DATA_CHM}
+      - DATA_JSONL=${DATA_JSONL}
+      - DATA_FAQ=${DATA_FAQ}
+      - DATA_IMAGE=${DATA_IMAGE}
+      - DATA_HTML=${DATA_HTML}
+      
     volumes:
       - ./data:/app/data
       - ./chroma_db:/app/chroma_db

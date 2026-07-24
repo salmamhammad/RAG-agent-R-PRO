@@ -1,5 +1,7 @@
 import os
 import logging
+from dotenv import load_dotenv
+
 from llama_index.core import VectorStoreIndex, Settings, Document
 from llama_index.core.retrievers import VectorIndexRetriever
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
@@ -8,6 +10,9 @@ from backend.llm_provider import LLMProvider,  get_llm_provider
 from backend.groq_provider import GroqProvider
 from backend.utils import format_sources, setup_logging, get_logger
 from llama_index.core.schema import NodeWithScore, TextNode
+# Загружаем переменные окружения 
+load_dotenv()
+
 # Настраиваем логирование
 setup_logging(log_file="logs/app.log", level=logging.INFO)
 logger = get_logger(__name__)  
@@ -42,7 +47,7 @@ class RAGEngine:
         # print(f" Найдено чанков: {len(nodes)}")
         # if nodes:
         #     print(f" Первый чанк: {nodes[0].get_content()[:100]}...")
-        # return nodes
+        ####################################################
         from llama_index.core import Settings
         query_embedding = Settings.embed_model.get_query_embedding(query)
     

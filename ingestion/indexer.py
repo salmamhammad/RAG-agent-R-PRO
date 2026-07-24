@@ -1,22 +1,25 @@
  # создание эмбеддингов, запись в Chroma
 import os
+from dotenv import load_dotenv
 from llama_index.core import Settings, Document
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from llama_index.vector_stores.chroma import ChromaVectorStore
 import chromadb
-from ingestion.loaders import load_pdfs, load_text_files, load_chm_files, load_jsonl_files,load_faq_json_files
+from ingestion.loaders import load_pdfs, load_text_files, load_chm_files, load_jsonl_files,load_faq_json_files, extract_images_from_chm, load_html_directories, collect_images_from_html_folder
 from ingestion.chunker import get_chunker
 from ingestion.state import get_files_state, load_state, save_state
 
 from backend.image_captioner import generate_caption
 from ingestion.loaders import extract_images_from_pdf
+# Загружаем переменные окружения 
+load_dotenv()
 
 DATA_DOCS = os.getenv("DATA_DOCS", "data/docs")
 DATA_CHM = os.getenv("DATA_CHM", "data/chm")
 DATA_JSONL = os.getenv("DATA_JSONL", "data/jsonl")
 DATA_FAQ = os.getenv("DATA_FAQ", "data/faq")
 DATA_IMAGE = os.getenv("DATA_IMAGE", "data/images")
-
+DATA_HTML=os.getenv("DATA_HTML", "data/chm_html")
 ROOT_DIRS = [DATA_DOCS, DATA_CHM, DATA_JSONL, DATA_FAQ]
 def build_index():
     # Настройка эмбеддингов
@@ -56,10 +59,12 @@ def build_index():
     print(f" Обрабатываем {len(files_to_process)} файлов...")
     # # работа с изображением
     image_docs = []
-    if os.getenv("PROCESS_IMAGES", "false").lower() == "true":
-       os.makedirs(DATA_IMAGE, exist_ok=True)
-       pdf_docs = load_pdfs(DATA_DOCS)  # теперь каждый документ содержит абсолютный путь в metadata["source"]
-       for pdf_doc in pdf_docs:
+    PROCESS_IMAGES= os.getenv("PROCESS_IMAGES", "false")
+    if PROCESS_IMAGES.lower() == "true":
+        os.makedirs(DATA_IMAGE, exist_ok=True)
+        print("Обработка изображений из pdf.")
+        pdf_docs = load_pdfs(DATA_DOCS)  # теперь каждый документ содержит абсолютный путь в metadata["source"]
+        for pdf_doc in pdf_docs:
            pdf_path = pdf_doc.metadata.get("source", "")
            if os.path.exists(pdf_path):
                image_paths = extract_images_from_pdf(pdf_path, DATA_IMAGE)
@@ -75,11 +80,36 @@ def build_index():
                         }
                         )
                         image_docs.append(doc)
+        print("Обработка изображений из chm.")
+        for chm_folder in os.listdir(DATA_HTML):
+            folder_path = os.path.join(DATA_HTML, chm_folder)
+            if os.path.isdir(folder_path):
+                images = collect_images_from_html_folder(folder_path)
+                for img_path in images:
+                    caption = generate_caption(img_path)
+                    if caption:
+                        doc = Document(
+                            text=f"Изображение: {caption}",
+                            metadata={
+                                "source": chm_folder,
+                                "image_path": img_path,
+                                "type": "image"
+                            }
+                        )
+                        image_docs.append(doc)
     else:
         print("Обработка изображений отключена.")
     # # Загрузка документов
     print("Загрузка документов...")
-    all_docs =load_pdfs(DATA_DOCS) + load_text_files(DATA_DOCS)+ load_chm_files(DATA_CHM) + load_jsonl_files(DATA_JSONL)+load_faq_json_files(DATA_FAQ) + image_docs
+    all_docs = (
+       load_pdfs(DATA_DOCS)
+       + load_text_files(DATA_DOCS)
+    #    + load_chm_files(DATA_CHM)         
+       + load_jsonl_files(DATA_JSONL)
+       + load_faq_json_files(DATA_FAQ)
+       + load_html_directories(DATA_HTML)  
+       + image_docs 
+    )  
     print(f"Загружено all_docs {len(all_docs)} документов для индексации")
 
     filtered_docs = []
@@ -88,11 +118,11 @@ def build_index():
         rel_path = os.path.relpath(source, start=".")
         if rel_path in files_to_process:
             filtered_docs.append(doc)
-            print(f"добавить файл: {os.path.basename(source)}") 
+            # print(f"добавить файл: {os.path.basename(source)}") 
         if not filtered_docs:
             print("Не найдено содержимого для указанных файлов.")
             return
-        print(f"Загружено filtered_docs {len(filtered_docs)} документов для индексации")
+    print(f"Загружено filtered_docs {len(filtered_docs)} документов для индексации")
     
 
     # Разбивка на чанки

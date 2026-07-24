@@ -2,6 +2,7 @@ FROM python:3.11-slim
 
 # Install system dependencies (for PDF, CHM, etc.)
 RUN apt-get update && apt-get install -y \
+    build-essential \
     libchm-dev \
     p7zip-full \
     gcc \
@@ -9,22 +10,25 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 
-# Install Python dependencies
+# Install Python dependencies from requirements.txt
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the entire project (this will be overridden by volume mounts in dev)
+# Additional pip installs 
+RUN pip install --no-cache-dir \
+    pychm \
+    Pillow
+
+# Copy the entire project 
 COPY . .
 
 # Create necessary directories
 RUN mkdir -p data logs chroma_db storage static widget/dist
 
-# Copy entrypoint script and make it executable
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+# # Expose the FastAPI port 
+# EXPOSE 8000
 
-# Expose the FastAPI port
-EXPOSE 8000
-
-# Use the entrypoint script
-ENTRYPOINT ["/entrypoint.sh"]
+# Default command: run the ingestion script
+CMD ["python", "-m", "scripts.run_ingestion"]
+# # Use the entrypoint script
+# ENTRYPOINT ["/entrypoint.sh"]
