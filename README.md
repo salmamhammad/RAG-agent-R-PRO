@@ -134,6 +134,7 @@ pacman -S mingw-w64-ucrt-x86_64-chmlib
  или 7-Zip installer for Windows
 
 # .env
+В этом файле, добавили возможность полностью блокировать появление определенных терминов в ответах с помощью переменной FORBIDDEN_TERMS. Ответы ИИ-агента будут изменяться в зависимости от содержимого этой переменной, чтобы гарантировать, что эти термины не будут появляться.
 ```
 bash
 GROQ_API_KEY= "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"
