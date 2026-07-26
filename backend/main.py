@@ -79,6 +79,7 @@ async def chat(request: ChatRequest, req: Request):
         result = rag.answer(request.question, history=request.history)
         end = now_iso()
         logger.info(f"Ответ отправлен, длина: {len(result['answer'])}")
+        logger.info(f"Ответ отправлен, длина images: {len(result['images'])}")
         logger.info(f"Обработано за {end} - {start}")
         logger.info(f"result : {result['has_context']}")
         if not result["has_context"]:
@@ -92,6 +93,7 @@ async def chat(request: ChatRequest, req: Request):
         return ChatResponse(
             answer=result["answer"],
             sources=result["sources"],
+            images=result["images"],
             ticket_id=ticket_id
         )
     except Exception as e:
