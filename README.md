@@ -67,12 +67,12 @@ pacman -S mingw-w64-ucrt-x86_64-chmlib
 bash
 GROQ_API_KEY= "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"
 # GROQ_MODEL= "openai/gpt-oss-120b"  "qwen/qwen3-32b" "mixtral-8x7b-32768"
-GROQ_MODEL= "qwen/qwen3-32b"
+GROQ_MODEL= "qwen/qwen3.6-27b"  #для логических ответов
 LLM_PROVIDER=groq            # groq or ollama
 OLLAMA_MODEL= "dengcao/Qwen3-32B:Q5_K_M"
 OLLAMA_BASE_URL="http://localhost:8000"
 
-TOP_K=8                    # количество чанков, возвращаемых поиском
+TOP_K=4                    # количество чанков, возвращаемых поиском
 EMBEDDING_MODEL=d0rj/e5-small-en-ru   # модель эмбеддингов d0rj/e5-small-en-ru 
 
 LOCAL_MODEL_PATH=F:\rag-support-agent\models\Qwen3-8B
