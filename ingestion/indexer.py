@@ -5,12 +5,15 @@ from llama_index.core import Settings, Document
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from llama_index.vector_stores.chroma import ChromaVectorStore
 import chromadb
+from datetime import datetime
+
 from ingestion.loaders import load_pdfs, load_text_files, load_chm_files, load_jsonl_files,load_faq_json_files, extract_images_from_chm, load_html_directories, collect_images_from_html_folder
 from ingestion.chunker import get_chunker
 from ingestion.state import get_files_state, load_state, save_state
 
 from backend.image_captioner import generate_caption
 from ingestion.loaders import extract_images_from_pdf
+from ingestion.image_state import load_image_state, save_image_state, should_process_image, get_image_hash
 # Загружаем переменные окружения 
 load_dotenv()
 
@@ -61,6 +64,8 @@ def build_index():
     image_docs = []
     PROCESS_IMAGES= os.getenv("PROCESS_IMAGES", "false")
     if PROCESS_IMAGES.lower() == "true":
+        image_state = load_image_state()
+        print("🖼️ Обработка изображений (только новые или изменённые)...")
         os.makedirs(DATA_IMAGE, exist_ok=True)
         print("Обработка изображений из pdf.")
         pdf_docs = load_pdfs(DATA_DOCS)  # теперь каждый документ содержит абсолютный путь в metadata["source"]
@@ -69,36 +74,60 @@ def build_index():
            if os.path.exists(pdf_path):
                image_paths = extract_images_from_pdf(pdf_path, DATA_IMAGE)
                for img_path in image_paths:
-                   caption = generate_caption(img_path)
-                   if caption:
-                        doc = Document(
-                        text=f"Изображение: {caption}",
-                        metadata={
-                           "source": pdf_path,
-                           "image_path": img_path,
-                           "type": "image"
-                        }
-                        )
-                        image_docs.append(doc)
-        print("Обработка изображений из chm.")
-        for chm_folder in os.listdir(DATA_HTML):
-            folder_path = os.path.join(DATA_HTML, chm_folder)
-            if os.path.isdir(folder_path):
-                images = collect_images_from_html_folder(folder_path)
-                for img_path in images:
-                    caption = generate_caption(img_path)
-                    if caption:
-                        doc = Document(
-                            text=f"Изображение: {caption}",
-                            metadata={
-                                "source": chm_folder,
-                                "image_path": img_path,
-                                "type": "image"
+                    if should_process_image(img_path, image_state):
+                        caption = generate_caption(img_path)
+                        if caption:
+                            doc = Document(
+                               text=f"Изображение: {caption}",
+                               metadata={
+                                  "source": pdf_path,
+                                  "image_path": img_path,
+                                  "type": "image"
+                               }
+                            )
+                            image_docs.append(doc)
+                             # Сохраняем в состояние
+                            image_state[img_path] = {
+                                "hash": get_image_hash(img_path),
+                                "caption": caption,
+                                "timestamp": datetime.now().isoformat()
                             }
-                        )
-                        image_docs.append(doc)
+                    else:
+                        print(f"⏭️ Изображение уже обработано: {img_path}")
+                        
+        print("Обработка изображений из chm.")
+        if os.path.exists(DATA_HTML):
+            for chm_folder in os.listdir(DATA_HTML):
+                folder_path = os.path.join(DATA_HTML, chm_folder)
+                if os.path.isdir(folder_path):
+                   images = collect_images_from_html_folder(folder_path)
+                   for img_path in images:
+                        if should_process_image(img_path, image_state):
+                           caption = generate_caption(img_path)
+                           if caption:
+                                doc = Document(
+                                    text=f"Изображение: {caption}",
+                                    metadata={
+                                        "source": chm_folder,
+                                        "image_path": img_path,
+                                        "type": "image"
+                                    }
+                                )
+                                image_docs.append(doc)
+                                image_state[img_path] = {
+                                    "hash": get_image_hash(img_path),
+                                    "caption": caption,
+                                    "timestamp": datetime.now().isoformat()
+                                }
+                        else:
+                            print(f"⏭️ Изображение уже обработано: {img_path}")        
+        else:
+            print("Папка DATA_HTML не найдена, пропускаем CHM-изображения.")
+        save_image_state(image_state)
+        print(f"✅ Сгенерировано {len(image_docs)} новых описаний изображений.") 
     else:
         print("Обработка изображений отключена.")
+        
     # # Загрузка документов
     print("Загрузка документов...")
     all_docs = (

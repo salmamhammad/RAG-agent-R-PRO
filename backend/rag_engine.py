@@ -8,7 +8,7 @@ from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from backend.chroma_client import get_vector_store
 from backend.llm_provider import LLMProvider,  get_llm_provider 
 from backend.groq_provider import GroqProvider
-from backend.utils import format_sources, setup_logging, get_logger
+from backend.utils import format_sources, setup_logging, get_logger, load_forbidden_terms, contains_forbidden_term, is_term_in_context
 from llama_index.core.schema import NodeWithScore, TextNode
 # Загружаем переменные окружения 
 load_dotenv()
@@ -31,7 +31,7 @@ class RAGEngine:
         # Создаём индекс из векторного хранилища
         self.index = VectorStoreIndex.from_vector_store(self.vector_store)
         self.retriever = VectorIndexRetriever(index=self.index, similarity_top_k=top_k)
-        
+        self.forbidden_terms = load_forbidden_terms()
         # Если llm не передан, создаём GroqProvider с переданными параметрами
         if llm is None:
             self.llm = get_llm_provider(**llm_kwargs)
@@ -83,15 +83,31 @@ class RAGEngine:
             system_prompt = (
                 "Ты — ИИ-помощник техподдержки. поприветствуй пользователя "
                 "Отвечай строго на основе предоставленного контекста. "
+                "Не делай предположений. Не используйте свои знания вне контекста. "
                 "Не выдумывай информацию. Отвечай на русском языке."
             )
-            user_content = f"Контекст:\n{context}\n\nВопрос пользователя: {query}"
+            user_content = f"Контекст:\n{context}\n\nВопрос пользователя: {query}\n\nВажно: если ответа нет в контексте, скажи, что не знаешь."
             messages = [{"role": "system", "content": system_prompt}]
             if history:
                 messages.extend(history[-8:])  # последние 8 сообщений
             messages.append({"role": "user", "content": user_content})
             # logger.info(f"messages:{messages}")
             answer = self.llm.generate(messages)
+            # проверка на запрещённые термины 
+            if self.forbidden_terms:
+                # Проверяем, есть ли в ответе запрещённые термины
+                found_terms = [term for term in self.forbidden_terms if term in answer.lower()]
+                if found_terms:
+                    # Проверяем, есть ли какой-либо из найденных терминов в контексте
+                    terms_in_context = [term for term in found_terms if is_term_in_context(term, context)]
+                    if not terms_in_context:
+                        # Ни один из запрещённых терминов не найден в контексте -> заменяем ответ
+                        answer = (
+                            "Извините, в предоставленных материалах нет информации, которая позволила бы ответить на этот вопрос. "
+                            "Пожалуйста, обратитесь к инженеру поддержки."
+                        )
+                        # Логируем факт замены
+                        logger.warning(f"Ответ заменён из-за запрещённых терминов: {found_terms} (отсутствуют в контексте)")
             images = []
             for node in nodes:
                 img_path = node.metadata.get("image_path")
@@ -113,6 +129,12 @@ class RAGEngine:
                 messages.extend(history[-8:])
             messages.append({"role": "user", "content": query})
             answer = self.llm.generate(messages)
+            if self.forbidden_terms and contains_forbidden_term(answer, self.forbidden_terms):
+                answer = (
+                    "Извините, я не могу ответить на этот вопрос, так как он выходит за рамки моей компетенции. "
+                    "Пожалуйста, обратитесь к инженеру поддержки."
+                )
+                logger.warning("Ответ заменён (нет контекста, но модель упомянула запрещённый термин).")
             return {"answer": answer, "sources": [], "has_context": False}
         
     def add_document(self, text: str, metadata: dict = None):

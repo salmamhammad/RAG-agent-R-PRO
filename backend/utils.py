@@ -6,10 +6,12 @@
 - безопасная работа с данными
 """
 
+import re
+import os
 import logging
 import json
 from datetime import datetime
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any, Optional,  Set
 from pathlib import Path
 
 # ---------- Логирование ----------
@@ -119,3 +121,35 @@ def is_greeting_or_small_talk(text: str) -> bool:
     ]
     text_lower = text.lower().strip()
     return any(greeting in text_lower for greeting in greetings)
+
+
+def load_forbidden_terms() -> Set[str]:
+    """
+    Загружает список запрещённых терминов из переменной окружения FORBIDDEN_TERMS.
+    Возвращает множество терминов в нижнем регистре.
+    """
+    terms_str = os.getenv("FORBIDDEN_TERMS", "")
+    if not terms_str:
+        return set()
+    # Разбиваем по запятой, удаляем пробелы, приводим к нижнему регистру
+    return {term.strip().lower() for term in terms_str.split(",") if term.strip()}
+
+def contains_forbidden_term(text: str, forbidden_set: Set[str]) -> bool:
+    """
+    Проверяет, содержит ли текст хотя бы один из запрещённых терминов.
+    """
+    if not forbidden_set:
+        return False
+    text_lower = text.lower()
+    # Используем границы слов, чтобы не ловить части слов (например, "component" в "component")
+    for term in forbidden_set:
+        # Ищем как отдельное слово или с учётом регистра
+        if re.search(rf'\b{re.escape(term)}\b', text_lower):
+            return True
+    return False
+
+def is_term_in_context(term: str, context: str) -> bool:
+    """
+    Проверяет, встречается ли термин в контексте (регистронезависимо).
+    """
+    return term.lower() in context.lower()
