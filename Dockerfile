@@ -26,9 +26,7 @@ COPY . .
 RUN mkdir -p data logs chroma_db storage static widget/dist
 
 # # Expose the FastAPI port 
-# EXPOSE 8000
+ EXPOSE 8000
 
-# Default command: run the ingestion script
-CMD ["python", "-m", "scripts.run_ingestion"]
-# # Use the entrypoint script
-# ENTRYPOINT ["/entrypoint.sh"]
+ # Use the entrypoint script
+ ENTRYPOINT ["/entrypoint.sh"]
