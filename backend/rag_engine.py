@@ -8,7 +8,7 @@ from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from backend.chroma_client import get_vector_store
 from backend.llm_provider import LLMProvider,  get_llm_provider 
 from backend.groq_provider import GroqProvider
-from backend.utils import format_sources, setup_logging, get_logger, load_forbidden_terms, contains_forbidden_term, is_term_in_context
+from backend.utils import format_sources, setup_logging, get_logger, load_forbidden_terms, contains_forbidden_term, is_term_in_context, parse_response
 from llama_index.core.schema import NodeWithScore, TextNode
 # Загружаем переменные окружения 
 load_dotenv()
@@ -81,10 +81,13 @@ class RAGEngine:
             context = "\n\n".join([node.get_content() for node in nodes])
             sources = format_sources(nodes, max_text_len=200)
             system_prompt = (
-                "Ты — ИИ-помощник техподдержки. поприветствуй пользователя "
-                "Отвечай строго на основе предоставленного контекста. "
-                "Не делай предположений. Не используйте свои знания вне контекста. "
-                "Не выдумывай информацию. Отвечай на русском языке."
+                   "Ты — ИИ-помощник техподдержки. "
+                   "Твоя задача — дать полезный ответ на основе ПРЕДОСТАВЛЕННОГО КОНТЕКСТА. "
+                   "Если в контексте есть информация, которая позволяет ответить на вопрос, используй её, даже если она не является дословным совпадением. "
+                   "Ты можешь обобщать, перефразировать и комбинировать факты из разных частей контекста. "
+                   "Если в контексте нет информации, которая хотя бы косвенно относится к вопросу, честно скажи: "
+                   "«В предоставленных материалах нет информации по этому вопросу. Обратитесь к инженеру поддержки.» "
+                   "Не выдумывай информацию, которой нет в контексте. Отвечай на русском языке."
             )
             user_content = f"Контекст:\n{context}\n\nВопрос пользователя: {query}\n\nВажно: если ответа нет в контексте, скажи, что не знаешь."
             messages = [{"role": "system", "content": system_prompt}]
@@ -93,6 +96,7 @@ class RAGEngine:
             messages.append({"role": "user", "content": user_content})
             # logger.info(f"messages:{messages}")
             answer = self.llm.generate(messages)
+            answer, think_content = parse_response(answer)
             # проверка на запрещённые термины 
             if self.forbidden_terms:
                 # Проверяем, есть ли в ответе запрещённые термины
@@ -113,7 +117,7 @@ class RAGEngine:
                 img_path = node.metadata.get("image_path")
                 if img_path and img_path not in images:
                     images.append(img_path)
-            return {"answer": answer, "sources": sources, "has_context": True, "images": images}
+            return {"answer": answer, "sources": sources, "think": think_content, "has_context": True, "images": images}
 
         # Если нет релевантных чанков
         else:
@@ -129,13 +133,15 @@ class RAGEngine:
                 messages.extend(history[-8:])
             messages.append({"role": "user", "content": query})
             answer = self.llm.generate(messages)
+            answer, think_content = parse_response(answer)
+
             if self.forbidden_terms and contains_forbidden_term(answer, self.forbidden_terms):
                 answer = (
                     "Извините, я не могу ответить на этот вопрос, так как он выходит за рамки моей компетенции. "
                     "Пожалуйста, обратитесь к инженеру поддержки."
                 )
                 logger.warning("Ответ заменён (нет контекста, но модель упомянула запрещённый термин).")
-            return {"answer": answer, "sources": [], "has_context": False}
+            return {"answer": answer, "sources": [], "think": think_content, "has_context": False}
         
     def add_document(self, text: str, metadata: dict = None):
         """Добавляет новый документ в векторную базу (для ответов инженера)."""

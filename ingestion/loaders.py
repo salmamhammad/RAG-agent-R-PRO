@@ -33,25 +33,39 @@ def clean_text(text: str) -> str:
     text = re.sub(r'\s+', ' ', text)
     return text.strip()
 
-def is_readable(text):
-    if len(text) < 50:
+import re
+
+def is_readable(text: str) -> bool:
+    if not text or len(text) < 30:
         return False
 
-    # reject lots of gidXXXX
-    gid = len(re.findall(r"gid\d+", text))
-    if gid > 5:
+    # 1. Проверка на наличие осмысленных слов 
+    words = re.findall(r'[a-zA-Zа-яА-Я]{3,}', text)
+    if len(words) < 3:
         return False
 
-    # reject extremely long "words"
-    words = text.split()
-    if words:
-        avg = sum(len(w) for w in words) / len(words)
-        if avg > 20:
-            return False
+    # 2. Доля букв (алфавитных символов)
+    alpha_chars = sum(1 for c in text if c.isalpha())
+    total_chars = len(text)
+    if total_chars == 0:
+        return False
+    alpha_ratio = alpha_chars / total_chars
+    if alpha_ratio < 0.2:  
+        return False
 
-    printable = sum(c.isprintable() for c in text) / len(text)
+    # 3. Проверка на gidXXXX 
+    gid_matches = re.findall(r'gid\d+', text)
+  
+    gid_len = sum(len(m) for m in gid_matches)
+    if gid_len / total_chars > 0.3:
+        return False
 
-    return printable > 0.95
+    # 4. Доля печатаемых символов 
+    printable = sum(1 for c in text if c.isprintable()) / total_chars
+    if printable < 0.8:
+        return False
+
+    return True
 
 # ---------- ЗАГРУЗЧИКИ ----------
 
@@ -447,27 +461,18 @@ def extract_images_from_pdf(pdf_path: str, output_dir: str = "data/images") -> L
 
 
 def load_html_directories(directory: str) -> List[Document]:
-    """
-    Рекурсивно обходит все папки в directory, ищет внутри HTML-файлы (.htm, .html),
-    извлекает из них текст, очищает от скриптов и стилей, и создаёт один Document
-    для каждой корневой папки (т.е. для каждого распакованного CHM).
-    """
     docs = []
-    # Проходим по папкам первого уровня (каждая — отдельный CHM)
     for root_dir in os.listdir(directory):
         root_path = os.path.join(directory, root_dir)
         if not os.path.isdir(root_path):
             continue
 
-        all_text = []
-
-        # Рекурсивно обходим все подпапки и файлы
         for dirpath, _, filenames in os.walk(root_path):
             for file in filenames:
                 if file.lower().endswith(('.htm', '.html')):
                     file_path = os.path.join(dirpath, file)
                     try:
-                        # Пробуем разные кодировки
+                        # читаем и парсим файл
                         content = None
                         for enc in ['utf-8', 'cp1251', 'latin-1']:
                             try:
@@ -481,25 +486,20 @@ def load_html_directories(directory: str) -> List[Document]:
                             continue
 
                         soup = BeautifulSoup(content, 'lxml')
-                        # Удаляем скрипты и стили
                         for script in soup(["script", "style"]):
                             script.decompose()
                         text = soup.get_text(separator="\n")
-                        # Очищаем текст 
                         cleaned = clean_text(text) if 'clean_text' in globals() else text.strip()
-                        if cleaned:
-                            all_text.append(cleaned)
+                        if cleaned and is_readable(cleaned):
+                            # Создаём документ для этого HTML-файла
+                            rel_path = os.path.relpath(file_path, start=directory)
+                            docs.append(Document(
+                                text=cleaned,
+                                metadata={"source": rel_path, "type": "chm_html_single"}
+                            ))
                     except Exception as e:
                         print(f"Ошибка чтения {file_path}: {e}")
-
-        if all_text:
-            combined = "\n\n".join(all_text)
-            # Создаём документ с метаданными: имя папки как источник
-            metadata = {"source": root_dir, "type": "chm_html"}
-            docs.append(Document(text=combined, metadata=metadata))
-        else:
-            print(f"Не найдено текста в папке {root_dir}")
-
+    print(f"Загружено {len(docs)} отдельных HTML-документов из {directory}")
     return docs
 
 def collect_images_from_html_folder(root_path: str) -> List[str]:

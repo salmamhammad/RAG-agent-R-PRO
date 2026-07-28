@@ -12,6 +12,7 @@ class ChatResponse(BaseModel):
     sources: List[dict]
     images: List[str] = [] 
     ticket_id: Optional[int] = None
+    think: Optional[str] = None 
 
 class FeedbackRequest(BaseModel):
     question: str

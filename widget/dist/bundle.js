@@ -3546,7 +3546,7 @@
       try {
         const history = this.messages.map((m) => ({ role: m.role, content: m.content }));
         const response = await sendQuestion(text, history, this.ticketId || void 0);
-        this.addMessage("assistant", response.answer, response.images);
+        this.addMessage("assistant", response.answer, response.images, response.think || null);
         console.log("[ChatUI] \u0442\u0438\u043A\u0435\u0442:", this.ticketId);
         if (response.ticket_id) {
           this.ticketId = response.ticket_id;
@@ -3570,7 +3570,7 @@
       }
       return { thought: null, answer: content };
     }
-    addMessage(role, content, images = []) {
+    addMessage(role, content, images = [], think = null) {
       const msgContainer = document.createElement("div");
       msgContainer.style.cssText = `
       margin: 6px 0;
@@ -3579,7 +3579,13 @@
       width: 100%;
     `;
       if (role === "assistant") {
-        const { thought, answer } = this.parseMessage(content);
+        let thought = think;
+        let answer = content;
+        if (thought === null) {
+          const parsed = this.parseMessage(content);
+          thought = parsed.thought;
+          answer = parsed.answer;
+        }
         if (thought) {
           const thoughtDiv = document.createElement("div");
           thoughtDiv.style.cssText = `

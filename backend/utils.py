@@ -11,8 +11,9 @@ import os
 import logging
 import json
 from datetime import datetime
-from typing import List, Dict, Any, Optional,  Set
+from typing import List, Dict, Any, Optional,  Set, Tuple
 from pathlib import Path
+import unicodedata
 
 # ---------- Логирование ----------
 def setup_logging(log_file: str = "logs/app.log", level: int = logging.INFO) -> None:
@@ -153,3 +154,30 @@ def is_term_in_context(term: str, context: str) -> bool:
     Проверяет, встречается ли термин в контексте (регистронезависимо).
     """
     return term.lower() in context.lower()
+
+
+
+def parse_response(text: str) -> Tuple[str, Optional[str]]:
+    """
+    Извлекает блок мыслей из ответа модели.
+    Возвращает (clean_answer, think_content).
+    Если тегов нет, think_content = None.
+    """
+    # Ищем открывающий тег <think> (с возможными пробелами)
+    start_match = re.search(r'<think\s*>', text, re.IGNORECASE)
+    if not start_match:
+        return text, None
+    start_idx = start_match.end()
+    
+    # Ищем закрывающий тег </think>
+    end_match = re.search(r'</think\s*>', text, re.IGNORECASE)
+    if end_match:
+        # Есть закрывающий
+        think_content = text[start_idx:end_match.start()].strip()
+        clean_answer = text[:start_match.start()] + text[end_match.end():]
+    else:
+        # Нет закрывающего – считаем до конца строки
+        think_content = text[start_idx:].strip()
+        clean_answer = text[:start_match.start()].strip()
+    
+    return clean_answer.strip(), think_content

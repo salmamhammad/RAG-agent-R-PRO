@@ -1,5 +1,7 @@
 # FastAPI приложение
 import logging
+import sys
+import io
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from backend.models import ChatRequest, ChatResponse, FeedbackRequest,FeedbackResponse, EngineerResponse,CloseTicketRequest
@@ -16,6 +18,9 @@ from dotenv import load_dotenv
 from fastapi.staticfiles import StaticFiles
 from backend.security import RateLimiter, sanitize_input, get_client_ip
 import os 
+if sys.stdout.encoding != 'utf-8':
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 # Загружаем переменные окружения 
 load_dotenv()
 
@@ -94,7 +99,8 @@ async def chat(request: ChatRequest, req: Request):
             answer=result["answer"],
             sources=result["sources"],
             images=result["images"],
-            ticket_id=ticket_id
+            ticket_id=ticket_id,
+             think=result.get("think") 
         )
     except Exception as e:
         logger.error(f"Ошибка: {e}", exc_info=True)

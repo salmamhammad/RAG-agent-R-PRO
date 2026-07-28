@@ -169,7 +169,7 @@ export class ChatUI {
     try {
       const history = this.messages.map(m => ({ role: m.role, content: m.content }));
       const response = await sendQuestion(text, history, this.ticketId || undefined);
-      this.addMessage('assistant', response.answer, response.images);
+      this.addMessage('assistant', response.answer, response.images, response.think || null);
       console.log('[ChatUI] тикет:', this.ticketId);
       if (response.ticket_id) {
             this.ticketId = response.ticket_id;
@@ -197,7 +197,7 @@ export class ChatUI {
     return { thought: null, answer: content };
   }
 
-  private addMessage(role: 'user' | 'assistant', content: string, images:  any[] | null = []) {
+  private addMessage(role: 'user' | 'assistant', content: string, images:  any[] | null = [], think: string | null = null) {
     // Контейнер для одного сообщения (может содержать и мысли, и ответ)
     const msgContainer = document.createElement('div');
     msgContainer.style.cssText = `
@@ -208,8 +208,13 @@ export class ChatUI {
     `;
 
     if (role === 'assistant') {
-      const { thought, answer } = this.parseMessage(content);
-
+      let thought = think;
+      let answer = content;
+      if (thought === null) {
+        const parsed = this.parseMessage(content);
+        thought = parsed.thought;
+        answer = parsed.answer;
+      }
       // --- Блок мыслей (если есть) ---
       if (thought) {
         const thoughtDiv = document.createElement('div');
