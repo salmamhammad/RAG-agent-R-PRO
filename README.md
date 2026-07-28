@@ -1,4 +1,5 @@
 ## AI agent R-PRO
+Это задание предусматривает создание ИИ-агента, который будет автоматически отвечать на популярные вопросы на основе нашей документации и базы знаний. Цель — решить проблему на портале технической поддержки R-Pro, где пользователи задают множество повторяющихся вопросов о работе программного обеспечения, а инженеры отвечают на них вручную. Задача состоит в том, чтобы снизить нагрузку на первую линию поддержки и ускорить время ответа. Полный цикл: сбор данных → конвейер RAG → API → виджет → метрики.
 
 # Предварительные требования
 - Python 3.11 или новее (рекомендуется 3.11–3.13)
@@ -138,18 +139,19 @@ pacman -S mingw-w64-ucrt-x86_64-chmlib
 bash
 GROQ_API_KEY= "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"
 # GROQ_MODEL= "openai/gpt-oss-120b"  "qwen/qwen3-32b" "mixtral-8x7b-32768"
-GROQ_MODEL= "qwen/qwen3.6-27b"   #для логических ответов
+GROQ_MODEL= "qwen/qwen3.6-27b"
 LLM_PROVIDER=groq            # groq or ollama
 OLLAMA_BASE_URL= http://ollama:11434  #http://localhost:11434  # docker: http://ollama:11434
-OLLAMA_MODEL=qwen3.6  
+OLLAMA_MODEL=qwen3.6  # llava:13b
 
-TOP_K=3                    # количество чанков, возвращаемых поиском
+TOP_K=4                   # количество чанков, возвращаемых поиском
+LLM_TEMPERATURE=0.1
 EMBEDDING_MODEL=intfloat/multilingual-e5-small  # модель эмбеддингов d0rj/e5-small-en-ru 
 IMAGES_OLLAMA_BASE_URL= http://localhost:11434  #http://localhost:11434  # docker: http://ollama:11434
 IMAGES_OLLAMA_MODEL=llava  # llava:13b
-PROCESS_IMAGES=true
+PROCESS_IMAGES=false
 LOCAL_MODEL_PATH=F:\rag-support-agent\models\Qwen3-8B
-USE_API=true   
+USE_API=true       # Если значение равно true, используется API; если false — локальная модель.
 
 # Настройки безопасности
 RATE_LIMIT_PER_MINUTE=30
@@ -166,6 +168,8 @@ DATA_HTML="data/chm_html"
 
 ANONYMIZED_TELEMETRY=false
 FORBIDDEN_TERMS=ISimPlugin, AddComponent, RemoveComponent, XAML, SimLab.Application, ISimComponent, CreateComponent
+
+
 ```
 # тестирования
 ```
