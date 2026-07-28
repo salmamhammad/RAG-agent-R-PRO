@@ -35,8 +35,8 @@ class RAGEvaluator:
         if not text:
             return ""
         text = text.lower().strip()
-        text = re.sub(r'[^\w\s]', '', text)   # удаляем пунктуацию
-        text = re.sub(r'\s+', ' ', text)      # схлопываем пробелы
+        text = re.sub(r'[^\w\s]', '', text)  
+        text = re.sub(r'\s+', ' ', text)     
         return text
 
     def evaluate_generation(self, predicted: str, expected: str) -> dict:
@@ -298,9 +298,9 @@ class RAGEvaluator:
         print(f"  Exact Match   : {metrics['avg_exact_match']:.3f} ({grade(metrics['avg_exact_match'])})")
         print(f"  Keyword Recall: {metrics['avg_keyword_recall']:.3f} ({grade(metrics['avg_keyword_recall'])})")
 
-    # ---------------------------------------------------------
+   
     # Classification summary
-    # ---------------------------------------------------------
+   
 
         correct = sum(r["classification"] == "Correct" for r in self.results)
         partial = sum(r["classification"] == "Partially Correct" for r in self.results)
