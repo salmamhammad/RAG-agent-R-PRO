@@ -142,7 +142,7 @@ pacman -S mingw-w64-ucrt-x86_64-chmlib
 # .env
 ```
 bash
-GROQ_API_KEY= "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"
+GROQ_API_KEY= "YOUR-GROQ_API_KEY"
 # GROQ_MODEL= "openai/gpt-oss-120b"  "qwen/qwen3-32b" "mixtral-8x7b-32768"
 GROQ_MODEL= "qwen/qwen3.6-27b"
 LLM_PROVIDER=groq            # groq or ollama
