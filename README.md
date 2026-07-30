@@ -145,6 +145,8 @@ OLLAMA_BASE_URL= http://ollama:11434  #http://localhost:11434  # docker: http://
 OLLAMA_MODEL=qwen3.6  # llava:13b
 
 TOP_K=4                   # количество чанков, возвращаемых поиском
+VECTOR_TOP_K=30
+BM25_TOP_K=30
 LLM_TEMPERATURE=0.1
 EMBEDDING_MODEL=intfloat/multilingual-e5-small  # модель эмбеддингов d0rj/e5-small-en-ru 
 IMAGES_OLLAMA_BASE_URL= http://localhost:11434  #http://localhost:11434  # docker: http://ollama:11434
@@ -165,9 +167,14 @@ DATA_FAQ='data/faq'
 DATA_IMAGE="data/images" 
 DATA_HTML="data/chm_html"
 
+# Настройки повторных попыток для Groq
+GROQ_MAX_RETRIES=3
+GROQ_RETRY_DELAY=1
 
 ANONYMIZED_TELEMETRY=false
 FORBIDDEN_TERMS=ISimPlugin, AddComponent, RemoveComponent, XAML, SimLab.Application, ISimComponent, CreateComponent
+
+
 
 
 ```
