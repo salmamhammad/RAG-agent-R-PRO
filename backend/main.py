@@ -54,7 +54,25 @@ rate_limit_per_minute = int(os.getenv("RATE_LIMIT_PER_MINUTE", 30))
 rate_limiter = RateLimiter(requests_per_minute=rate_limit_per_minute)
 max_input_length = int(os.getenv("MAX_INPUT_LENGTH", 500))
 
+# Безопасность: ограничитель скорости
+rate_limit_per_minute = int(os.getenv("RATE_LIMIT_PER_MINUTE", 30))
+rate_limiter = RateLimiter(requests_per_minute=rate_limit_per_minute)
+max_input_length = int(os.getenv("MAX_INPUT_LENGTH", 500))
+
 @app.post("/chat", response_model=ChatResponse)
+async def chat(request: ChatRequest, req: Request):
+    # 1. Ограничение скорости
+    client_ip = get_client_ip(req)
+    if not rate_limiter.is_allowed(client_ip):
+        logger.warning(f"Rate limit exceeded for IP: {client_ip}")
+        raise HTTPException(status_code=429, detail="Too many requests. Please try again later.")
+
+    # 2.Длина входного сигнала и защита от инжекции
+    is_valid, error_msg = sanitize_input(request.question, max_length=max_input_length)
+    if not is_valid:
+        logger.warning(f"Invalid input from {client_ip}: {error_msg}")
+        
+        raise HTTPException(status_code=400, detail=error_msg)
 async def chat(request: ChatRequest, req: Request):
     # 1. Ограничение скорости
     client_ip = get_client_ip(req)

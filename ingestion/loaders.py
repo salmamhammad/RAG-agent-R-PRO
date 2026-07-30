@@ -62,6 +62,7 @@ def load_pdfs(directory: str) -> List[Document]:
     docs = []
 
 
+
     for file in os.listdir(directory):
         file_path = os.path.join(directory, file)
 

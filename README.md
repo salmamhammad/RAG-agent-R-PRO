@@ -42,6 +42,7 @@ python -m venv venv
 pip install --upgrade pip
 pip install -r requirements.txt
 
+
 python -m scripts.run_ingestion
 
 uvicorn backend.main:app  --host 0.0.0.0 --port 8000
@@ -57,6 +58,7 @@ bash
 .\venv\Scripts\Activate.ps1 // source venv/bin/activate (ubuntu)
 uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
 python -m http.server 3000            
+
 
 ```
 страница для чата с ИИ:
@@ -104,6 +106,9 @@ docker-compose exec backend python -m scripts.run_ingestion
 
 
 # Установка chmlib или p7zip
+Для работы pychm в некоторых системах требуется библиотека chmlib.
+Или используйте p7zip вместо pychm.
+Код проверит наличие библиотеки и воспользуется доступной автоматической библиотекой.
 Для работы pychm в некоторых системах требуется библиотека chmlib.
 Или используйте p7zip вместо pychm.
 Код проверит наличие библиотеки и воспользуется доступной автоматической библиотекой.
