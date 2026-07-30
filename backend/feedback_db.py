@@ -97,16 +97,18 @@ def create_ticket(question: str, history: list = None) -> int:
     print(f"[DB] Создан тикет #{ticket_id} для нормализованного вопроса: {norm}")
     return ticket_id
 
-def update_ticket(ticket_id:int ,question: str, history: list = None) -> int:
+def update_ticket(ticket_id: int, question: str, history: list = None) -> int:
     norm = normalize(question)
     conn = get_db_connection()
     c = conn.cursor()
     history_json = json.dumps(history) if history else None
-    c.execute("UPDATE tickets SET question='?', normalized_question='?', history='?', status='panding' WHERE ticket_id='?'",
-              ( question, norm, history_json,ticket_id))
+    c.execute(
+        "UPDATE tickets SET question = ?, normalized_question = ?, history = ?, status = 'pending' WHERE id = ?",
+        (question, norm, history_json, ticket_id)
+    )
     conn.commit()
     conn.close()
-    print(f"[DB] обновлен тикет #{ticket_id} для нормализованного вопроса: {norm}")
+    logger.info(f"[DB] обновлен тикет #{ticket_id} для нормализованного вопроса: {norm}")
     return ticket_id
 
 def get_pending_tickets() -> list:

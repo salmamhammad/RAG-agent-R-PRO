@@ -7,5 +7,5 @@ def get_chunker():
         chunk_overlap=100,
         separator=" ",
         paragraph_separator="\n\n",
-        include_metadata=False       
+        include_metadata=True          
     )

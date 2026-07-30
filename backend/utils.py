@@ -63,20 +63,19 @@ def format_sources(sources: List[Dict[str, Any]], max_text_len: int = 150) -> Li
     Каждый источник содержит текст (обрезанный) и оценку релевантности.
     """
     formatted = []
-    for src in sources:
-        # Если источник: NodeWithScore из LlamaIndex
-        if hasattr(src, 'node'):
-            text = src.node.get_content()
-            score = src.score
-        else:
-            # Если это словарь
-            text = src.get('text', '')
-            score = src.get('score', 0.0)
-
-        formatted.append({
+    for node_with_score in sources:
+        node = node_with_score.node
+        metadata = node.metadata or {}
+        text = node.get_content()
+        # Build the source dict with all relevant fields
+        source = {
             "text": truncate_text(clean_text(text), max_text_len),
-            "score": round(score, 4) if isinstance(score, float) else 0.0
-        })
+            "score": node_with_score.score if hasattr(node_with_score, 'score') else 0.0,
+            "section": metadata.get("section", ""),
+            "page": metadata.get("page_title", ""),
+            "source_type": metadata.get("source_type", ""),
+        }
+        formatted.append(source)
     return formatted
 
 # ---------- Безопасное преобразование ----------

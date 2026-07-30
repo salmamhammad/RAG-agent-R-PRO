@@ -3,6 +3,8 @@ import logging
 import sys
 import io
 from fastapi import FastAPI, HTTPException, Request
+from backend.exceptions import RateLimitExceeded
+
 from fastapi.middleware.cors import CORSMiddleware
 from backend.models import ChatRequest, ChatResponse, FeedbackRequest,FeedbackResponse, EngineerResponse,CloseTicketRequest
 from backend.rag_engine import RAGEngine
@@ -102,6 +104,9 @@ async def chat(request: ChatRequest, req: Request):
             ticket_id=ticket_id,
              think=result.get("think") 
         )
+    except RateLimitExceeded as e:
+        logger.warning(f"Rate limit exceeded for IP {client_ip}: {e}")
+        raise HTTPException(status_code=429, detail="Превышен лимит запросов к LLM. Попробуйте позже.")
     except Exception as e:
         logger.error(f"Ошибка: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))

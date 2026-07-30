@@ -36,34 +36,23 @@ def clean_text(text: str) -> str:
 import re
 
 def is_readable(text: str) -> bool:
-    if not text or len(text) < 30:
+    if not text or len(text) < 20:
         return False
 
-    # 1. Проверка на наличие осмысленных слов 
+    # подсчета букв (кириллица + латынь) необходимо, чтобы не менее 30% из них были буквами алфавита
+    letters = sum(1 for c in text if c.isalpha())
+    if letters / len(text) < 0.3:
+        return False
+
+    # подсчета слова
     words = re.findall(r'[a-zA-Zа-яА-Я]{3,}', text)
-    if len(words) < 3:
+    if len(words) < 2:
         return False
 
-    # 2. Доля букв (алфавитных символов)
-    alpha_chars = sum(1 for c in text if c.isalpha())
-    total_chars = len(text)
-    if total_chars == 0:
-        return False
-    alpha_ratio = alpha_chars / total_chars
-    if alpha_ratio < 0.2:  
-        return False
-
-    # 3. Проверка на gidXXXX 
-    gid_matches = re.findall(r'gid\d+', text)
-  
-    gid_len = sum(len(m) for m in gid_matches)
-    if gid_len / total_chars > 0.3:
-        return False
-
-    # 4. Доля печатаемых символов 
-    printable = sum(1 for c in text if c.isprintable()) / total_chars
-    if printable < 0.8:
-        return False
+    # # Отклонить избыточный gidX
+    # gid = len(re.findall(r"gid\d+", text))
+    # if gid > 10:
+    #     return False
 
     return True
 
@@ -114,7 +103,7 @@ def load_pdfs(directory: str) -> List[Document]:
                 Document(
                     text=full_text,
                     metadata={
-                        "source": os.path.abspath(file_path)
+                        "source": os.path.abspath(file_path), "source_type": "pdf"
                     },
                 )
             )
@@ -135,7 +124,7 @@ def load_text_files(directory: str) -> List[Document]:
                 cleaned = clean_text(raw)
                 if cleaned and is_readable(cleaned):
                     rel_path = os.path.relpath(file_path, start=".")
-                    docs.append(Document(text=cleaned, metadata={"source": rel_path}))
+                    docs.append(Document(text=cleaned, metadata={"source": rel_path, "source_type": "txt"}))
                 else:
                     print(f" Пропущен нечитаемый текст: {file}")
             except Exception as e:
@@ -229,7 +218,7 @@ def load_chm_files(directory: str) -> List[Document]:
         if all_text:
             combined_text = "\n\n".join(all_text)
             if is_readable(combined_text):
-                docs.append(Document(text=combined_text, metadata={"source": file}))
+                docs.append(Document(text=combined_text, metadata={"source": file, "source_type": "chm"}))
             else:
                 print(f" Пропущен нечитаемый CHM: {file}")
         else:
@@ -360,7 +349,11 @@ def load_jsonl_files(
                 if is_readable(full_text):
                     docs.append(Document(
                         text=full_text,
-                        metadata={"source": rel_path, "line": line_num}
+                        metadata= {
+                                 "source": rel_path,
+                                 "source_type": "email",
+                                 "line": line_num,
+                                }
                     ))
                 else:
                     print(f" Пропущен нечитаемый текст в {file} строка {line_num}")
@@ -370,12 +363,9 @@ def load_jsonl_files(
     return docs
 
 def load_faq_json_files(directory: str) -> List[Document]:
-    """
-    Загружает JSON-файлы с FAQ из указанной папки.
-    Ожидает структуру: { "faq": [ { "category": "...", "question": "...", "answer": "..." } ] }
-    Каждый FAQ-элемент становится отдельным Document.
-    """
     docs = []
+    seen = set()  # для хранения хешей уникальных вопросов
+
     for file in os.listdir(directory):
         file_path = os.path.join(directory, file)
         if not (os.path.isfile(file_path) and file.lower().endswith(".json")):
@@ -393,7 +383,6 @@ def load_faq_json_files(directory: str) -> List[Document]:
             print(f"Ошибка чтения {file}: {e}")
             continue
 
-        # Проверяем, есть ли ключ "faq" и является ли он списком
         faq_items = data.get("faq")
         if not isinstance(faq_items, list):
             print(f"Файл {file} не содержит ключ 'faq' со списком. Пропускаем.")
@@ -401,7 +390,6 @@ def load_faq_json_files(directory: str) -> List[Document]:
 
         for idx, item in enumerate(faq_items):
             if not isinstance(item, dict):
-                print(f"Пропущен не-словарь в {file}, индекс {idx}")
                 continue
 
             question = item.get("question", "").strip()
@@ -409,28 +397,38 @@ def load_faq_json_files(directory: str) -> List[Document]:
             category = item.get("category", "").strip()
 
             if not question or not answer:
-                print(f"Пропущен FAQ без вопроса или ответа в {file}, индекс {idx}")
                 continue
 
-            # Объединяем вопрос и ответ в один текст
-            full_text = f"Вопрос: {question}\nОтвет: {answer}"
+            # Нормализуем вопрос для проверки дубликатов
+            norm_q = re.sub(r'[^\w\s]', '', question).lower().strip()
+            norm_q = re.sub(r'\s+', ' ', norm_q)
+            norm_a = re.sub(r'[^\w\s]', '', answer).lower().strip()
+            norm_a = re.sub(r'\s+', ' ', norm_a)
+            key = (norm_q, norm_a)
+            if key in seen:
+                print(f"Пропущен дублирующий FAQ (вопрос и ответ совпадают): {question[:50]}...")
+                continue
+            seen.add(key)
+            if norm_q in seen:
+                print(f"Пропущен дублирующий FAQ: {question[:50]}...")
+                continue
+            seen.add(norm_q)
 
-            # Очищаем текст
+            full_text = f"Вопрос: {question}\nОтвет: {answer}"
             cleaned = clean_text(full_text)
             if not cleaned or not is_readable(cleaned):
-                print(f"Пропущен нечитаемый FAQ в {file}, индекс {idx}")
                 continue
 
             metadata = {
                 "source": rel_path,
+                "source_type": "json",
                 "category": category,
                 "question": question,
                 "faq_index": idx
             }
-
             docs.append(Document(text=cleaned, metadata=metadata))
 
-    print(f"Загружено {len(docs)} FAQ-записей из JSON-файлов в {directory}")
+    print(f"Загружено {len(docs)} уникальных FAQ-записей из {directory}")
     return docs
 
 
@@ -461,45 +459,112 @@ def extract_images_from_pdf(pdf_path: str, output_dir: str = "data/images") -> L
 
 
 def load_html_directories(directory: str) -> List[Document]:
+    """
+    Рекурсивно обходит папки, извлекает из HTML-файлов текст,
+    разбивая по заголовкам h1/h2/h3. Каждый раздел становится отдельным документом.
+    """
     docs = []
     for root_dir in os.listdir(directory):
         root_path = os.path.join(directory, root_dir)
         if not os.path.isdir(root_path):
             continue
 
+        language = "ru" if "ru" in root_dir.lower() else "en"
+
         for dirpath, _, filenames in os.walk(root_path):
             for file in filenames:
-                if file.lower().endswith(('.htm', '.html')):
-                    file_path = os.path.join(dirpath, file)
-                    try:
-                        # читаем и парсим файл
-                        content = None
-                        for enc in ['utf-8', 'cp1251', 'latin-1']:
-                            try:
-                                with open(file_path, 'r', encoding=enc, errors='ignore') as f:
-                                    html_content = f.read()
-                                content = html_content
-                                break
-                            except:
-                                continue
-                        if content is None:
+                if not file.lower().endswith(('.htm', '.html')):
+                    continue
+                file_path = os.path.join(dirpath, file)
+                try:
+                    content = None
+                    for enc in ['utf-8', 'cp1251', 'latin-1']:
+                        try:
+                            with open(file_path, 'r', encoding=enc, errors='ignore') as f:
+                                content = f.read()
+                            break
+                        except UnicodeDecodeError:
                             continue
+                    if content is None:
+                        continue
 
-                        soup = BeautifulSoup(content, 'lxml')
-                        for script in soup(["script", "style"]):
-                            script.decompose()
-                        text = soup.get_text(separator="\n")
-                        cleaned = clean_text(text) if 'clean_text' in globals() else text.strip()
+                    soup = BeautifulSoup(content, 'lxml')
+                    # Удаляем скрипты и стили
+                    for script in soup(["script", "style"]):
+                        script.decompose()
+
+                    # Ищем заголовки h1, h2, h3
+                    sections = []
+                    current_section = {"title": "", "level": 0, "text": []}
+                    
+                    # Сначала пробуем найти body, чтобы не захватывать лишнее
+                    body = soup.body
+                    if not body:
+                        body = soup
+
+                    # Проходим по элементам в порядке их появления
+                    for elem in body.descendants:
+                        if elem.name in ['h1', 'h2', 'h3']:
+                            # Если уже есть накопленный текст, сохраняем предыдущий раздел
+                            if current_section["text"]:
+                                sections.append(current_section)
+                            # Начинаем новый раздел
+                            level = int(elem.name[1])  # 1,2,3
+                            title = elem.get_text(strip=True)
+                            current_section = {"title": title, "level": level, "text": []}
+                        elif elem.name == 'p' and elem.string:
+                            # Добавляем текст параграфа к текущему разделу
+                            txt = elem.get_text(strip=True)
+                            if txt:
+                                current_section["text"].append(txt)
+
+                    # Добавляем последний раздел
+                    if current_section["text"]:
+                        sections.append(current_section)
+
+                    # Если разделов нет– обрабатываем весь текст как один документ
+                    if not sections:
+                        full_text = soup.get_text(separator="\n")
+                        cleaned = clean_text(full_text)
                         if cleaned and is_readable(cleaned):
-                            # Создаём документ для этого HTML-файла
-                            rel_path = os.path.relpath(file_path, start=directory)
+                            rel_source = os.path.relpath(file_path, start=".")
                             docs.append(Document(
                                 text=cleaned,
-                                metadata={"source": rel_path, "type": "chm_html_single"}
+                                metadata={
+                                    "source": rel_source,
+                                    "source_type": "manual",
+                                    "language": language,
+                                    "section": root_dir,
+                                    "page_title": soup.title.string.strip() if soup.title and soup.title.string  else ""
+                                }
                             ))
-                    except Exception as e:
-                        print(f"Ошибка чтения {file_path}: {e}")
-    print(f"Загружено {len(docs)} отдельных HTML-документов из {directory}")
+                        continue
+
+                    # Создаём документы по разделам
+                    rel_source = os.path.relpath(file_path, start=".")
+                    for sec in sections:
+                        text = "\n".join(sec["text"])
+                        cleaned = clean_text(text)
+                        if cleaned and is_readable(cleaned):
+                            # Объединяем заголовки в одну строку для метаданных
+                            title_str = f"{'#' * sec['level']} {sec['title']}"
+                            docs.append(Document(
+                                text=cleaned,
+                                metadata={
+                                    "source": rel_source,
+                                    "source_type": "manual",
+                                    "language": language,
+                                    "section": root_dir,
+                                    "page_title": soup.title.string.strip() if soup.title and soup.title.string else "",
+                                    "heading": sec["title"],
+                                    "level": sec["level"]
+                                }
+                            ))
+
+                except Exception as e:
+                    print(f"Ошибка чтения {file_path}: {e}")
+
+    print(f"Загружено {len(docs)} структурированных документов из {directory}")
     return docs
 
 def collect_images_from_html_folder(root_path: str) -> List[str]:

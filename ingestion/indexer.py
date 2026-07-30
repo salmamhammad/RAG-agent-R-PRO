@@ -6,6 +6,7 @@ from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from llama_index.vector_stores.chroma import ChromaVectorStore
 import chromadb
 from datetime import datetime
+from collections import Counter
 
 from ingestion.loaders import load_pdfs, load_text_files, load_chm_files, load_jsonl_files,load_faq_json_files, extract_images_from_chm, load_html_directories, collect_images_from_html_folder
 from ingestion.chunker import get_chunker
@@ -23,7 +24,7 @@ DATA_JSONL = os.getenv("DATA_JSONL", "data/jsonl")
 DATA_FAQ = os.getenv("DATA_FAQ", "data/faq")
 DATA_IMAGE = os.getenv("DATA_IMAGE", "data/images")
 DATA_HTML=os.getenv("DATA_HTML", "data/chm_html")
-ROOT_DIRS = [DATA_DOCS, DATA_CHM, DATA_JSONL, DATA_FAQ]
+ROOT_DIRS = [DATA_DOCS, DATA_CHM, DATA_JSONL, DATA_FAQ, DATA_HTML]
 def build_index():
     # Настройка эмбеддингов
     embedding_model = os.getenv("EMBEDDING_MODEL", "intfloat/multilingual-e5-small")
@@ -165,4 +166,13 @@ def build_index():
     index.insert_nodes(nodes)    
     index.storage_context.persist(persist_dir="storage")  
     save_state(current_state)
+    # Вывести распределение фрагментов по типу источника после индексирования
+    final_results = collection.get(include=["metadatas"])
+    source_types = [meta.get("source_type", "unknown") for meta in final_results["metadatas"]]
+    counts = Counter(source_types)
+    print("\n--- Chunk distribution by source type after indexing ---")
+    for source_type, count in counts.items():
+        print(f"  {source_type}: {count} chunks")
+    print(f"Total: {len(final_results['ids'])} chunks")
+    print("------------------------------------------------------\n")
     print(f"Индексация завершена. Добавлено {len(nodes)} чанков.")
