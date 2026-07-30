@@ -58,7 +58,7 @@ pacman -S mingw-w64-ucrt-x86_64-chmlib
 # .env
 ```
 bash
-GROQ_API_KEY= "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"
+GROQ_API_KEY= "YOUR-GROQ_API_KEY"
 # GROQ_MODEL= "openai/gpt-oss-120b"
 GROQ_MODEL= "qwen/qwen3-32b"
 
