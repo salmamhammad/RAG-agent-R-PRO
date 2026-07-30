@@ -1,7 +1,11 @@
 import os
+from dotenv import load_dotenv
+
 import requests
 from typing import List, Dict
 from backend.llm_provider import LLMProvider
+# Загружаем переменные окружения 
+load_dotenv()
 
 class OllamaProvider(LLMProvider):
     def __init__(self, model: str = None, temperature: float = 0.3, max_tokens: int = 2048):
@@ -21,7 +25,7 @@ class OllamaProvider(LLMProvider):
                 "num_predict": kwargs.get("max_tokens", self.max_tokens)
             }
         }
-        response = requests.post(url, json=payload, timeout=120)
+        response = requests.post(url, json=payload, timeout=300)
         response.raise_for_status()
         data = response.json()
         return data["message"]["content"]

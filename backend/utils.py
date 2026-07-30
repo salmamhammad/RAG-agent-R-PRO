@@ -6,11 +6,14 @@
 - безопасная работа с данными
 """
 
+import re
+import os
 import logging
 import json
 from datetime import datetime
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any, Optional,  Set, Tuple
 from pathlib import Path
+import unicodedata
 
 # ---------- Логирование ----------
 def setup_logging(log_file: str = "logs/app.log", level: int = logging.INFO) -> None:
@@ -60,20 +63,19 @@ def format_sources(sources: List[Dict[str, Any]], max_text_len: int = 150) -> Li
     Каждый источник содержит текст (обрезанный) и оценку релевантности.
     """
     formatted = []
-    for src in sources:
-        # Если источник: NodeWithScore из LlamaIndex
-        if hasattr(src, 'node'):
-            text = src.node.get_content()
-            score = src.score
-        else:
-            # Если это словарь
-            text = src.get('text', '')
-            score = src.get('score', 0.0)
-
-        formatted.append({
+    for node_with_score in sources:
+        node = node_with_score.node
+        metadata = node.metadata or {}
+        text = node.get_content()
+        # Build the source dict with all relevant fields
+        source = {
             "text": truncate_text(clean_text(text), max_text_len),
-            "score": round(score, 4) if isinstance(score, float) else 0.0
-        })
+            "score": node_with_score.score if hasattr(node_with_score, 'score') else 0.0,
+            "section": metadata.get("section", ""),
+            "page": metadata.get("page_title", ""),
+            "source_type": metadata.get("source_type", ""),
+        }
+        formatted.append(source)
     return formatted
 
 # ---------- Безопасное преобразование ----------
@@ -119,3 +121,62 @@ def is_greeting_or_small_talk(text: str) -> bool:
     ]
     text_lower = text.lower().strip()
     return any(greeting in text_lower for greeting in greetings)
+
+
+def load_forbidden_terms() -> Set[str]:
+    """
+    Загружает список запрещённых терминов из переменной окружения FORBIDDEN_TERMS.
+    Возвращает множество терминов в нижнем регистре.
+    """
+    terms_str = os.getenv("FORBIDDEN_TERMS", "")
+    if not terms_str:
+        return set()
+    # Разбиваем по запятой, удаляем пробелы, приводим к нижнему регистру
+    return {term.strip().lower() for term in terms_str.split(",") if term.strip()}
+
+def contains_forbidden_term(text: str, forbidden_set: Set[str]) -> bool:
+    """
+    Проверяет, содержит ли текст хотя бы один из запрещённых терминов.
+    """
+    if not forbidden_set:
+        return False
+    text_lower = text.lower()
+    # Используем границы слов, чтобы не ловить части слов (например, "component" в "component")
+    for term in forbidden_set:
+        # Ищем как отдельное слово или с учётом регистра
+        if re.search(rf'\b{re.escape(term)}\b', text_lower):
+            return True
+    return False
+
+def is_term_in_context(term: str, context: str) -> bool:
+    """
+    Проверяет, встречается ли термин в контексте (регистронезависимо).
+    """
+    return term.lower() in context.lower()
+
+
+
+def parse_response(text: str) -> Tuple[str, Optional[str]]:
+    """
+    Извлекает блок мыслей из ответа модели.
+    Возвращает (clean_answer, think_content).
+    Если тегов нет, think_content = None.
+    """
+    # Ищем открывающий тег <think> (с возможными пробелами)
+    start_match = re.search(r'<think\s*>', text, re.IGNORECASE)
+    if not start_match:
+        return text, None
+    start_idx = start_match.end()
+    
+    # Ищем закрывающий тег </think>
+    end_match = re.search(r'</think\s*>', text, re.IGNORECASE)
+    if end_match:
+        # Есть закрывающий
+        think_content = text[start_idx:end_match.start()].strip()
+        clean_answer = text[:start_match.start()] + text[end_match.end():]
+    else:
+        # Нет закрывающего – считаем до конца строки
+        think_content = text[start_idx:].strip()
+        clean_answer = text[:start_match.start()].strip()
+    
+    return clean_answer.strip(), think_content

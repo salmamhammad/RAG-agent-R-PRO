@@ -3546,7 +3546,7 @@
       try {
         const history = this.messages.map((m) => ({ role: m.role, content: m.content }));
         const response = await sendQuestion(text, history, this.ticketId || void 0);
-        this.addMessage("assistant", response.answer);
+        this.addMessage("assistant", response.answer, response.images, response.think || null);
         console.log("[ChatUI] \u0442\u0438\u043A\u0435\u0442:", this.ticketId);
         if (response.ticket_id) {
           this.ticketId = response.ticket_id;
@@ -3570,7 +3570,7 @@
       }
       return { thought: null, answer: content };
     }
-    addMessage(role, content) {
+    addMessage(role, content, images = [], think = null) {
       const msgContainer = document.createElement("div");
       msgContainer.style.cssText = `
       margin: 6px 0;
@@ -3579,7 +3579,13 @@
       width: 100%;
     `;
       if (role === "assistant") {
-        const { thought, answer } = this.parseMessage(content);
+        let thought = think;
+        let answer = content;
+        if (thought === null) {
+          const parsed = this.parseMessage(content);
+          thought = parsed.thought;
+          answer = parsed.answer;
+        }
         if (thought) {
           const thoughtDiv = document.createElement("div");
           thoughtDiv.style.cssText = `
@@ -3625,6 +3631,17 @@
       `;
         answerDiv.textContent = answer;
         msgContainer.appendChild(answerDiv);
+        if (images && images.length > 0) {
+          const imgContainer = document.createElement("div");
+          images.forEach((src) => {
+            const img = document.createElement("img");
+            img.src = src;
+            img.style.maxWidth = "100%";
+            img.style.maxHeight = "200px";
+            imgContainer.appendChild(img);
+          });
+          msgContainer.appendChild(imgContainer);
+        }
         const feedbackContainer = document.createElement("div");
         feedbackContainer.style.cssText = "display: flex; gap: 8px; margin-top: 6px; align-self: flex-start;";
         const likeBtn = document.createElement("button");
@@ -3762,7 +3779,7 @@ ${data.answer}`);
           if (data.answer && data.answer !== this.lastEngineerAnswer) {
             this.lastEngineerAnswer = data.answer;
             this.addMessage("assistant", `\u{1F6E0}\uFE0F \u0418\u043D\u0436\u0435\u043D\u0435\u0440 \u043E\u0442\u0432\u0435\u0442\u0438\u043B:
-${data.answer}`);
+${data.answer}`, data.images);
             this.chatBox.scrollTop = this.chatBox.scrollHeight;
           }
           if (data.status === "in_progress" && data.answer && data.answer !== this.lastEngineerAnswer) {

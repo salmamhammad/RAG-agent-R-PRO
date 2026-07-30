@@ -1,9 +1,13 @@
 # backend/qwen_provider.py
 import os
+from dotenv import load_dotenv
+
 from typing import List, Dict
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 from backend.llm_provider import LLMProvider
+# Загружаем переменные окружения 
+load_dotenv()
 
 class QwenProvider(LLMProvider):
     def __init__(self, temperature: float = 0.3, max_tokens: int = 512, model_path: str = None):

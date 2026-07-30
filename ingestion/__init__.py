@@ -2,7 +2,8 @@
 
 from .chunker import get_chunker
 from .indexer import build_index
-from .loaders import load_pdfs, load_text_files, load_chm_files, load_jsonl_files,load_faq_json_files
+from .loaders import load_pdfs, load_text_files, load_chm_files,extract_images_from_chm, load_jsonl_files,load_faq_json_files,extract_images_from_pdf, load_html_directories,collect_images_from_html_folder
+from .image_state import get_image_hash, load_image_state, save_image_state,should_process_image
 
 
 
@@ -12,6 +13,15 @@ __all__ = [
     'load_pdfs',
     'load_text_files',
     'load_chm_files',
+    'extract_images_from_chm',
     'load_jsonl_files',
-    'load_faq_json_files'
+    'load_faq_json_files',
+    'extract_images_from_pdf',
+    'load_html_directories',
+    'collect_images_from_html_folder',
+    'get_image_hash',
+    'load_image_state',
+    'save_image_state',
+    'should_process_image'
+    
 ]

@@ -169,7 +169,7 @@ export class ChatUI {
     try {
       const history = this.messages.map(m => ({ role: m.role, content: m.content }));
       const response = await sendQuestion(text, history, this.ticketId || undefined);
-      this.addMessage('assistant', response.answer);
+      this.addMessage('assistant', response.answer, response.images, response.think || null);
       console.log('[ChatUI] тикет:', this.ticketId);
       if (response.ticket_id) {
             this.ticketId = response.ticket_id;
@@ -197,7 +197,7 @@ export class ChatUI {
     return { thought: null, answer: content };
   }
 
-  private addMessage(role: 'user' | 'assistant', content: string) {
+  private addMessage(role: 'user' | 'assistant', content: string, images:  any[] | null = [], think: string | null = null) {
     // Контейнер для одного сообщения (может содержать и мысли, и ответ)
     const msgContainer = document.createElement('div');
     msgContainer.style.cssText = `
@@ -208,8 +208,13 @@ export class ChatUI {
     `;
 
     if (role === 'assistant') {
-      const { thought, answer } = this.parseMessage(content);
-
+      let thought = think;
+      let answer = content;
+      if (thought === null) {
+        const parsed = this.parseMessage(content);
+        thought = parsed.thought;
+        answer = parsed.answer;
+      }
       // --- Блок мыслей (если есть) ---
       if (thought) {
         const thoughtDiv = document.createElement('div');
@@ -258,6 +263,17 @@ export class ChatUI {
       `;
       answerDiv.textContent = answer;
       msgContainer.appendChild(answerDiv);
+      if (images && images.length > 0) {
+        const imgContainer = document.createElement('div');
+        images.forEach(src => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.style.maxWidth = '100%';
+        img.style.maxHeight = '200px';
+        imgContainer.appendChild(img);
+         });
+      msgContainer.appendChild(imgContainer);
+      }
       const feedbackContainer = document.createElement('div');
       feedbackContainer.style.cssText = 'display: flex; gap: 8px; margin-top: 6px; align-self: flex-start;';
 
@@ -420,7 +436,7 @@ export class ChatUI {
         // Если появился новый ответ от инженера
         if (data.answer && data.answer !== this.lastEngineerAnswer) {
           this.lastEngineerAnswer = data.answer;
-          this.addMessage('assistant', `🛠️ Инженер ответил:\n${data.answer}`);
+          this.addMessage('assistant', `🛠️ Инженер ответил:\n${data.answer}`,data.images);
           // Прокручиваем вниз
           this.chatBox.scrollTop = this.chatBox.scrollHeight;
         }

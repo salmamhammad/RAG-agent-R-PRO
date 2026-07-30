@@ -6,6 +6,8 @@
 !/data/docs/.gitkeep
 /data/jsonl/*
 !/data/jsonl/.gitkeep
+/data/faq/*
+!/data/faq/.gitkeep
 /log
 /storage
 /venv
@@ -13,3 +15,16 @@
 test.py
 testChm.py
 /models
+/ollama_data
+/data/images/*
+/data/chm_html/*
+!/data/chm_html/.gitkeep
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+logs/
+chroma_db/
+storage/
+*.db
+*.log

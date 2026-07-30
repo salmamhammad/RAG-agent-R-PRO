@@ -18,7 +18,7 @@ def get_files_state(root_dirs: list) -> dict:
     Ключом словаря является относительный путь от корня проекта.
     """
     state = {}
-    extensions = (".pdf", ".txt",".chm","jsonl")
+    extensions = (".pdf", ".txt", ".md", ".chm", ".jsonl", ".json", ".html", ".htm")
     
     for root_dir in root_dirs:
         if not os.path.exists(root_dir):

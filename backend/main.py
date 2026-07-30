@@ -1,6 +1,10 @@
 # FastAPI приложение
 import logging
+import sys
+import io
 from fastapi import FastAPI, HTTPException, Request
+from backend.exceptions import RateLimitExceeded
+
 from fastapi.middleware.cors import CORSMiddleware
 from backend.models import ChatRequest, ChatResponse, FeedbackRequest,FeedbackResponse, EngineerResponse,CloseTicketRequest
 from backend.rag_engine import RAGEngine
@@ -16,6 +20,9 @@ from dotenv import load_dotenv
 from fastapi.staticfiles import StaticFiles
 from backend.security import RateLimiter, sanitize_input, get_client_ip
 import os 
+if sys.stdout.encoding != 'utf-8':
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 # Загружаем переменные окружения 
 load_dotenv()
 
@@ -25,6 +32,8 @@ logger = get_logger(__name__)
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/widget", StaticFiles(directory="widget/dist"), name="widget")
+app.mount("/images", StaticFiles(directory="data/images"), name="images")
 
 # CORS для виджета
 app.add_middleware(
@@ -45,7 +54,25 @@ rate_limit_per_minute = int(os.getenv("RATE_LIMIT_PER_MINUTE", 30))
 rate_limiter = RateLimiter(requests_per_minute=rate_limit_per_minute)
 max_input_length = int(os.getenv("MAX_INPUT_LENGTH", 500))
 
+# Безопасность: ограничитель скорости
+rate_limit_per_minute = int(os.getenv("RATE_LIMIT_PER_MINUTE", 30))
+rate_limiter = RateLimiter(requests_per_minute=rate_limit_per_minute)
+max_input_length = int(os.getenv("MAX_INPUT_LENGTH", 500))
+
 @app.post("/chat", response_model=ChatResponse)
+async def chat(request: ChatRequest, req: Request):
+    # 1. Ограничение скорости
+    client_ip = get_client_ip(req)
+    if not rate_limiter.is_allowed(client_ip):
+        logger.warning(f"Rate limit exceeded for IP: {client_ip}")
+        raise HTTPException(status_code=429, detail="Too many requests. Please try again later.")
+
+    # 2.Длина входного сигнала и защита от инжекции
+    is_valid, error_msg = sanitize_input(request.question, max_length=max_input_length)
+    if not is_valid:
+        logger.warning(f"Invalid input from {client_ip}: {error_msg}")
+        
+        raise HTTPException(status_code=400, detail=error_msg)
 async def chat(request: ChatRequest, req: Request):
     # 1. Ограничение скорости
     client_ip = get_client_ip(req)
@@ -77,8 +104,9 @@ async def chat(request: ChatRequest, req: Request):
         result = rag.answer(request.question, history=request.history)
         end = now_iso()
         logger.info(f"Ответ отправлен, длина: {len(result['answer'])}")
+        logger.info(f"Ответ отправлен, длина images: {len(result['images'])}")
         logger.info(f"Обработано за {end} - {start}")
-        logger.info(f"result : {result["has_context"]}")
+        logger.info(f"result : {result['has_context']}")
         if not result["has_context"]:
             if request.ticketId:
                 ticket_id = update_ticket(request.ticketId, request.question, request.history)
@@ -90,8 +118,13 @@ async def chat(request: ChatRequest, req: Request):
         return ChatResponse(
             answer=result["answer"],
             sources=result["sources"],
-            ticket_id=ticket_id
+            images=result["images"],
+            ticket_id=ticket_id,
+             think=result.get("think") 
         )
+    except RateLimitExceeded as e:
+        logger.warning(f"Rate limit exceeded for IP {client_ip}: {e}")
+        raise HTTPException(status_code=429, detail="Превышен лимит запросов к LLM. Попробуйте позже.")
     except Exception as e:
         logger.error(f"Ошибка: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))

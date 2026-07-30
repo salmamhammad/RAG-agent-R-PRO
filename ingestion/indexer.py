@@ -1,17 +1,33 @@
  # создание эмбеддингов, запись в Chroma
 import os
-from llama_index.core import Settings
+from dotenv import load_dotenv
+from llama_index.core import Settings, Document
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from llama_index.vector_stores.chroma import ChromaVectorStore
 import chromadb
-from ingestion.loaders import load_pdfs, load_text_files, load_chm_files, load_jsonl_files,load_faq_json_files
+from datetime import datetime
+from collections import Counter
+
+from ingestion.loaders import load_pdfs, load_text_files, load_chm_files, load_jsonl_files,load_faq_json_files, extract_images_from_chm, load_html_directories, collect_images_from_html_folder
 from ingestion.chunker import get_chunker
 from ingestion.state import get_files_state, load_state, save_state
 
-ROOT_DIRS = ["data/docs", "data/chm", "data/jsonl"]
+from backend.image_captioner import generate_caption
+from ingestion.loaders import extract_images_from_pdf
+from ingestion.image_state import load_image_state, save_image_state, should_process_image, get_image_hash
+# Загружаем переменные окружения 
+load_dotenv()
+
+DATA_DOCS = os.getenv("DATA_DOCS", "data/docs")
+DATA_CHM = os.getenv("DATA_CHM", "data/chm")
+DATA_JSONL = os.getenv("DATA_JSONL", "data/jsonl")
+DATA_FAQ = os.getenv("DATA_FAQ", "data/faq")
+DATA_IMAGE = os.getenv("DATA_IMAGE", "data/images")
+DATA_HTML=os.getenv("DATA_HTML", "data/chm_html")
+ROOT_DIRS = [DATA_DOCS, DATA_CHM, DATA_JSONL, DATA_FAQ, DATA_HTML]
 def build_index():
     # Настройка эмбеддингов
-    embedding_model = os.getenv("EMBEDDING_MODEL", "d0rj/e5-small-en-ru")
+    embedding_model = os.getenv("EMBEDDING_MODEL", "intfloat/multilingual-e5-small")
     Settings.embed_model = HuggingFaceEmbedding(
        model_name=embedding_model,
        max_length=512
@@ -44,25 +60,101 @@ def build_index():
         print(" Нет новых или изменённых файлов. Индексация не требуется.")
         return
 
-    print(f" Обрабатываем files_to_process{len(files_to_process)} файлов...")
-      
+    print(f" Обрабатываем {len(files_to_process)} файлов...")
+    # # работа с изображением
+    image_docs = []
+    PROCESS_IMAGES= os.getenv("PROCESS_IMAGES", "false")
+    if PROCESS_IMAGES.lower() == "true":
+        image_state = load_image_state()
+        print("🖼️ Обработка изображений (только новые или изменённые)...")
+        os.makedirs(DATA_IMAGE, exist_ok=True)
+        print("Обработка изображений из pdf.")
+        pdf_docs = load_pdfs(DATA_DOCS)  # теперь каждый документ содержит абсолютный путь в metadata["source"]
+        for pdf_doc in pdf_docs:
+           pdf_path = pdf_doc.metadata.get("source", "")
+           if os.path.exists(pdf_path):
+               image_paths = extract_images_from_pdf(pdf_path, DATA_IMAGE)
+               for img_path in image_paths:
+                    if should_process_image(img_path, image_state):
+                        caption = generate_caption(img_path)
+                        if caption:
+                            doc = Document(
+                               text=f"Изображение: {caption}",
+                               metadata={
+                                  "source": pdf_path,
+                                  "image_path": img_path,
+                                  "type": "image"
+                               }
+                            )
+                            image_docs.append(doc)
+                             # Сохраняем в состояние
+                            image_state[img_path] = {
+                                "hash": get_image_hash(img_path),
+                                "caption": caption,
+                                "timestamp": datetime.now().isoformat()
+                            }
+                    else:
+                        print(f"⏭️ Изображение уже обработано: {img_path}")
+                        
+        print("Обработка изображений из chm.")
+        if os.path.exists(DATA_HTML):
+            for chm_folder in os.listdir(DATA_HTML):
+                folder_path = os.path.join(DATA_HTML, chm_folder)
+                if os.path.isdir(folder_path):
+                   images = collect_images_from_html_folder(folder_path)
+                   for img_path in images:
+                        if should_process_image(img_path, image_state):
+                           caption = generate_caption(img_path)
+                           if caption:
+                                doc = Document(
+                                    text=f"Изображение: {caption}",
+                                    metadata={
+                                        "source": chm_folder,
+                                        "image_path": img_path,
+                                        "type": "image"
+                                    }
+                                )
+                                image_docs.append(doc)
+                                image_state[img_path] = {
+                                    "hash": get_image_hash(img_path),
+                                    "caption": caption,
+                                    "timestamp": datetime.now().isoformat()
+                                }
+                        else:
+                            print(f"⏭️ Изображение уже обработано: {img_path}")        
+        else:
+            print("Папка DATA_HTML не найдена, пропускаем CHM-изображения.")
+        save_image_state(image_state)
+        print(f"✅ Сгенерировано {len(image_docs)} новых описаний изображений.") 
+    else:
+        print("Обработка изображений отключена.")
+        
     # # Загрузка документов
     print("Загрузка документов...")
-    all_docs =load_pdfs("data/docs") + load_text_files("data/docs")+ load_chm_files("data/chm") + load_jsonl_files("data/jsonl")+load_faq_json_files('data/faq')
+    all_docs = (
+       load_pdfs(DATA_DOCS)
+       + load_text_files(DATA_DOCS)
+    #    + load_chm_files(DATA_CHM)         
+       + load_jsonl_files(DATA_JSONL)
+       + load_faq_json_files(DATA_FAQ)
+       + load_html_directories(DATA_HTML)  
+       + image_docs 
+    )  
     print(f"Загружено all_docs {len(all_docs)} документов для индексации")
 
     filtered_docs = []
     for doc in all_docs:
-        # источник хранится в метаданных как "source" – это полный путь
         source = doc.metadata.get("source", "")
         rel_path = os.path.relpath(source, start=".")
         if rel_path in files_to_process:
             filtered_docs.append(doc)
-            print(f"добавить файл: {file}")
-    if not filtered_docs:
-        print("Не найдено содержимого для указанных файлов.")
-        return
+            # print(f"добавить файл: {os.path.basename(source)}") 
+        if not filtered_docs:
+            print("Не найдено содержимого для указанных файлов.")
+            return
     print(f"Загружено filtered_docs {len(filtered_docs)} документов для индексации")
+    
+
     # Разбивка на чанки
     print("Разбивка на чанки...")
     chunker = get_chunker()
@@ -74,4 +166,13 @@ def build_index():
     index.insert_nodes(nodes)    
     index.storage_context.persist(persist_dir="storage")  
     save_state(current_state)
+    # Вывести распределение фрагментов по типу источника после индексирования
+    final_results = collection.get(include=["metadatas"])
+    source_types = [meta.get("source_type", "unknown") for meta in final_results["metadatas"]]
+    counts = Counter(source_types)
+    print("\n--- Chunk distribution by source type after indexing ---")
+    for source_type, count in counts.items():
+        print(f"  {source_type}: {count} chunks")
+    print(f"Total: {len(final_results['ids'])} chunks")
+    print("------------------------------------------------------\n")
     print(f"Индексация завершена. Добавлено {len(nodes)} чанков.")
