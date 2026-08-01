@@ -34,8 +34,10 @@ REST-эндпоинты чата, обратной связи, health.
 
 ![agent screanshot accept](images/agent_screanshot_accept.png)  ![agent
 screanshot reject](images/agent_screanshot_reject.png)
+
 ИИ-агент создаст заявку (билет ) и отправит уведомление через API (весь API работает с JSON), после чего новая заявка отобразится на странице инженера http://localhost:8000/static/engineer.html . (воспользовались этой страницей в качестве примера, но она может быть подключена к любой другой платформе.) Инженер сможет просмотреть предыдущие сообщения и увидеть, как ответил ИИ.
 ![agent screanshot engineer](images/agent_screanshot_engineer.png)
+
 в конце ответ появится в чате у пользователя 
 ![agent screanshot answer](images/agent_screanshot_answer.png)
 
