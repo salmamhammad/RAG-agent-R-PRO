@@ -102,9 +102,6 @@ async def chat(request: ChatRequest, req: Request):
             return ChatResponse(answer=engineer_answer, sources=[])
         start = now_iso()
         result = rag.answer(request.question, history=request.history)
-        if not isinstance(result, dict):
-            logger.error(f"rag.answer() returned {type(result)}: {result}")
-            raise HTTPException(status_code=500, detail="Internal server error")
         end = now_iso()
         logger.info(f"Ответ отправлен, длина: {len(result['answer'])}")
         logger.info(f"Ответ отправлен, длина images: {len(result['images'])}")
@@ -131,7 +128,6 @@ async def chat(request: ChatRequest, req: Request):
     except Exception as e:
         logger.error(f"Ошибка: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
-        # return ChatResponse(answer="Internal error", sources=[])
 
 @app.post("/feedback", response_model=FeedbackResponse)
 async def feedback(fb: FeedbackRequest):
