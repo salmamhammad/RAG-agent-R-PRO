@@ -63,7 +63,7 @@ bash
 python -m venv venv
 .\venv\Scripts\Activate.ps1 // source venv/bin/activate (ubuntu)
 pip install --upgrade pip
-pip install -r requirements.txt
+pip install -r requirements_without_version.txt
 
 python -m scripts.run_ingestion
 
@@ -80,7 +80,7 @@ bash
 python -m venv venv
 .\venv\Scripts\Activate.ps1 // source venv/bin/activate (ubuntu)
 pip install --upgrade pip
-pip install -r requirements.txt
+pip install -r requirements_without_version.txt
 
 
 python -m scripts.run_ingestion

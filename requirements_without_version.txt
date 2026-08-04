@@ -1,0 +1,44 @@
+# Core
+fastapi
+uvicorn[standard]
+python-dotenv
+pydantic
+python-multipart
+httpx
+
+# Vector DB & RAG
+chromadb
+llama-index
+llama-index-vector-stores-chroma
+llama-index-embeddings-huggingface
+llama-index-llms-groq
+llama-index-retrievers-bm25
+rank-bm25
+
+# PDF & text extraction
+pypdf
+pymupdf
+unstructured
+pdfplumber
+
+# CHM & HTML parsing
+beautifulsoup4
+lxml
+html2text
+chardet
+
+# Embeddings & LLM helpers
+sentence-transformers
+transformers
+accelerate
+torch
+groq
+
+# Text splitting
+langchain-text-splitters
+
+# Testing & metrics
+requests
+rouge-score
+numpy
+locust
