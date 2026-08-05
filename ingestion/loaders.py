@@ -7,12 +7,13 @@ import tempfile
 import subprocess
 from typing import List, Optional
 from bs4 import BeautifulSoup
-
+from dotenv import load_dotenv
 from pypdf import PdfReader
 from llama_index.core import Document
 import fitz
 from PIL import Image
 import io
+load_dotenv()
 def clean_text(text: str) -> str:
     """Удаляет URL, email, управляющие символы и бинарный мусор."""
     if not text:
@@ -60,7 +61,7 @@ def is_readable(text: str) -> bool:
 
 def load_pdfs(directory: str) -> List[Document]:
     docs = []
-
+    SOURCE_TYPE_PDF=os.getenv("SOURCE_TYPE_PDF", "pdf")
 
 
     for file in os.listdir(directory):
@@ -104,7 +105,7 @@ def load_pdfs(directory: str) -> List[Document]:
                 Document(
                     text=full_text,
                     metadata={
-                        "source": os.path.abspath(file_path), "source_type": "pdf"
+                        "source": os.path.abspath(file_path), "source_type": SOURCE_TYPE_PDF
                     },
                 )
             )
@@ -116,6 +117,7 @@ def load_pdfs(directory: str) -> List[Document]:
 
 def load_text_files(directory: str) -> List[Document]:
     docs = []
+    SOURCE_TYPE_TXT=os.getenv("SOURCE_TYPE_PDF", "txt")
     for file in os.listdir(directory):
         file_path = os.path.join(directory, file)
         if os.path.isfile(file_path) and file.lower().endswith((".txt", ".md")):
@@ -125,7 +127,7 @@ def load_text_files(directory: str) -> List[Document]:
                 cleaned = clean_text(raw)
                 if cleaned and is_readable(cleaned):
                     rel_path = os.path.relpath(file_path, start=".")
-                    docs.append(Document(text=cleaned, metadata={"source": rel_path, "source_type": "txt"}))
+                    docs.append(Document(text=cleaned, metadata={"source": rel_path, "source_type": SOURCE_TYPE_TXT}))
                 else:
                     print(f" Пропущен нечитаемый текст: {file}")
             except Exception as e:
@@ -304,6 +306,7 @@ def load_jsonl_files(
     directory: str,
     text_fields: Optional[List[str]] = None
 ) -> List[Document]:
+    SOURCE_TYPE_EMAIL=os.getenv("SOURCE_TYPE_EMAIL", "email")
     if text_fields is None:
         text_fields = ["subject", "body"]
 
@@ -352,7 +355,7 @@ def load_jsonl_files(
                         text=full_text,
                         metadata= {
                                  "source": rel_path,
-                                 "source_type": "email",
+                                 "source_type": SOURCE_TYPE_EMAIL,
                                  "line": line_num,
                                 }
                     ))
@@ -366,7 +369,7 @@ def load_jsonl_files(
 def load_faq_json_files(directory: str) -> List[Document]:
     docs = []
     seen = set()  # для хранения хешей уникальных вопросов
-
+    SOURCE_TYPE_JSON=os.getenv("SOURCE_TYPE_JSON", "json")
     for file in os.listdir(directory):
         file_path = os.path.join(directory, file)
         if not (os.path.isfile(file_path) and file.lower().endswith(".json")):
@@ -407,11 +410,11 @@ def load_faq_json_files(directory: str) -> List[Document]:
             norm_a = re.sub(r'\s+', ' ', norm_a)
             key = (norm_q, norm_a)
             if key in seen:
-                print(f"Пропущен дублирующий FAQ (вопрос и ответ совпадают): {question[:50]}...")
+                # print(f"Пропущен дублирующий FAQ (вопрос и ответ совпадают): {question[:50]}...")
                 continue
             seen.add(key)
             if norm_q in seen:
-                print(f"Пропущен дублирующий FAQ: {question[:50]}...")
+                # print(f"Пропущен дублирующий FAQ: {question[:50]}...")
                 continue
             seen.add(norm_q)
 
@@ -422,7 +425,7 @@ def load_faq_json_files(directory: str) -> List[Document]:
 
             metadata = {
                 "source": rel_path,
-                "source_type": "json",
+                "source_type":SOURCE_TYPE_JSON,
                 "category": category,
                 "question": question,
                 "faq_index": idx
@@ -465,6 +468,7 @@ def load_html_directories(directory: str) -> List[Document]:
     разбивая по заголовкам h1/h2/h3. Каждый раздел становится отдельным документом.
     """
     docs = []
+    SOURCE_TYPE_HTML=os.getenv("SOURCE_TYPE_HTML", "html")
     for root_dir in os.listdir(directory):
         root_path = os.path.join(directory, root_dir)
         if not os.path.isdir(root_path):
@@ -533,7 +537,7 @@ def load_html_directories(directory: str) -> List[Document]:
                                 text=cleaned,
                                 metadata={
                                     "source": rel_source,
-                                    "source_type": "manual",
+                                    "source_type": SOURCE_TYPE_HTML,
                                     "language": language,
                                     "section": root_dir,
                                     "page_title": soup.title.string.strip() if soup.title and soup.title.string  else ""
@@ -553,7 +557,7 @@ def load_html_directories(directory: str) -> List[Document]:
                                 text=cleaned,
                                 metadata={
                                     "source": rel_source,
-                                    "source_type": "manual",
+                                    "source_type":SOURCE_TYPE_HTML,
                                     "language": language,
                                     "section": root_dir,
                                     "page_title": soup.title.string.strip() if soup.title and soup.title.string else "",
