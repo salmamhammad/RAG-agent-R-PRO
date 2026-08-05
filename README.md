@@ -212,12 +212,21 @@ DATA_FAQ='data/faq'
 DATA_IMAGE="data/images" 
 DATA_HTML="data/chm_html"
 
+# SOURCE TYPE:
+SOURCE_TYPE_PDF="pdf" # pdf
+SOURCE_TYPE_TXT="txt"  # txt
+SOURCE_TYPE_CHM="chm"  # chm 
+SOURCE_TYPE_EMAIL="manual"  # email
+SOURCE_TYPE_JSON="json"   # json
+SOURCE_TYPE_HTML="manual"  # html
+
 # Настройки повторных попыток для Groq
 GROQ_MAX_RETRIES=3
 GROQ_RETRY_DELAY=1
 
 ANONYMIZED_TELEMETRY=false
 FORBIDDEN_TERMS=ISimPlugin, AddComponent, RemoveComponent, XAML, SimLab.Application, ISimComponent, CreateComponent
+
 
 
 
